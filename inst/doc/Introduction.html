@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Introduction</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction</h1>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(REDCapCAST)</span></code></pre></div>
+<p>This vignette covers the included functions and basic
+functionality.</p>
+<p>A dataset and a meta data file are provided with the package for
+demonstration of the functions.</p>
+<div id="splitting-the-dataset" class="section level2">
+<h2>Splitting the dataset</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>redcapcast_data <span class="sc">|&gt;</span> gt<span class="sc">::</span><span class="fu">gt</span>()</span></code></pre></div>
+<div id="yovulwpvfd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yovulwpvfd table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#yovulwpvfd thead, #yovulwpvfd tbody, #yovulwpvfd tfoot, #yovulwpvfd tr, #yovulwpvfd td, #yovulwpvfd th {
+border-style: none;
+}
+#yovulwpvfd p {
+margin: 0;
+padding: 0;
+}
+#yovulwpvfd .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#yovulwpvfd .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#yovulwpvfd .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#yovulwpvfd .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#yovulwpvfd .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#yovulwpvfd .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#yovulwpvfd .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#yovulwpvfd .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#yovulwpvfd .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#yovulwpvfd .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#yovulwpvfd .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#yovulwpvfd .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#yovulwpvfd .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#yovulwpvfd .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#yovulwpvfd .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#yovulwpvfd .gt_from_md > :first-child {
+margin-top: 0;
+}
+#yovulwpvfd .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#yovulwpvfd .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#yovulwpvfd .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#yovulwpvfd .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#yovulwpvfd .gt_row_group_first td {
+border-top-width: 2px;
+}
+#yovulwpvfd .gt_row_group_first th {
+border-top-width: 2px;
+}
+#yovulwpvfd .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#yovulwpvfd .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#yovulwpvfd .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#yovulwpvfd .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#yovulwpvfd .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#yovulwpvfd .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#yovulwpvfd .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#yovulwpvfd .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#yovulwpvfd .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#yovulwpvfd .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#yovulwpvfd .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#yovulwpvfd .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#yovulwpvfd .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#yovulwpvfd .gt_left {
+text-align: left;
+}
+#yovulwpvfd .gt_center {
+text-align: center;
+}
+#yovulwpvfd .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#yovulwpvfd .gt_font_normal {
+font-weight: normal;
+}
+#yovulwpvfd .gt_font_bold {
+font-weight: bold;
+}
+#yovulwpvfd .gt_font_italic {
+font-style: italic;
+}
+#yovulwpvfd .gt_super {
+font-size: 65%;
+}
+#yovulwpvfd .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#yovulwpvfd .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#yovulwpvfd .gt_indent_1 {
+text-indent: 5px;
+}
+#yovulwpvfd .gt_indent_2 {
+text-indent: 10px;
+}
+#yovulwpvfd .gt_indent_3 {
+text-indent: 15px;
+}
+#yovulwpvfd .gt_indent_4 {
+text-indent: 20px;
+}
+#yovulwpvfd .gt_indent_5 {
+text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="record_id">record_id</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="redcap_event_name">redcap_event_name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="redcap_repeat_instrument">redcap_repeat_instrument</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="redcap_repeat_instance">redcap_repeat_instance</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="cpr">cpr</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="inclusion">inclusion</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="dob">dob</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="age">age</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="age_integer">age_integer</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="sex">sex</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="cohabitation">cohabitation</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="hypertension">hypertension</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="diabetes">diabetes</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="region">region</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="baseline_data_start_complete">baseline_data_start_complete</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="mrs_assessed">mrs_assessed</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="mrs_date">mrs_date</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="mrs_score">mrs_score</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="mrs_complete">mrs_complete</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="event_date">event_date</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="event_type">event_type</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="new_event_complete">new_event_complete</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="record_id" class="gt_row gt_right">1</td>
+<td headers="redcap_event_name" class="gt_row gt_left">inclusion</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">NA</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
+<td headers="cpr" class="gt_row gt_left">1203401OB4</td>
+<td headers="inclusion" class="gt_row gt_right">2023-03-13</td>
+<td headers="dob" class="gt_row gt_right">1940-03-12</td>
+<td headers="age" class="gt_row gt_right">83.00239</td>
+<td headers="age_integer" class="gt_row gt_right">83</td>
+<td headers="sex" class="gt_row gt_left">female</td>
+<td headers="cohabitation" class="gt_row gt_left">Yes</td>
+<td headers="hypertension" class="gt_row gt_left">No</td>
+<td headers="diabetes" class="gt_row gt_left">Yes</td>
+<td headers="region" class="gt_row gt_left">East</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">Incomplete</td>
+<td headers="mrs_assessed" class="gt_row gt_left">Yes</td>
+<td headers="mrs_date" class="gt_row gt_right">2023-03-13</td>
+<td headers="mrs_score" class="gt_row gt_right">1</td>
+<td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
+<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_type" class="gt_row gt_left">NA</td>
+<td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">2</td>
+<td headers="redcap_event_name" class="gt_row gt_left">inclusion</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">NA</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
+<td headers="cpr" class="gt_row gt_left">0102342303</td>
+<td headers="inclusion" class="gt_row gt_right">2023-03-01</td>
+<td headers="dob" class="gt_row gt_right">1934-02-01</td>
+<td headers="age" class="gt_row gt_right">89.07780</td>
+<td headers="age_integer" class="gt_row gt_right">89</td>
+<td headers="sex" class="gt_row gt_left">male</td>
+<td headers="cohabitation" class="gt_row gt_left">Yes</td>
+<td headers="hypertension" class="gt_row gt_left">No</td>
+<td headers="diabetes" class="gt_row gt_left">No</td>
+<td headers="region" class="gt_row gt_left">South</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">Incomplete</td>
+<td headers="mrs_assessed" class="gt_row gt_left">Yes</td>
+<td headers="mrs_date" class="gt_row gt_right">2023-03-07</td>
+<td headers="mrs_score" class="gt_row gt_right">1</td>
+<td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
+<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_type" class="gt_row gt_left">NA</td>
+<td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">2</td>
+<td headers="redcap_event_name" class="gt_row gt_left">follow1</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">NA</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
+<td headers="cpr" class="gt_row gt_left">NA</td>
+<td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="dob" class="gt_row gt_right">NA</td>
+<td headers="age" class="gt_row gt_right">NA</td>
+<td headers="age_integer" class="gt_row gt_right">NA</td>
+<td headers="sex" class="gt_row gt_left">NA</td>
+<td headers="cohabitation" class="gt_row gt_left">NA</td>
+<td headers="hypertension" class="gt_row gt_left">NA</td>
+<td headers="diabetes" class="gt_row gt_left">NA</td>
+<td headers="region" class="gt_row gt_left">NA</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">NA</td>
+<td headers="mrs_assessed" class="gt_row gt_left">Yes</td>
+<td headers="mrs_date" class="gt_row gt_right">2023-03-09</td>
+<td headers="mrs_score" class="gt_row gt_right">3</td>
+<td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
+<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_type" class="gt_row gt_left">NA</td>
+<td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">2</td>
+<td headers="redcap_event_name" class="gt_row gt_left">follow1</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">New Event (?)</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">1</td>
+<td headers="cpr" class="gt_row gt_left">NA</td>
+<td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="dob" class="gt_row gt_right">NA</td>
+<td headers="age" class="gt_row gt_right">NA</td>
+<td headers="age_integer" class="gt_row gt_right">NA</td>
+<td headers="sex" class="gt_row gt_left">NA</td>
+<td headers="cohabitation" class="gt_row gt_left">NA</td>
+<td headers="hypertension" class="gt_row gt_left">NA</td>
+<td headers="diabetes" class="gt_row gt_left">NA</td>
+<td headers="region" class="gt_row gt_left">NA</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">NA</td>
+<td headers="mrs_assessed" class="gt_row gt_left">NA</td>
+<td headers="mrs_date" class="gt_row gt_right">NA</td>
+<td headers="mrs_score" class="gt_row gt_right">NA</td>
+<td headers="mrs_complete" class="gt_row gt_left">NA</td>
+<td headers="event_date" class="gt_row gt_right">2023-03-13</td>
+<td headers="event_type" class="gt_row gt_left">TIA</td>
+<td headers="new_event_complete" class="gt_row gt_left">Incomplete</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">3</td>
+<td headers="redcap_event_name" class="gt_row gt_left">inclusion</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">NA</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
+<td headers="cpr" class="gt_row gt_left">2301569823</td>
+<td headers="inclusion" class="gt_row gt_right">2022-03-08</td>
+<td headers="dob" class="gt_row gt_right">1956-01-23</td>
+<td headers="age" class="gt_row gt_right">66.12319</td>
+<td headers="age_integer" class="gt_row gt_right">66</td>
+<td headers="sex" class="gt_row gt_left">male</td>
+<td headers="cohabitation" class="gt_row gt_left">No</td>
+<td headers="hypertension" class="gt_row gt_left">Yes</td>
+<td headers="diabetes" class="gt_row gt_left">Yes</td>
+<td headers="region" class="gt_row gt_left">North</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">Incomplete</td>
+<td headers="mrs_assessed" class="gt_row gt_left">NA</td>
+<td headers="mrs_date" class="gt_row gt_right">NA</td>
+<td headers="mrs_score" class="gt_row gt_right">NA</td>
+<td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
+<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_type" class="gt_row gt_left">NA</td>
+<td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">3</td>
+<td headers="redcap_event_name" class="gt_row gt_left">follow1</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">NA</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
+<td headers="cpr" class="gt_row gt_left">NA</td>
+<td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="dob" class="gt_row gt_right">NA</td>
+<td headers="age" class="gt_row gt_right">NA</td>
+<td headers="age_integer" class="gt_row gt_right">NA</td>
+<td headers="sex" class="gt_row gt_left">NA</td>
+<td headers="cohabitation" class="gt_row gt_left">NA</td>
+<td headers="hypertension" class="gt_row gt_left">NA</td>
+<td headers="diabetes" class="gt_row gt_left">NA</td>
+<td headers="region" class="gt_row gt_left">NA</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">NA</td>
+<td headers="mrs_assessed" class="gt_row gt_left">Yes</td>
+<td headers="mrs_date" class="gt_row gt_right">2022-08-16</td>
+<td headers="mrs_score" class="gt_row gt_right">2</td>
+<td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
+<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_type" class="gt_row gt_left">NA</td>
+<td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">3</td>
+<td headers="redcap_event_name" class="gt_row gt_left">follow2</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">NA</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
+<td headers="cpr" class="gt_row gt_left">NA</td>
+<td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="dob" class="gt_row gt_right">NA</td>
+<td headers="age" class="gt_row gt_right">NA</td>
+<td headers="age_integer" class="gt_row gt_right">NA</td>
+<td headers="sex" class="gt_row gt_left">NA</td>
+<td headers="cohabitation" class="gt_row gt_left">NA</td>
+<td headers="hypertension" class="gt_row gt_left">NA</td>
+<td headers="diabetes" class="gt_row gt_left">NA</td>
+<td headers="region" class="gt_row gt_left">NA</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">NA</td>
+<td headers="mrs_assessed" class="gt_row gt_left">Yes</td>
+<td headers="mrs_date" class="gt_row gt_right">2023-03-13</td>
+<td headers="mrs_score" class="gt_row gt_right">1</td>
+<td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
+<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_type" class="gt_row gt_left">NA</td>
+<td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">3</td>
+<td headers="redcap_event_name" class="gt_row gt_left">follow1</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">New Event (?)</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">1</td>
+<td headers="cpr" class="gt_row gt_left">NA</td>
+<td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="dob" class="gt_row gt_right">NA</td>
+<td headers="age" class="gt_row gt_right">NA</td>
+<td headers="age_integer" class="gt_row gt_right">NA</td>
+<td headers="sex" class="gt_row gt_left">NA</td>
+<td headers="cohabitation" class="gt_row gt_left">NA</td>
+<td headers="hypertension" class="gt_row gt_left">NA</td>
+<td headers="diabetes" class="gt_row gt_left">NA</td>
+<td headers="region" class="gt_row gt_left">NA</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">NA</td>
+<td headers="mrs_assessed" class="gt_row gt_left">NA</td>
+<td headers="mrs_date" class="gt_row gt_right">NA</td>
+<td headers="mrs_score" class="gt_row gt_right">NA</td>
+<td headers="mrs_complete" class="gt_row gt_left">NA</td>
+<td headers="event_date" class="gt_row gt_right">2022-11-08</td>
+<td headers="event_type" class="gt_row gt_left">AIS</td>
+<td headers="new_event_complete" class="gt_row gt_left">Incomplete</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">3</td>
+<td headers="redcap_event_name" class="gt_row gt_left">follow1</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">New Event (?)</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">2</td>
+<td headers="cpr" class="gt_row gt_left">NA</td>
+<td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="dob" class="gt_row gt_right">NA</td>
+<td headers="age" class="gt_row gt_right">NA</td>
+<td headers="age_integer" class="gt_row gt_right">NA</td>
+<td headers="sex" class="gt_row gt_left">NA</td>
+<td headers="cohabitation" class="gt_row gt_left">NA</td>
+<td headers="hypertension" class="gt_row gt_left">NA</td>
+<td headers="diabetes" class="gt_row gt_left">NA</td>
+<td headers="region" class="gt_row gt_left">NA</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">NA</td>
+<td headers="mrs_assessed" class="gt_row gt_left">NA</td>
+<td headers="mrs_date" class="gt_row gt_right">NA</td>
+<td headers="mrs_score" class="gt_row gt_right">NA</td>
+<td headers="mrs_complete" class="gt_row gt_left">NA</td>
+<td headers="event_date" class="gt_row gt_right">2022-12-14</td>
+<td headers="event_type" class="gt_row gt_left">ICH</td>
+<td headers="new_event_complete" class="gt_row gt_left">Incomplete</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">3</td>
+<td headers="redcap_event_name" class="gt_row gt_left">follow2</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">New Event (?)</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">1</td>
+<td headers="cpr" class="gt_row gt_left">NA</td>
+<td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="dob" class="gt_row gt_right">NA</td>
+<td headers="age" class="gt_row gt_right">NA</td>
+<td headers="age_integer" class="gt_row gt_right">NA</td>
+<td headers="sex" class="gt_row gt_left">NA</td>
+<td headers="cohabitation" class="gt_row gt_left">NA</td>
+<td headers="hypertension" class="gt_row gt_left">NA</td>
+<td headers="diabetes" class="gt_row gt_left">NA</td>
+<td headers="region" class="gt_row gt_left">NA</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">NA</td>
+<td headers="mrs_assessed" class="gt_row gt_left">NA</td>
+<td headers="mrs_date" class="gt_row gt_right">NA</td>
+<td headers="mrs_score" class="gt_row gt_right">NA</td>
+<td headers="mrs_complete" class="gt_row gt_left">NA</td>
+<td headers="event_date" class="gt_row gt_right">2023-02-06</td>
+<td headers="event_type" class="gt_row gt_left">ICH</td>
+<td headers="new_event_complete" class="gt_row gt_left">Incomplete</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">3</td>
+<td headers="redcap_event_name" class="gt_row gt_left">follow2</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">New Event (?)</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">2</td>
+<td headers="cpr" class="gt_row gt_left">NA</td>
+<td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="dob" class="gt_row gt_right">NA</td>
+<td headers="age" class="gt_row gt_right">NA</td>
+<td headers="age_integer" class="gt_row gt_right">NA</td>
+<td headers="sex" class="gt_row gt_left">NA</td>
+<td headers="cohabitation" class="gt_row gt_left">NA</td>
+<td headers="hypertension" class="gt_row gt_left">NA</td>
+<td headers="diabetes" class="gt_row gt_left">NA</td>
+<td headers="region" class="gt_row gt_left">NA</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">NA</td>
+<td headers="mrs_assessed" class="gt_row gt_left">NA</td>
+<td headers="mrs_date" class="gt_row gt_right">NA</td>
+<td headers="mrs_score" class="gt_row gt_right">NA</td>
+<td headers="mrs_complete" class="gt_row gt_left">NA</td>
+<td headers="event_date" class="gt_row gt_right">2023-03-13</td>
+<td headers="event_type" class="gt_row gt_left">TIA</td>
+<td headers="new_event_complete" class="gt_row gt_left">Incomplete</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">3</td>
+<td headers="redcap_event_name" class="gt_row gt_left">follow2</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">New Event (?)</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">3</td>
+<td headers="cpr" class="gt_row gt_left">NA</td>
+<td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="dob" class="gt_row gt_right">NA</td>
+<td headers="age" class="gt_row gt_right">NA</td>
+<td headers="age_integer" class="gt_row gt_right">NA</td>
+<td headers="sex" class="gt_row gt_left">NA</td>
+<td headers="cohabitation" class="gt_row gt_left">NA</td>
+<td headers="hypertension" class="gt_row gt_left">NA</td>
+<td headers="diabetes" class="gt_row gt_left">NA</td>
+<td headers="region" class="gt_row gt_left">NA</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">NA</td>
+<td headers="mrs_assessed" class="gt_row gt_left">NA</td>
+<td headers="mrs_date" class="gt_row gt_right">NA</td>
+<td headers="mrs_score" class="gt_row gt_right">NA</td>
+<td headers="mrs_complete" class="gt_row gt_left">NA</td>
+<td headers="event_date" class="gt_row gt_right">2023-02-28</td>
+<td headers="event_type" class="gt_row gt_left">AIS</td>
+<td headers="new_event_complete" class="gt_row gt_left">Incomplete</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">4</td>
+<td headers="redcap_event_name" class="gt_row gt_left">inclusion</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">NA</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
+<td headers="cpr" class="gt_row gt_left">0204051342</td>
+<td headers="inclusion" class="gt_row gt_right">2023-03-14</td>
+<td headers="dob" class="gt_row gt_right">1905-04-02</td>
+<td headers="age" class="gt_row gt_right">117.94903</td>
+<td headers="age_integer" class="gt_row gt_right">117</td>
+<td headers="sex" class="gt_row gt_left">female</td>
+<td headers="cohabitation" class="gt_row gt_left">NA</td>
+<td headers="hypertension" class="gt_row gt_left">NA</td>
+<td headers="diabetes" class="gt_row gt_left">NA</td>
+<td headers="region" class="gt_row gt_left">NA</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">Incomplete</td>
+<td headers="mrs_assessed" class="gt_row gt_left">NA</td>
+<td headers="mrs_date" class="gt_row gt_right">NA</td>
+<td headers="mrs_score" class="gt_row gt_right">NA</td>
+<td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
+<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_type" class="gt_row gt_left">NA</td>
+<td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">4</td>
+<td headers="redcap_event_name" class="gt_row gt_left">follow2</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">NA</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
+<td headers="cpr" class="gt_row gt_left">NA</td>
+<td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="dob" class="gt_row gt_right">NA</td>
+<td headers="age" class="gt_row gt_right">NA</td>
+<td headers="age_integer" class="gt_row gt_right">NA</td>
+<td headers="sex" class="gt_row gt_left">NA</td>
+<td headers="cohabitation" class="gt_row gt_left">NA</td>
+<td headers="hypertension" class="gt_row gt_left">NA</td>
+<td headers="diabetes" class="gt_row gt_left">NA</td>
+<td headers="region" class="gt_row gt_left">NA</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">NA</td>
+<td headers="mrs_assessed" class="gt_row gt_left">NA</td>
+<td headers="mrs_date" class="gt_row gt_right">NA</td>
+<td headers="mrs_score" class="gt_row gt_right">NA</td>
+<td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
+<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_type" class="gt_row gt_left">NA</td>
+<td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">4</td>
+<td headers="redcap_event_name" class="gt_row gt_left">follow2</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">New Event (?)</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">1</td>
+<td headers="cpr" class="gt_row gt_left">NA</td>
+<td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="dob" class="gt_row gt_right">NA</td>
+<td headers="age" class="gt_row gt_right">NA</td>
+<td headers="age_integer" class="gt_row gt_right">NA</td>
+<td headers="sex" class="gt_row gt_left">NA</td>
+<td headers="cohabitation" class="gt_row gt_left">NA</td>
+<td headers="hypertension" class="gt_row gt_left">NA</td>
+<td headers="diabetes" class="gt_row gt_left">NA</td>
+<td headers="region" class="gt_row gt_left">NA</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">NA</td>
+<td headers="mrs_assessed" class="gt_row gt_left">NA</td>
+<td headers="mrs_date" class="gt_row gt_right">NA</td>
+<td headers="mrs_score" class="gt_row gt_right">NA</td>
+<td headers="mrs_complete" class="gt_row gt_left">NA</td>
+<td headers="event_date" class="gt_row gt_right">2023-01-02</td>
+<td headers="event_type" class="gt_row gt_left">AIS</td>
+<td headers="new_event_complete" class="gt_row gt_left">Complete</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">4</td>
+<td headers="redcap_event_name" class="gt_row gt_left">follow2</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">New Event (?)</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">2</td>
+<td headers="cpr" class="gt_row gt_left">NA</td>
+<td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="dob" class="gt_row gt_right">NA</td>
+<td headers="age" class="gt_row gt_right">NA</td>
+<td headers="age_integer" class="gt_row gt_right">NA</td>
+<td headers="sex" class="gt_row gt_left">NA</td>
+<td headers="cohabitation" class="gt_row gt_left">NA</td>
+<td headers="hypertension" class="gt_row gt_left">NA</td>
+<td headers="diabetes" class="gt_row gt_left">NA</td>
+<td headers="region" class="gt_row gt_left">NA</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">NA</td>
+<td headers="mrs_assessed" class="gt_row gt_left">NA</td>
+<td headers="mrs_date" class="gt_row gt_right">NA</td>
+<td headers="mrs_score" class="gt_row gt_right">NA</td>
+<td headers="mrs_complete" class="gt_row gt_left">NA</td>
+<td headers="event_date" class="gt_row gt_right">2023-02-06</td>
+<td headers="event_type" class="gt_row gt_left">ICH</td>
+<td headers="new_event_complete" class="gt_row gt_left">Incomplete</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">4</td>
+<td headers="redcap_event_name" class="gt_row gt_left">follow2</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">New Event (?)</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">3</td>
+<td headers="cpr" class="gt_row gt_left">NA</td>
+<td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="dob" class="gt_row gt_right">NA</td>
+<td headers="age" class="gt_row gt_right">NA</td>
+<td headers="age_integer" class="gt_row gt_right">NA</td>
+<td headers="sex" class="gt_row gt_left">NA</td>
+<td headers="cohabitation" class="gt_row gt_left">NA</td>
+<td headers="hypertension" class="gt_row gt_left">NA</td>
+<td headers="diabetes" class="gt_row gt_left">NA</td>
+<td headers="region" class="gt_row gt_left">NA</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">NA</td>
+<td headers="mrs_assessed" class="gt_row gt_left">NA</td>
+<td headers="mrs_date" class="gt_row gt_right">NA</td>
+<td headers="mrs_score" class="gt_row gt_right">NA</td>
+<td headers="mrs_complete" class="gt_row gt_left">NA</td>
+<td headers="event_date" class="gt_row gt_right">2023-03-05</td>
+<td headers="event_type" class="gt_row gt_left">Unknown</td>
+<td headers="new_event_complete" class="gt_row gt_left">Complete</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">5</td>
+<td headers="redcap_event_name" class="gt_row gt_left">inclusion</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">NA</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
+<td headers="cpr" class="gt_row gt_left">0201976043</td>
+<td headers="inclusion" class="gt_row gt_right">2023-03-23</td>
+<td headers="dob" class="gt_row gt_right">1897-01-02</td>
+<td headers="age" class="gt_row gt_right">126.21751</td>
+<td headers="age_integer" class="gt_row gt_right">126</td>
+<td headers="sex" class="gt_row gt_left">male</td>
+<td headers="cohabitation" class="gt_row gt_left">No</td>
+<td headers="hypertension" class="gt_row gt_left">Yes</td>
+<td headers="diabetes" class="gt_row gt_left">Yes</td>
+<td headers="region" class="gt_row gt_left">East</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">Complete</td>
+<td headers="mrs_assessed" class="gt_row gt_left">NA</td>
+<td headers="mrs_date" class="gt_row gt_right">NA</td>
+<td headers="mrs_score" class="gt_row gt_right">NA</td>
+<td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
+<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_type" class="gt_row gt_left">NA</td>
+<td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>redcapcast_meta <span class="sc">|&gt;</span> gt<span class="sc">::</span><span class="fu">gt</span>()</span></code></pre></div>
+<div id="jcugctrhrv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jcugctrhrv table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#jcugctrhrv thead, #jcugctrhrv tbody, #jcugctrhrv tfoot, #jcugctrhrv tr, #jcugctrhrv td, #jcugctrhrv th {
+border-style: none;
+}
+#jcugctrhrv p {
+margin: 0;
+padding: 0;
+}
+#jcugctrhrv .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#jcugctrhrv .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#jcugctrhrv .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#jcugctrhrv .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#jcugctrhrv .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#jcugctrhrv .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#jcugctrhrv .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#jcugctrhrv .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#jcugctrhrv .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#jcugctrhrv .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#jcugctrhrv .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#jcugctrhrv .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#jcugctrhrv .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#jcugctrhrv .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#jcugctrhrv .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#jcugctrhrv .gt_from_md > :first-child {
+margin-top: 0;
+}
+#jcugctrhrv .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#jcugctrhrv .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#jcugctrhrv .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#jcugctrhrv .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#jcugctrhrv .gt_row_group_first td {
+border-top-width: 2px;
+}
+#jcugctrhrv .gt_row_group_first th {
+border-top-width: 2px;
+}
+#jcugctrhrv .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#jcugctrhrv .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#jcugctrhrv .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#jcugctrhrv .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#jcugctrhrv .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#jcugctrhrv .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#jcugctrhrv .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#jcugctrhrv .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#jcugctrhrv .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#jcugctrhrv .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#jcugctrhrv .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#jcugctrhrv .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#jcugctrhrv .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#jcugctrhrv .gt_left {
+text-align: left;
+}
+#jcugctrhrv .gt_center {
+text-align: center;
+}
+#jcugctrhrv .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#jcugctrhrv .gt_font_normal {
+font-weight: normal;
+}
+#jcugctrhrv .gt_font_bold {
+font-weight: bold;
+}
+#jcugctrhrv .gt_font_italic {
+font-style: italic;
+}
+#jcugctrhrv .gt_super {
+font-size: 65%;
+}
+#jcugctrhrv .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#jcugctrhrv .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#jcugctrhrv .gt_indent_1 {
+text-indent: 5px;
+}
+#jcugctrhrv .gt_indent_2 {
+text-indent: 10px;
+}
+#jcugctrhrv .gt_indent_3 {
+text-indent: 15px;
+}
+#jcugctrhrv .gt_indent_4 {
+text-indent: 20px;
+}
+#jcugctrhrv .gt_indent_5 {
+text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="field_name">field_name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="form_name">form_name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="section_header">section_header</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="field_type">field_type</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="field_label">field_label</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="select_choices_or_calculations">select_choices_or_calculations</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="field_note">field_note</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="text_validation_type_or_show_slider_number">text_validation_type_or_show_slider_number</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="text_validation_min">text_validation_min</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="text_validation_max">text_validation_max</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="identifier">identifier</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="branching_logic">branching_logic</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="required_field">required_field</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="custom_alignment">custom_alignment</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="question_number">question_number</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="matrix_group_name">matrix_group_name</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="matrix_ranking">matrix_ranking</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="field_annotation">field_annotation</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="field_name" class="gt_row gt_left">record_id</td>
+<td headers="form_name" class="gt_row gt_left">baseline_data_start</td>
+<td headers="section_header" class="gt_row gt_left">NA</td>
+<td headers="field_type" class="gt_row gt_left">text</td>
+<td headers="field_label" class="gt_row gt_left">ID</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">NA</td>
+<td headers="field_note" class="gt_row gt_left">NA</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">NA</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">NA</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">NA</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="field_name" class="gt_row gt_left">cpr</td>
+<td headers="form_name" class="gt_row gt_left">baseline_data_start</td>
+<td headers="section_header" class="gt_row gt_left">NA</td>
+<td headers="field_type" class="gt_row gt_left">text</td>
+<td headers="field_label" class="gt_row gt_left">CPR (Danish civil registration number)</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">NA</td>
+<td headers="field_note" class="gt_row gt_left">ddmmyyxxxx</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">NA</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">y</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">y</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="field_name" class="gt_row gt_left">inclusion</td>
+<td headers="form_name" class="gt_row gt_left">baseline_data_start</td>
+<td headers="section_header" class="gt_row gt_left">NA</td>
+<td headers="field_type" class="gt_row gt_left">text</td>
+<td headers="field_label" class="gt_row gt_left">Inclusion date</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">NA</td>
+<td headers="field_note" class="gt_row gt_left">NA</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">date_ymd</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">NA</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">NA</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="field_name" class="gt_row gt_left">dob</td>
+<td headers="form_name" class="gt_row gt_left">baseline_data_start</td>
+<td headers="section_header" class="gt_row gt_left">NA</td>
+<td headers="field_type" class="gt_row gt_left">text</td>
+<td headers="field_label" class="gt_row gt_left">Date of birth (From CPR)</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">NA</td>
+<td headers="field_note" class="gt_row gt_left">NA</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">date_ymd</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">NA</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">NA</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">@CALCTEXT(if([cpr]!=&quot;&quot;, concat(if(mid([cpr], 7, 1)&gt;=0 and mid([cpr], 7, 1)&lt;=3,19, if(mid([cpr], 5, 2)&gt;=0 and mid([cpr], 5, 2)&lt;=36 and mid([cpr], 7, 1)&gt;=4 and mid([cpr], 7, 1)&lt;=4,20, if(mid([cpr], 5, 2)&gt;=37 and mid([cpr], 5, 2)&lt;=99 and mid([cpr], 7, 1)&gt;=4 and mid([cpr], 7, 1)&lt;=4,19, if(mid([cpr], 5, 2)&gt;=0 and mid([cpr], 5, 2)&lt;=57 and mid([cpr], 7, 1)&gt;=5 and mid([cpr], 7, 1)&lt;=5,20, if(mid([cpr], 5, 2)&gt;=58 and mid([cpr], 5, 2)&lt;=99 and mid([cpr], 7, 1)&gt;=5 and mid([cpr], 7, 1)&lt;=5,18, if(mid([cpr], 5, 2)&gt;=0 and mid([cpr], 5, 2)&lt;=57 and mid([cpr], 7, 1)&gt;=6 and mid([cpr], 7, 1)&lt;=6,20, if(mid([cpr], 5, 2)&gt;=58 and mid([cpr], 5, 2)&lt;=99 and mid([cpr], 7, 1)&gt;=6 and mid([cpr], 7, 1)&lt;=6,18, if(mid([cpr], 5, 2)&gt;=0 and mid([cpr], 5, 2)&lt;=57 and mid([cpr], 7, 1)&gt;=7 and mid([cpr], 7, 1)&lt;=7,20, if(mid([cpr], 5, 2)&gt;=58 and mid([cpr], 5, 2)&lt;=99 and mid([cpr], 7, 1)&gt;=7 and mid([cpr], 7, 1)&lt;=7,18, if(mid([cpr], 5, 2)&gt;=0 and mid([cpr], 5, 2)&lt;=57 and mid([cpr], 7, 1)&gt;=8 and mid([cpr], 7, 1)&lt;=8,20, if(mid([cpr], 5, 2)&gt;=58 and mid([cpr], 5, 2)&lt;=99 and mid([cpr], 7, 1)&gt;=8 and mid([cpr], 7, 1)&lt;=8,18, if(mid([cpr], 5, 2)&gt;=0 and mid([cpr], 5, 2)&lt;=36 and mid([cpr], 7, 1)&gt;=9 and mid([cpr], 7, 1)&lt;=9,20, if(mid([cpr], 5, 2)&gt;=37 and mid([cpr], 5, 2)&lt;=99 and mid([cpr], 7, 1)&gt;=9 and mid([cpr], 7, 1)&lt;=9,19,17))))))))))))), mid([cpr], 5, 2), &quot;-&quot;,mid([cpr],3, 2), &quot;-&quot;,  left([cpr], 2) ), &quot;&quot;))</td></tr>
+    <tr><td headers="field_name" class="gt_row gt_left">age</td>
+<td headers="form_name" class="gt_row gt_left">baseline_data_start</td>
+<td headers="section_header" class="gt_row gt_left">NA</td>
+<td headers="field_type" class="gt_row gt_left">calc</td>
+<td headers="field_label" class="gt_row gt_left">Age
+Note: Apparently, the build in datediff() function does not handle counting whole years. This results in wrongly counting age higher around the date of birth.</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">if([cpr]!=&quot;&quot; and [inclusion]!=&quot;&quot;, datediff([dob], [inclusion], &#39;y&#39;), &quot;&quot;)</td>
+<td headers="field_note" class="gt_row gt_left">NA</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">NA</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">NA</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">NA</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="field_name" class="gt_row gt_left">age_integer</td>
+<td headers="form_name" class="gt_row gt_left">baseline_data_start</td>
+<td headers="section_header" class="gt_row gt_left">NA</td>
+<td headers="field_type" class="gt_row gt_left">calc</td>
+<td headers="field_label" class="gt_row gt_left">Age integer
+Note: as opposed to the build in datediff() this handles counting years as integers very well. Calculate decimal years in statistical programming software. In R you can use with(ds, stRoke::age_calc(dob, inclusion)).</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">if([cpr]!=&quot;&quot;, left([inclusion], 4)-left([dob], 4) - if(mid([dob], 6, 2) &lt; mid([inclusion], 6, 2) or (mid([dob], 6, 2) = mid([inclusion], 6, 2) and mid([dob], 9, 2) &lt;= mid([inclusion], 9, 2)), 0, 1),&quot;&quot;)</td>
+<td headers="field_note" class="gt_row gt_left">NA</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">NA</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">NA</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">NA</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="field_name" class="gt_row gt_left">sex</td>
+<td headers="form_name" class="gt_row gt_left">baseline_data_start</td>
+<td headers="section_header" class="gt_row gt_left">NA</td>
+<td headers="field_type" class="gt_row gt_left">text</td>
+<td headers="field_label" class="gt_row gt_left">Legal sex</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">NA</td>
+<td headers="field_note" class="gt_row gt_left">NA</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">NA</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">NA</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">NA</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">@CALCTEXT(if([cpr]!=&quot;&quot;,if((right([cpr],1)=1 or right([cpr],1)=3 or right([cpr],1)=5 or right([cpr],1)=7 or right([cpr],1)=9),&quot;male&quot;,&quot;female&quot;),&quot;&quot;))</td></tr>
+    <tr><td headers="field_name" class="gt_row gt_left">cohabitation</td>
+<td headers="form_name" class="gt_row gt_left">baseline_data_start</td>
+<td headers="section_header" class="gt_row gt_left">History and social</td>
+<td headers="field_type" class="gt_row gt_left">radio</td>
+<td headers="field_label" class="gt_row gt_left">Cohabitation</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">1, Yes | 2, No</td>
+<td headers="field_note" class="gt_row gt_left">NA</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">NA</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">NA</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">NA</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="field_name" class="gt_row gt_left">hypertension</td>
+<td headers="form_name" class="gt_row gt_left">baseline_data_start</td>
+<td headers="section_header" class="gt_row gt_left">NA</td>
+<td headers="field_type" class="gt_row gt_left">radio</td>
+<td headers="field_label" class="gt_row gt_left">Hypertension</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">1, Yes | 2, No</td>
+<td headers="field_note" class="gt_row gt_left">NA</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">NA</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">NA</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">NA</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="field_name" class="gt_row gt_left">diabetes</td>
+<td headers="form_name" class="gt_row gt_left">baseline_data_start</td>
+<td headers="section_header" class="gt_row gt_left">NA</td>
+<td headers="field_type" class="gt_row gt_left">radio</td>
+<td headers="field_label" class="gt_row gt_left">Diabetes</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">1, Yes | 2, No</td>
+<td headers="field_note" class="gt_row gt_left">NA</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">NA</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">NA</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">NA</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="field_name" class="gt_row gt_left">region</td>
+<td headers="form_name" class="gt_row gt_left">baseline_data_start</td>
+<td headers="section_header" class="gt_row gt_left">Area</td>
+<td headers="field_type" class="gt_row gt_left">dropdown</td>
+<td headers="field_label" class="gt_row gt_left">Region</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">1, North | 2, East | 3, South | 4, West</td>
+<td headers="field_note" class="gt_row gt_left">NA</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">autocomplete</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">NA</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">NA</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="field_name" class="gt_row gt_left">mrs_assessed</td>
+<td headers="form_name" class="gt_row gt_left">mrs</td>
+<td headers="section_header" class="gt_row gt_left">NA</td>
+<td headers="field_type" class="gt_row gt_left">radio</td>
+<td headers="field_label" class="gt_row gt_left">Assesed</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">1, Yes | 2, No</td>
+<td headers="field_note" class="gt_row gt_left">NA</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">NA</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">NA</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">NA</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="field_name" class="gt_row gt_left">mrs_date</td>
+<td headers="form_name" class="gt_row gt_left">mrs</td>
+<td headers="section_header" class="gt_row gt_left">NA</td>
+<td headers="field_type" class="gt_row gt_left">text</td>
+<td headers="field_label" class="gt_row gt_left">Assessment date</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">NA</td>
+<td headers="field_note" class="gt_row gt_left">NA</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">date_dmy</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">NA</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">NA</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="field_name" class="gt_row gt_left">mrs_score</td>
+<td headers="form_name" class="gt_row gt_left">mrs</td>
+<td headers="section_header" class="gt_row gt_left">NA</td>
+<td headers="field_type" class="gt_row gt_left">radio</td>
+<td headers="field_label" class="gt_row gt_left">mRS score</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">0, 0 | 1, 1 | 2, 2 | 3, 3 | 4, 4 | 5, 5</td>
+<td headers="field_note" class="gt_row gt_left">NA</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">NA</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">NA</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">NA</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="field_name" class="gt_row gt_left">event_date</td>
+<td headers="form_name" class="gt_row gt_left">new_event</td>
+<td headers="section_header" class="gt_row gt_left">NA</td>
+<td headers="field_type" class="gt_row gt_left">text</td>
+<td headers="field_label" class="gt_row gt_left">Date of event</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">NA</td>
+<td headers="field_note" class="gt_row gt_left">NA</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">date_dmy</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">NA</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">NA</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="field_name" class="gt_row gt_left">event_type</td>
+<td headers="form_name" class="gt_row gt_left">new_event</td>
+<td headers="section_header" class="gt_row gt_left">NA</td>
+<td headers="field_type" class="gt_row gt_left">radio</td>
+<td headers="field_label" class="gt_row gt_left">Neurovascular event</td>
+<td headers="select_choices_or_calculations" class="gt_row gt_left">1, TIA | 2, AIS | 3, ICH | 4, SAH | 99, Unknown</td>
+<td headers="field_note" class="gt_row gt_left">NA</td>
+<td headers="text_validation_type_or_show_slider_number" class="gt_row gt_left">NA</td>
+<td headers="text_validation_min" class="gt_row gt_left">NA</td>
+<td headers="text_validation_max" class="gt_row gt_left">NA</td>
+<td headers="identifier" class="gt_row gt_left">NA</td>
+<td headers="branching_logic" class="gt_row gt_left">NA</td>
+<td headers="required_field" class="gt_row gt_left">NA</td>
+<td headers="custom_alignment" class="gt_row gt_left">NA</td>
+<td headers="question_number" class="gt_row gt_left">NA</td>
+<td headers="matrix_group_name" class="gt_row gt_left">NA</td>
+<td headers="matrix_ranking" class="gt_row gt_left">NA</td>
+<td headers="field_annotation" class="gt_row gt_left">NA</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>list <span class="ot">&lt;-</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">REDCap_split</span>(<span class="at">records =</span> redcapcast_data,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">metadata =</span> redcapcast_meta,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">forms =</span> <span class="st">&quot;repeating&quot;</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(list)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 2</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $          :&#39;data.frame&#39;:   9 obs. of  17 variables:</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id                   : num [1:9] 1 2 2 3 3 3 4 4 5</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name           : chr [1:9] &quot;inclusion&quot; &quot;inclusion&quot; &quot;follow1&quot; &quot;inclusion&quot; ...</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ cpr                         : chr [1:9] &quot;1203401OB4&quot; &quot;0102342303&quot; NA &quot;2301569823&quot; ...</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ inclusion                   : Date[1:9], format: &quot;2023-03-13&quot; &quot;2023-03-01&quot; ...</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ dob                         : Date[1:9], format: &quot;1940-03-12&quot; &quot;1934-02-01&quot; ...</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ age                         : num [1:9] 83 89.1 NA 66.1 NA ...</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ age_integer                 : num [1:9] 83 89 NA 66 NA NA 117 NA 126</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ sex                         : chr [1:9] &quot;female&quot; &quot;male&quot; NA &quot;male&quot; ...</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ cohabitation                : chr [1:9] &quot;Yes&quot; &quot;Yes&quot; NA &quot;No&quot; ...</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ hypertension                : chr [1:9] &quot;No&quot; &quot;No&quot; NA &quot;Yes&quot; ...</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ diabetes                    : chr [1:9] &quot;Yes&quot; &quot;No&quot; NA &quot;Yes&quot; ...</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ region                      : chr [1:9] &quot;East&quot; &quot;South&quot; NA &quot;North&quot; ...</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ baseline_data_start_complete: chr [1:9] &quot;Incomplete&quot; &quot;Incomplete&quot; NA &quot;Incomplete&quot; ...</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_assessed                : chr [1:9] &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_date                    : Date[1:9], format: &quot;2023-03-13&quot; &quot;2023-03-07&quot; ...</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_score                   : num [1:9] 1 1 3 NA 2 1 NA NA NA</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_complete                : chr [1:9] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ new_event:&#39;data.frame&#39;:   9 obs. of  7 variables:</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id               : num [1:9] 2 3 3 3 3 3 4 4 4</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name       : chr [1:9] &quot;follow1&quot; &quot;follow1&quot; &quot;follow1&quot; &quot;follow2&quot; ...</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instrument: chr [1:9] &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; ...</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instance  : num [1:9] 1 1 2 1 2 3 1 2 3</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ event_date              : Date[1:9], format: &quot;2023-03-13&quot; &quot;2022-11-08&quot; ...</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ event_type              : chr [1:9] &quot;TIA&quot; &quot;AIS&quot; &quot;ICH&quot; &quot;ICH&quot; ...</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ new_event_complete      : chr [1:9] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>list <span class="ot">&lt;-</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">REDCap_split</span>(<span class="at">records =</span> redcapcast_data,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">metadata =</span> redcapcast_meta,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">forms =</span> <span class="st">&quot;all&quot;</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(list)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ baseline_data_start:&#39;data.frame&#39;: 9 obs. of  13 variables:</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id                   : num [1:9] 1 2 2 3 3 3 4 4 5</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name           : chr [1:9] &quot;inclusion&quot; &quot;inclusion&quot; &quot;follow1&quot; &quot;inclusion&quot; ...</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ cpr                         : chr [1:9] &quot;1203401OB4&quot; &quot;0102342303&quot; NA &quot;2301569823&quot; ...</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ inclusion                   : Date[1:9], format: &quot;2023-03-13&quot; &quot;2023-03-01&quot; ...</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ dob                         : Date[1:9], format: &quot;1940-03-12&quot; &quot;1934-02-01&quot; ...</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ age                         : num [1:9] 83 89.1 NA 66.1 NA ...</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ age_integer                 : num [1:9] 83 89 NA 66 NA NA 117 NA 126</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ sex                         : chr [1:9] &quot;female&quot; &quot;male&quot; NA &quot;male&quot; ...</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ cohabitation                : chr [1:9] &quot;Yes&quot; &quot;Yes&quot; NA &quot;No&quot; ...</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ hypertension                : chr [1:9] &quot;No&quot; &quot;No&quot; NA &quot;Yes&quot; ...</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ diabetes                    : chr [1:9] &quot;Yes&quot; &quot;No&quot; NA &quot;Yes&quot; ...</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ region                      : chr [1:9] &quot;East&quot; &quot;South&quot; NA &quot;North&quot; ...</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ baseline_data_start_complete: chr [1:9] &quot;Incomplete&quot; &quot;Incomplete&quot; NA &quot;Incomplete&quot; ...</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ mrs                :&#39;data.frame&#39;: 9 obs. of  6 variables:</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id        : num [1:9] 1 2 2 3 3 3 4 4 5</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name: chr [1:9] &quot;inclusion&quot; &quot;inclusion&quot; &quot;follow1&quot; &quot;inclusion&quot; ...</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_assessed     : chr [1:9] &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_date         : Date[1:9], format: &quot;2023-03-13&quot; &quot;2023-03-07&quot; ...</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_score        : num [1:9] 1 1 3 NA 2 1 NA NA NA</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_complete     : chr [1:9] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ new_event          :&#39;data.frame&#39;: 9 obs. of  7 variables:</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id               : num [1:9] 2 3 3 3 3 3 4 4 4</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name       : chr [1:9] &quot;follow1&quot; &quot;follow1&quot; &quot;follow1&quot; &quot;follow2&quot; ...</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instrument: chr [1:9] &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; ...</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instance  : num [1:9] 1 1 2 1 2 3 1 2 3</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ event_date              : Date[1:9], format: &quot;2023-03-13&quot; &quot;2022-11-08&quot; ...</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ event_type              : chr [1:9] &quot;TIA&quot; &quot;AIS&quot; &quot;ICH&quot; &quot;ICH&quot; ...</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ new_event_complete      : chr [1:9] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span></code></pre></div>
+</div>
+<div id="reading-data-from-redcap" class="section level2">
+<h2>Reading data from REDCap</h2>
+<p>This function wraps all the above demonstrated function to get the
+dataset, the metadata, apply the <code>REDCap_split</code>function and
+then a bit of cleaning. It just cuts outs all the steps for an easier
+approach.</p>
+<p>The function works very similar to the
+<code>REDCapR::redcap_read()</code> in allowing to specify fields,
+events and forms for export instead of exporting the whole database and
+filtering afterwards. I believe this is a better and safer, focused
+approach.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read_redcap_tables(uri = &quot;YOUR URI&quot;, token = &quot;YOUR TOKEN&quot;)</span></span></code></pre></div>
+</div>
+<div id="pivotting-to-wider-format" class="section level2">
+<h2>Pivotting to wider format</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># redcap_wider(ds)</span></span></code></pre></div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

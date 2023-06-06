@@ -1,0 +1,66 @@
+---
+title: "Introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(REDCapCAST)
+```
+
+This vignette covers the included functions and basic functionality.
+
+A dataset and a meta data file are provided with the package for demonstration of the functions.
+
+## Splitting the dataset
+
+```{r}
+redcapcast_data |> gt::gt()
+```
+
+```{r}
+redcapcast_meta |> gt::gt()
+```
+```{r}
+list <-
+  REDCap_split(records = redcapcast_data,
+                           metadata = redcapcast_meta,
+                           forms = "repeating")
+str(list)
+```
+
+```{r}
+list <-
+  REDCap_split(records = redcapcast_data,
+                           metadata = redcapcast_meta,
+                           forms = "all")
+str(list)
+```
+
+## Reading data from REDCap
+
+This function wraps all the above demonstrated function to get the dataset, the metadata, apply the `REDCap_split`function and then a bit of cleaning. It just cuts outs all the steps for an easier approach.
+
+The function works very similar to the `REDCapR::redcap_read()` in allowing to specify fields, events and forms for export instead of exporting the whole database and filtering afterwards. I believe this is a better and safer, focused approach. 
+
+```{r eval=FALSE}
+# read_redcap_tables(uri = "YOUR URI", token = "YOUR TOKEN")
+```
+
+## Pivotting to wider format
+
+```{r}
+# redcap_wider(ds)
+```
+
+
