@@ -1,10 +1,11 @@
 Package: REDCapCAST
 Title: REDCap Castellated Data Handling
-Version: 23.12.1
+Version: 24.1.1
 Authors@R: c(
-    person("Andreas Gammelgaard", "Damsbo", email = "agdamsbo@clin.au.dk", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-7559-1154")),
-           person("Paul", "Egeler", email = "paul.egeler@spectrumhealth.org", role = "aut"))
+    person("Andreas Gammelgaard", "Damsbo", email = "agdamsbo@clin.au.dk", 
+    role = c("aut", "cre"),comment = c(ORCID = "0000-0002-7559-1154")), 
+    person("Paul", "Egeler", email = "paulegeler@gmail.com", role = c("aut"), 
+    comment = c(ORCID = "0000-0001-6948-9498")))
 Description: Originally forked from the R part of 'REDCapRITS' by Paul Egeler. 
     See <https://github.com/pegeler/REDCapRITS>.
     Handles castellated datasets from 'REDCap' projects with repeating instruments. 
@@ -36,10 +37,10 @@ Collate: 'utils.r' 'process_user_input.r' 'REDCap_split.r' 'ds2dd.R'
 Language: en-US
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2023-12-20 13:48:47 UTC; au301842
+Packaged: 2024-01-09 12:32:08 UTC; au301842
 Author: Andreas Gammelgaard Damsbo [aut, cre]
     (<https://orcid.org/0000-0002-7559-1154>),
-  Paul Egeler [aut]
+  Paul Egeler [aut] (<https://orcid.org/0000-0001-6948-9498>)
 Maintainer: Andreas Gammelgaard Damsbo <agdamsbo@clin.au.dk>
 Repository: CRAN
-Date/Publication: 2023-12-20 14:00:02 UTC
+Date/Publication: 2024-01-09 14:00:02 UTC
