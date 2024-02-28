@@ -15,21 +15,27 @@ redcapcast_meta |> gt::gt()
 
 ## -----------------------------------------------------------------------------
 list <-
-  REDCap_split(records = redcapcast_data,
-                           metadata = redcapcast_meta,
-                           forms = "repeating")
+  REDCap_split(
+    records = redcapcast_data,
+    metadata = redcapcast_meta,
+    forms = "repeating"
+  ) |> 
+  sanitize_split()
 str(list)
 
 ## -----------------------------------------------------------------------------
 list <-
-  REDCap_split(records = redcapcast_data,
-                           metadata = redcapcast_meta,
-                           forms = "all")
+  REDCap_split(
+    records = redcapcast_data,
+    metadata = redcapcast_meta,
+    forms = "all"
+  ) |> 
+  sanitize_split()
 str(list)
 
 ## ----eval=FALSE---------------------------------------------------------------
 #  # read_redcap_tables(uri = "YOUR URI", token = "YOUR TOKEN")
 
 ## -----------------------------------------------------------------------------
-# redcap_wider(ds)
+redcap_wider(list) |> str()
 

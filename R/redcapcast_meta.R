@@ -25,5 +25,3 @@
 #' }
 #' @usage data(redcapcast_meta)
 "redcapcast_meta"
-
-

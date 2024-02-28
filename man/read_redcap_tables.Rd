@@ -12,13 +12,11 @@ read_redcap_tables(
   events = NULL,
   forms = NULL,
   raw_or_label = "label",
-  split_forms = "all",
-  generics = c("record_id", "redcap_event_name", "redcap_repeat_instrument",
-    "redcap_repeat_instance")
+  split_forms = "all"
 )
 }
 \arguments{
-\item{uri}{REDCap database uri}
+\item{uri}{REDCap database API uri}
 
 \item{token}{API token}
 
@@ -34,9 +32,6 @@ read_redcap_tables(
 
 \item{split_forms}{Whether to split "repeating" or "all" forms, default is
 all.}
-
-\item{generics}{vector of auto-generated generic variable names to
-ignore when discarding empty rows}
 }
 \value{
 list of instruments

@@ -49,7 +49,7 @@ overflow: visible;
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -348,20 +348,20 @@ demonstration of the functions.</p>
 <div id="splitting-the-dataset" class="section level2">
 <h2>Splitting the dataset</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>redcapcast_data <span class="sc">|&gt;</span> gt<span class="sc">::</span><span class="fu">gt</span>()</span></code></pre></div>
-<div id="euuujbyevc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#euuujbyevc table {
+<div id="exvtklqjuw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#exvtklqjuw table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#euuujbyevc thead, #euuujbyevc tbody, #euuujbyevc tfoot, #euuujbyevc tr, #euuujbyevc td, #euuujbyevc th {
+#exvtklqjuw thead, #exvtklqjuw tbody, #exvtklqjuw tfoot, #exvtklqjuw tr, #exvtklqjuw td, #exvtklqjuw th {
 border-style: none;
 }
-#euuujbyevc p {
+#exvtklqjuw p {
 margin: 0;
 padding: 0;
 }
-#euuujbyevc .gt_table {
+#exvtklqjuw .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -386,11 +386,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#euuujbyevc .gt_caption {
+#exvtklqjuw .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#euuujbyevc .gt_title {
+#exvtklqjuw .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -401,7 +401,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#euuujbyevc .gt_subtitle {
+#exvtklqjuw .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -412,7 +412,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#euuujbyevc .gt_heading {
+#exvtklqjuw .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -423,12 +423,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#euuujbyevc .gt_bottom_border {
+#exvtklqjuw .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#euuujbyevc .gt_col_headings {
+#exvtklqjuw .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -442,7 +442,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#euuujbyevc .gt_col_heading {
+#exvtklqjuw .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -461,7 +461,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#euuujbyevc .gt_column_spanner_outer {
+#exvtklqjuw .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -472,13 +472,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#euuujbyevc .gt_column_spanner_outer:first-child {
+#exvtklqjuw .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#euuujbyevc .gt_column_spanner_outer:last-child {
+#exvtklqjuw .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#euuujbyevc .gt_column_spanner {
+#exvtklqjuw .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -489,10 +489,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#euuujbyevc .gt_spanner_row {
+#exvtklqjuw .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#euuujbyevc .gt_group_heading {
+#exvtklqjuw .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -517,7 +517,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#euuujbyevc .gt_empty_group_heading {
+#exvtklqjuw .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -531,13 +531,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#euuujbyevc .gt_from_md > :first-child {
+#exvtklqjuw .gt_from_md > :first-child {
 margin-top: 0;
 }
-#euuujbyevc .gt_from_md > :last-child {
+#exvtklqjuw .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#euuujbyevc .gt_row {
+#exvtklqjuw .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -555,7 +555,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#euuujbyevc .gt_stub {
+#exvtklqjuw .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -567,7 +567,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#euuujbyevc .gt_stub_row_group {
+#exvtklqjuw .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -580,13 +580,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#euuujbyevc .gt_row_group_first td {
+#exvtklqjuw .gt_row_group_first td {
 border-top-width: 2px;
 }
-#euuujbyevc .gt_row_group_first th {
+#exvtklqjuw .gt_row_group_first th {
 border-top-width: 2px;
 }
-#euuujbyevc .gt_summary_row {
+#exvtklqjuw .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -595,14 +595,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#euuujbyevc .gt_first_summary_row {
+#exvtklqjuw .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#euuujbyevc .gt_first_summary_row.thick {
+#exvtklqjuw .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#euuujbyevc .gt_last_summary_row {
+#exvtklqjuw .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -611,7 +611,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#euuujbyevc .gt_grand_summary_row {
+#exvtklqjuw .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -620,7 +620,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#euuujbyevc .gt_first_grand_summary_row {
+#exvtklqjuw .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -629,7 +629,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#euuujbyevc .gt_last_grand_summary_row_top {
+#exvtklqjuw .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -638,10 +638,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#euuujbyevc .gt_striped {
+#exvtklqjuw .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#euuujbyevc .gt_table_body {
+#exvtklqjuw .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -649,7 +649,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#euuujbyevc .gt_footnotes {
+#exvtklqjuw .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -662,7 +662,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#euuujbyevc .gt_footnote {
+#exvtklqjuw .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -670,7 +670,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#euuujbyevc .gt_sourcenotes {
+#exvtklqjuw .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -683,63 +683,62 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#euuujbyevc .gt_sourcenote {
+#exvtklqjuw .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#euuujbyevc .gt_left {
+#exvtklqjuw .gt_left {
 text-align: left;
 }
-#euuujbyevc .gt_center {
+#exvtklqjuw .gt_center {
 text-align: center;
 }
-#euuujbyevc .gt_right {
+#exvtklqjuw .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#euuujbyevc .gt_font_normal {
+#exvtklqjuw .gt_font_normal {
 font-weight: normal;
 }
-#euuujbyevc .gt_font_bold {
+#exvtklqjuw .gt_font_bold {
 font-weight: bold;
 }
-#euuujbyevc .gt_font_italic {
+#exvtklqjuw .gt_font_italic {
 font-style: italic;
 }
-#euuujbyevc .gt_super {
+#exvtklqjuw .gt_super {
 font-size: 65%;
 }
-#euuujbyevc .gt_footnote_marks {
+#exvtklqjuw .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#euuujbyevc .gt_asterisk {
+#exvtklqjuw .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#euuujbyevc .gt_indent_1 {
+#exvtklqjuw .gt_indent_1 {
 text-indent: 5px;
 }
-#euuujbyevc .gt_indent_2 {
+#exvtklqjuw .gt_indent_2 {
 text-indent: 10px;
 }
-#euuujbyevc .gt_indent_3 {
+#exvtklqjuw .gt_indent_3 {
 text-indent: 15px;
 }
-#euuujbyevc .gt_indent_4 {
+#exvtklqjuw .gt_indent_4 {
 text-indent: 20px;
 }
-#euuujbyevc .gt_indent_5 {
+#exvtklqjuw .gt_indent_5 {
 text-indent: 25px;
 }
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <thead>
-    
     <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="record_id">record_id</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="redcap_event_name">redcap_event_name</th>
@@ -747,6 +746,7 @@ text-indent: 25px;
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="redcap_repeat_instance">redcap_repeat_instance</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="cpr">cpr</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="inclusion">inclusion</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="inclusion_time">inclusion_time</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="dob">dob</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="age">age</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="age_integer">age_integer</th>
@@ -760,7 +760,8 @@ text-indent: 25px;
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="mrs_date">mrs_date</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="mrs_score">mrs_score</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="mrs_complete">mrs_complete</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="event_date">event_date</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="event_datetime">event_datetime</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="event_age">event_age</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="event_type">event_type</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="new_event_complete">new_event_complete</th>
     </tr>
@@ -772,6 +773,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
 <td headers="cpr" class="gt_row gt_left">1203401OB4</td>
 <td headers="inclusion" class="gt_row gt_right">2023-03-13</td>
+<td headers="inclusion_time" class="gt_row gt_center">12:38:49</td>
 <td headers="dob" class="gt_row gt_right">1940-03-12</td>
 <td headers="age" class="gt_row gt_right">83.00239</td>
 <td headers="age_integer" class="gt_row gt_right">83</td>
@@ -785,7 +787,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">2023-03-13</td>
 <td headers="mrs_score" class="gt_row gt_right">1</td>
 <td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
-<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_datetime" class="gt_row gt_right">NA</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">NA</td>
 <td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">2</td>
@@ -794,6 +797,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
 <td headers="cpr" class="gt_row gt_left">0102342303</td>
 <td headers="inclusion" class="gt_row gt_right">2023-03-01</td>
+<td headers="inclusion_time" class="gt_row gt_center">10:38:57</td>
 <td headers="dob" class="gt_row gt_right">1934-02-01</td>
 <td headers="age" class="gt_row gt_right">89.07780</td>
 <td headers="age_integer" class="gt_row gt_right">89</td>
@@ -807,7 +811,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">2023-03-07</td>
 <td headers="mrs_score" class="gt_row gt_right">1</td>
 <td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
-<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_datetime" class="gt_row gt_right">NA</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">NA</td>
 <td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">2</td>
@@ -816,6 +821,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
 <td headers="cpr" class="gt_row gt_left">NA</td>
 <td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="inclusion_time" class="gt_row gt_center">NA</td>
 <td headers="dob" class="gt_row gt_right">NA</td>
 <td headers="age" class="gt_row gt_right">NA</td>
 <td headers="age_integer" class="gt_row gt_right">NA</td>
@@ -829,7 +835,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">2023-03-09</td>
 <td headers="mrs_score" class="gt_row gt_right">3</td>
 <td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
-<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_datetime" class="gt_row gt_right">NA</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">NA</td>
 <td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">2</td>
@@ -838,6 +845,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">1</td>
 <td headers="cpr" class="gt_row gt_left">NA</td>
 <td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="inclusion_time" class="gt_row gt_center">NA</td>
 <td headers="dob" class="gt_row gt_right">NA</td>
 <td headers="age" class="gt_row gt_right">NA</td>
 <td headers="age_integer" class="gt_row gt_right">NA</td>
@@ -851,7 +859,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">NA</td>
 <td headers="mrs_score" class="gt_row gt_right">NA</td>
 <td headers="mrs_complete" class="gt_row gt_left">NA</td>
-<td headers="event_date" class="gt_row gt_right">2023-03-13</td>
+<td headers="event_datetime" class="gt_row gt_right">2024-01-18 12:49:42</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">TIA</td>
 <td headers="new_event_complete" class="gt_row gt_left">Incomplete</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">3</td>
@@ -860,6 +869,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
 <td headers="cpr" class="gt_row gt_left">2301569823</td>
 <td headers="inclusion" class="gt_row gt_right">2022-03-08</td>
+<td headers="inclusion_time" class="gt_row gt_center">12:01:07</td>
 <td headers="dob" class="gt_row gt_right">1956-01-23</td>
 <td headers="age" class="gt_row gt_right">66.12319</td>
 <td headers="age_integer" class="gt_row gt_right">66</td>
@@ -873,7 +883,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">NA</td>
 <td headers="mrs_score" class="gt_row gt_right">NA</td>
 <td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
-<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_datetime" class="gt_row gt_right">NA</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">NA</td>
 <td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">3</td>
@@ -882,6 +893,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
 <td headers="cpr" class="gt_row gt_left">NA</td>
 <td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="inclusion_time" class="gt_row gt_center">NA</td>
 <td headers="dob" class="gt_row gt_right">NA</td>
 <td headers="age" class="gt_row gt_right">NA</td>
 <td headers="age_integer" class="gt_row gt_right">NA</td>
@@ -895,7 +907,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">2022-08-16</td>
 <td headers="mrs_score" class="gt_row gt_right">2</td>
 <td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
-<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_datetime" class="gt_row gt_right">NA</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">NA</td>
 <td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">3</td>
@@ -904,6 +917,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
 <td headers="cpr" class="gt_row gt_left">NA</td>
 <td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="inclusion_time" class="gt_row gt_center">NA</td>
 <td headers="dob" class="gt_row gt_right">NA</td>
 <td headers="age" class="gt_row gt_right">NA</td>
 <td headers="age_integer" class="gt_row gt_right">NA</td>
@@ -917,7 +931,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">2023-03-13</td>
 <td headers="mrs_score" class="gt_row gt_right">1</td>
 <td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
-<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_datetime" class="gt_row gt_right">NA</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">NA</td>
 <td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">3</td>
@@ -926,6 +941,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">1</td>
 <td headers="cpr" class="gt_row gt_left">NA</td>
 <td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="inclusion_time" class="gt_row gt_center">NA</td>
 <td headers="dob" class="gt_row gt_right">NA</td>
 <td headers="age" class="gt_row gt_right">NA</td>
 <td headers="age_integer" class="gt_row gt_right">NA</td>
@@ -939,7 +955,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">NA</td>
 <td headers="mrs_score" class="gt_row gt_right">NA</td>
 <td headers="mrs_complete" class="gt_row gt_left">NA</td>
-<td headers="event_date" class="gt_row gt_right">2022-11-08</td>
+<td headers="event_datetime" class="gt_row gt_right">2024-01-18 12:49:58</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">AIS</td>
 <td headers="new_event_complete" class="gt_row gt_left">Incomplete</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">3</td>
@@ -948,6 +965,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">2</td>
 <td headers="cpr" class="gt_row gt_left">NA</td>
 <td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="inclusion_time" class="gt_row gt_center">NA</td>
 <td headers="dob" class="gt_row gt_right">NA</td>
 <td headers="age" class="gt_row gt_right">NA</td>
 <td headers="age_integer" class="gt_row gt_right">NA</td>
@@ -961,7 +979,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">NA</td>
 <td headers="mrs_score" class="gt_row gt_right">NA</td>
 <td headers="mrs_complete" class="gt_row gt_left">NA</td>
-<td headers="event_date" class="gt_row gt_right">2022-12-14</td>
+<td headers="event_datetime" class="gt_row gt_right">2024-01-18 12:50:01</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">ICH</td>
 <td headers="new_event_complete" class="gt_row gt_left">Incomplete</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">3</td>
@@ -970,6 +989,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">1</td>
 <td headers="cpr" class="gt_row gt_left">NA</td>
 <td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="inclusion_time" class="gt_row gt_center">NA</td>
 <td headers="dob" class="gt_row gt_right">NA</td>
 <td headers="age" class="gt_row gt_right">NA</td>
 <td headers="age_integer" class="gt_row gt_right">NA</td>
@@ -983,7 +1003,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">NA</td>
 <td headers="mrs_score" class="gt_row gt_right">NA</td>
 <td headers="mrs_complete" class="gt_row gt_left">NA</td>
-<td headers="event_date" class="gt_row gt_right">2023-02-06</td>
+<td headers="event_datetime" class="gt_row gt_right">2024-01-18 12:50:05</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">ICH</td>
 <td headers="new_event_complete" class="gt_row gt_left">Incomplete</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">3</td>
@@ -992,6 +1013,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">2</td>
 <td headers="cpr" class="gt_row gt_left">NA</td>
 <td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="inclusion_time" class="gt_row gt_center">NA</td>
 <td headers="dob" class="gt_row gt_right">NA</td>
 <td headers="age" class="gt_row gt_right">NA</td>
 <td headers="age_integer" class="gt_row gt_right">NA</td>
@@ -1005,7 +1027,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">NA</td>
 <td headers="mrs_score" class="gt_row gt_right">NA</td>
 <td headers="mrs_complete" class="gt_row gt_left">NA</td>
-<td headers="event_date" class="gt_row gt_right">2023-03-13</td>
+<td headers="event_datetime" class="gt_row gt_right">2024-01-18 12:50:07</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">TIA</td>
 <td headers="new_event_complete" class="gt_row gt_left">Incomplete</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">3</td>
@@ -1014,6 +1037,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">3</td>
 <td headers="cpr" class="gt_row gt_left">NA</td>
 <td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="inclusion_time" class="gt_row gt_center">NA</td>
 <td headers="dob" class="gt_row gt_right">NA</td>
 <td headers="age" class="gt_row gt_right">NA</td>
 <td headers="age_integer" class="gt_row gt_right">NA</td>
@@ -1027,7 +1051,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">NA</td>
 <td headers="mrs_score" class="gt_row gt_right">NA</td>
 <td headers="mrs_complete" class="gt_row gt_left">NA</td>
-<td headers="event_date" class="gt_row gt_right">2023-02-28</td>
+<td headers="event_datetime" class="gt_row gt_right">2024-01-18 12:50:09</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">AIS</td>
 <td headers="new_event_complete" class="gt_row gt_left">Incomplete</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">4</td>
@@ -1036,6 +1061,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
 <td headers="cpr" class="gt_row gt_left">0204051342</td>
 <td headers="inclusion" class="gt_row gt_right">2023-03-14</td>
+<td headers="inclusion_time" class="gt_row gt_center">20:39:19</td>
 <td headers="dob" class="gt_row gt_right">1905-04-02</td>
 <td headers="age" class="gt_row gt_right">117.94903</td>
 <td headers="age_integer" class="gt_row gt_right">117</td>
@@ -1049,7 +1075,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">NA</td>
 <td headers="mrs_score" class="gt_row gt_right">NA</td>
 <td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
-<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_datetime" class="gt_row gt_right">NA</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">NA</td>
 <td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">4</td>
@@ -1058,6 +1085,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
 <td headers="cpr" class="gt_row gt_left">NA</td>
 <td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="inclusion_time" class="gt_row gt_center">NA</td>
 <td headers="dob" class="gt_row gt_right">NA</td>
 <td headers="age" class="gt_row gt_right">NA</td>
 <td headers="age_integer" class="gt_row gt_right">NA</td>
@@ -1071,7 +1099,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">NA</td>
 <td headers="mrs_score" class="gt_row gt_right">NA</td>
 <td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
-<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_datetime" class="gt_row gt_right">NA</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">NA</td>
 <td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">4</td>
@@ -1080,6 +1109,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">1</td>
 <td headers="cpr" class="gt_row gt_left">NA</td>
 <td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="inclusion_time" class="gt_row gt_center">NA</td>
 <td headers="dob" class="gt_row gt_right">NA</td>
 <td headers="age" class="gt_row gt_right">NA</td>
 <td headers="age_integer" class="gt_row gt_right">NA</td>
@@ -1093,7 +1123,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">NA</td>
 <td headers="mrs_score" class="gt_row gt_right">NA</td>
 <td headers="mrs_complete" class="gt_row gt_left">NA</td>
-<td headers="event_date" class="gt_row gt_right">2023-01-02</td>
+<td headers="event_datetime" class="gt_row gt_right">2024-01-18 12:50:19</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">AIS</td>
 <td headers="new_event_complete" class="gt_row gt_left">Complete</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">4</td>
@@ -1102,6 +1133,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">2</td>
 <td headers="cpr" class="gt_row gt_left">NA</td>
 <td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="inclusion_time" class="gt_row gt_center">NA</td>
 <td headers="dob" class="gt_row gt_right">NA</td>
 <td headers="age" class="gt_row gt_right">NA</td>
 <td headers="age_integer" class="gt_row gt_right">NA</td>
@@ -1115,7 +1147,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">NA</td>
 <td headers="mrs_score" class="gt_row gt_right">NA</td>
 <td headers="mrs_complete" class="gt_row gt_left">NA</td>
-<td headers="event_date" class="gt_row gt_right">2023-02-06</td>
+<td headers="event_datetime" class="gt_row gt_right">2024-01-18 12:50:22</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">ICH</td>
 <td headers="new_event_complete" class="gt_row gt_left">Incomplete</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">4</td>
@@ -1124,6 +1157,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">3</td>
 <td headers="cpr" class="gt_row gt_left">NA</td>
 <td headers="inclusion" class="gt_row gt_right">NA</td>
+<td headers="inclusion_time" class="gt_row gt_center">NA</td>
 <td headers="dob" class="gt_row gt_right">NA</td>
 <td headers="age" class="gt_row gt_right">NA</td>
 <td headers="age_integer" class="gt_row gt_right">NA</td>
@@ -1137,7 +1171,8 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">NA</td>
 <td headers="mrs_score" class="gt_row gt_right">NA</td>
 <td headers="mrs_complete" class="gt_row gt_left">NA</td>
-<td headers="event_date" class="gt_row gt_right">2023-03-05</td>
+<td headers="event_datetime" class="gt_row gt_right">2024-01-18 12:50:24</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">Unknown</td>
 <td headers="new_event_complete" class="gt_row gt_left">Complete</td></tr>
     <tr><td headers="record_id" class="gt_row gt_right">5</td>
@@ -1146,6 +1181,7 @@ text-indent: 25px;
 <td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
 <td headers="cpr" class="gt_row gt_left">0201976043</td>
 <td headers="inclusion" class="gt_row gt_right">2023-03-23</td>
+<td headers="inclusion_time" class="gt_row gt_center">08:50:31</td>
 <td headers="dob" class="gt_row gt_right">1897-01-02</td>
 <td headers="age" class="gt_row gt_right">126.21751</td>
 <td headers="age_integer" class="gt_row gt_right">126</td>
@@ -1159,7 +1195,32 @@ text-indent: 25px;
 <td headers="mrs_date" class="gt_row gt_right">NA</td>
 <td headers="mrs_score" class="gt_row gt_right">NA</td>
 <td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
-<td headers="event_date" class="gt_row gt_right">NA</td>
+<td headers="event_datetime" class="gt_row gt_right">NA</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
+<td headers="event_type" class="gt_row gt_left">NA</td>
+<td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
+    <tr><td headers="record_id" class="gt_row gt_right">6</td>
+<td headers="redcap_event_name" class="gt_row gt_left">inclusion</td>
+<td headers="redcap_repeat_instrument" class="gt_row gt_left">NA</td>
+<td headers="redcap_repeat_instance" class="gt_row gt_right">NA</td>
+<td headers="cpr" class="gt_row gt_left">1202320122</td>
+<td headers="inclusion" class="gt_row gt_right">2024-01-25</td>
+<td headers="inclusion_time" class="gt_row gt_center">08:49:28</td>
+<td headers="dob" class="gt_row gt_right">1932-02-12</td>
+<td headers="age" class="gt_row gt_right">91.95261</td>
+<td headers="age_integer" class="gt_row gt_right">91</td>
+<td headers="sex" class="gt_row gt_left">female</td>
+<td headers="cohabitation" class="gt_row gt_left">No</td>
+<td headers="hypertension" class="gt_row gt_left">Yes</td>
+<td headers="diabetes" class="gt_row gt_left">No</td>
+<td headers="region" class="gt_row gt_left">East</td>
+<td headers="baseline_data_start_complete" class="gt_row gt_left">Complete</td>
+<td headers="mrs_assessed" class="gt_row gt_left">NA</td>
+<td headers="mrs_date" class="gt_row gt_right">NA</td>
+<td headers="mrs_score" class="gt_row gt_right">NA</td>
+<td headers="mrs_complete" class="gt_row gt_left">Incomplete</td>
+<td headers="event_datetime" class="gt_row gt_right">NA</td>
+<td headers="event_age" class="gt_row gt_center">NA</td>
 <td headers="event_type" class="gt_row gt_left">NA</td>
 <td headers="new_event_complete" class="gt_row gt_left">NA</td></tr>
   </tbody>
@@ -1168,20 +1229,20 @@ text-indent: 25px;
 </table>
 </div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>redcapcast_meta <span class="sc">|&gt;</span> gt<span class="sc">::</span><span class="fu">gt</span>()</span></code></pre></div>
-<div id="revsoehtdk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#revsoehtdk table {
+<div id="xazequpzar" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xazequpzar table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#revsoehtdk thead, #revsoehtdk tbody, #revsoehtdk tfoot, #revsoehtdk tr, #revsoehtdk td, #revsoehtdk th {
+#xazequpzar thead, #xazequpzar tbody, #xazequpzar tfoot, #xazequpzar tr, #xazequpzar td, #xazequpzar th {
 border-style: none;
 }
-#revsoehtdk p {
+#xazequpzar p {
 margin: 0;
 padding: 0;
 }
-#revsoehtdk .gt_table {
+#xazequpzar .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -1206,11 +1267,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#revsoehtdk .gt_caption {
+#xazequpzar .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#revsoehtdk .gt_title {
+#xazequpzar .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -1221,7 +1282,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#revsoehtdk .gt_subtitle {
+#xazequpzar .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -1232,7 +1293,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#revsoehtdk .gt_heading {
+#xazequpzar .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -1243,12 +1304,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#revsoehtdk .gt_bottom_border {
+#xazequpzar .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#revsoehtdk .gt_col_headings {
+#xazequpzar .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -1262,7 +1323,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#revsoehtdk .gt_col_heading {
+#xazequpzar .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -1281,7 +1342,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#revsoehtdk .gt_column_spanner_outer {
+#xazequpzar .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -1292,13 +1353,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#revsoehtdk .gt_column_spanner_outer:first-child {
+#xazequpzar .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#revsoehtdk .gt_column_spanner_outer:last-child {
+#xazequpzar .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#revsoehtdk .gt_column_spanner {
+#xazequpzar .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -1309,10 +1370,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#revsoehtdk .gt_spanner_row {
+#xazequpzar .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#revsoehtdk .gt_group_heading {
+#xazequpzar .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -1337,7 +1398,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#revsoehtdk .gt_empty_group_heading {
+#xazequpzar .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -1351,13 +1412,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#revsoehtdk .gt_from_md > :first-child {
+#xazequpzar .gt_from_md > :first-child {
 margin-top: 0;
 }
-#revsoehtdk .gt_from_md > :last-child {
+#xazequpzar .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#revsoehtdk .gt_row {
+#xazequpzar .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -1375,7 +1436,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#revsoehtdk .gt_stub {
+#xazequpzar .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -1387,7 +1448,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#revsoehtdk .gt_stub_row_group {
+#xazequpzar .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -1400,13 +1461,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#revsoehtdk .gt_row_group_first td {
+#xazequpzar .gt_row_group_first td {
 border-top-width: 2px;
 }
-#revsoehtdk .gt_row_group_first th {
+#xazequpzar .gt_row_group_first th {
 border-top-width: 2px;
 }
-#revsoehtdk .gt_summary_row {
+#xazequpzar .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -1415,14 +1476,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#revsoehtdk .gt_first_summary_row {
+#xazequpzar .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#revsoehtdk .gt_first_summary_row.thick {
+#xazequpzar .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#revsoehtdk .gt_last_summary_row {
+#xazequpzar .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -1431,7 +1492,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#revsoehtdk .gt_grand_summary_row {
+#xazequpzar .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -1440,7 +1501,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#revsoehtdk .gt_first_grand_summary_row {
+#xazequpzar .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -1449,7 +1510,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#revsoehtdk .gt_last_grand_summary_row_top {
+#xazequpzar .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -1458,10 +1519,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#revsoehtdk .gt_striped {
+#xazequpzar .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#revsoehtdk .gt_table_body {
+#xazequpzar .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -1469,7 +1530,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#revsoehtdk .gt_footnotes {
+#xazequpzar .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -1482,7 +1543,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#revsoehtdk .gt_footnote {
+#xazequpzar .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -1490,7 +1551,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#revsoehtdk .gt_sourcenotes {
+#xazequpzar .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -1503,63 +1564,62 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#revsoehtdk .gt_sourcenote {
+#xazequpzar .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#revsoehtdk .gt_left {
+#xazequpzar .gt_left {
 text-align: left;
 }
-#revsoehtdk .gt_center {
+#xazequpzar .gt_center {
 text-align: center;
 }
-#revsoehtdk .gt_right {
+#xazequpzar .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#revsoehtdk .gt_font_normal {
+#xazequpzar .gt_font_normal {
 font-weight: normal;
 }
-#revsoehtdk .gt_font_bold {
+#xazequpzar .gt_font_bold {
 font-weight: bold;
 }
-#revsoehtdk .gt_font_italic {
+#xazequpzar .gt_font_italic {
 font-style: italic;
 }
-#revsoehtdk .gt_super {
+#xazequpzar .gt_super {
 font-size: 65%;
 }
-#revsoehtdk .gt_footnote_marks {
+#xazequpzar .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#revsoehtdk .gt_asterisk {
+#xazequpzar .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#revsoehtdk .gt_indent_1 {
+#xazequpzar .gt_indent_1 {
 text-indent: 5px;
 }
-#revsoehtdk .gt_indent_2 {
+#xazequpzar .gt_indent_2 {
 text-indent: 10px;
 }
-#revsoehtdk .gt_indent_3 {
+#xazequpzar .gt_indent_3 {
 text-indent: 15px;
 }
-#revsoehtdk .gt_indent_4 {
+#xazequpzar .gt_indent_4 {
 text-indent: 20px;
 }
-#revsoehtdk .gt_indent_5 {
+#xazequpzar .gt_indent_5 {
 text-indent: 25px;
 }
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <thead>
-    
     <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="field_name">field_name</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="form_name">form_name</th>
@@ -1878,72 +1938,76 @@ Note: as opposed to the build in datediff() this handles counting years as integ
 </table>
 </div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>list <span class="ot">&lt;-</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="fu">REDCap_split</span>(<span class="at">records =</span> redcapcast_data,</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>                           <span class="at">metadata =</span> redcapcast_meta,</span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>                           <span class="at">forms =</span> <span class="st">&quot;repeating&quot;</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="fu">str</span>(list)</span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; List of 2</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt;  $          :&#39;data.frame&#39;:   9 obs. of  17 variables:</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id                   : num [1:9] 1 2 2 3 3 3 4 4 5</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name           : chr [1:9] &quot;inclusion&quot; &quot;inclusion&quot; &quot;follow1&quot; &quot;inclusion&quot; ...</span></span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt;   ..$ cpr                         : chr [1:9] &quot;1203401OB4&quot; &quot;0102342303&quot; NA &quot;2301569823&quot; ...</span></span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt;   ..$ inclusion                   : Date[1:9], format: &quot;2023-03-13&quot; &quot;2023-03-01&quot; ...</span></span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt;   ..$ dob                         : Date[1:9], format: &quot;1940-03-12&quot; &quot;1934-02-01&quot; ...</span></span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt;   ..$ age                         : num [1:9] 83 89.1 NA 66.1 NA ...</span></span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co">#&gt;   ..$ age_integer                 : num [1:9] 83 89 NA 66 NA NA 117 NA 126</span></span>
-<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#&gt;   ..$ sex                         : chr [1:9] &quot;female&quot; &quot;male&quot; NA &quot;male&quot; ...</span></span>
-<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co">#&gt;   ..$ cohabitation                : chr [1:9] &quot;Yes&quot; &quot;Yes&quot; NA &quot;No&quot; ...</span></span>
-<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co">#&gt;   ..$ hypertension                : chr [1:9] &quot;No&quot; &quot;No&quot; NA &quot;Yes&quot; ...</span></span>
-<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#&gt;   ..$ diabetes                    : chr [1:9] &quot;Yes&quot; &quot;No&quot; NA &quot;Yes&quot; ...</span></span>
-<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="co">#&gt;   ..$ region                      : chr [1:9] &quot;East&quot; &quot;South&quot; NA &quot;North&quot; ...</span></span>
-<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="co">#&gt;   ..$ baseline_data_start_complete: chr [1:9] &quot;Incomplete&quot; &quot;Incomplete&quot; NA &quot;Incomplete&quot; ...</span></span>
-<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_assessed                : chr [1:9] &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot; NA ...</span></span>
-<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_date                    : Date[1:9], format: &quot;2023-03-13&quot; &quot;2023-03-07&quot; ...</span></span>
-<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_score                   : num [1:9] 1 1 3 NA 2 1 NA NA NA</span></span>
-<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_complete                : chr [1:9] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
-<span id="cb4-25"><a href="#cb4-25" tabindex="-1"></a><span class="co">#&gt;  $ new_event:&#39;data.frame&#39;:   9 obs. of  7 variables:</span></span>
-<span id="cb4-26"><a href="#cb4-26" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id               : num [1:9] 2 3 3 3 3 3 4 4 4</span></span>
-<span id="cb4-27"><a href="#cb4-27" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name       : chr [1:9] &quot;follow1&quot; &quot;follow1&quot; &quot;follow1&quot; &quot;follow2&quot; ...</span></span>
-<span id="cb4-28"><a href="#cb4-28" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instrument: chr [1:9] &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; ...</span></span>
-<span id="cb4-29"><a href="#cb4-29" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instance  : num [1:9] 1 1 2 1 2 3 1 2 3</span></span>
-<span id="cb4-30"><a href="#cb4-30" tabindex="-1"></a><span class="co">#&gt;   ..$ event_date              : Date[1:9], format: &quot;2023-03-13&quot; &quot;2022-11-08&quot; ...</span></span>
-<span id="cb4-31"><a href="#cb4-31" tabindex="-1"></a><span class="co">#&gt;   ..$ event_type              : chr [1:9] &quot;TIA&quot; &quot;AIS&quot; &quot;ICH&quot; &quot;ICH&quot; ...</span></span>
-<span id="cb4-32"><a href="#cb4-32" tabindex="-1"></a><span class="co">#&gt;   ..$ new_event_complete      : chr [1:9] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span></code></pre></div>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="fu">REDCap_split</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>    <span class="at">records =</span> redcapcast_data,</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>    <span class="at">metadata =</span> redcapcast_meta,</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>    <span class="at">forms =</span> <span class="st">&quot;repeating&quot;</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>  <span class="fu">sanitize_split</span>()</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="fu">str</span>(list)</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; List of 2</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt;  $          : tibble [10 × 17] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id                   : num [1:10] 1 2 2 3 3 3 4 4 5 6</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name           : chr [1:10] &quot;inclusion&quot; &quot;inclusion&quot; &quot;follow1&quot; &quot;inclusion&quot; ...</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt;   ..$ cpr                         : chr [1:10] &quot;1203401OB4&quot; &quot;0102342303&quot; NA &quot;2301569823&quot; ...</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co">#&gt;   ..$ inclusion                   : Date[1:10], format: &quot;2023-03-13&quot; &quot;2023-03-01&quot; ...</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#&gt;   ..$ dob                         : Date[1:10], format: &quot;1940-03-12&quot; &quot;1934-02-01&quot; ...</span></span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co">#&gt;   ..$ age                         : num [1:10] 83 89.1 NA 66.1 NA ...</span></span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co">#&gt;   ..$ age_integer                 : num [1:10] 83 89 NA 66 NA NA 117 NA 126 91</span></span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#&gt;   ..$ sex                         : chr [1:10] &quot;female&quot; &quot;male&quot; NA &quot;male&quot; ...</span></span>
+<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="co">#&gt;   ..$ cohabitation                : chr [1:10] &quot;Yes&quot; &quot;Yes&quot; NA &quot;No&quot; ...</span></span>
+<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="co">#&gt;   ..$ hypertension                : chr [1:10] &quot;No&quot; &quot;No&quot; NA &quot;Yes&quot; ...</span></span>
+<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="co">#&gt;   ..$ diabetes                    : chr [1:10] &quot;Yes&quot; &quot;No&quot; NA &quot;Yes&quot; ...</span></span>
+<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a><span class="co">#&gt;   ..$ region                      : chr [1:10] &quot;East&quot; &quot;South&quot; NA &quot;North&quot; ...</span></span>
+<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="co">#&gt;   ..$ baseline_data_start_complete: chr [1:10] &quot;Incomplete&quot; &quot;Incomplete&quot; NA &quot;Incomplete&quot; ...</span></span>
+<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_assessed                : chr [1:10] &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb4-25"><a href="#cb4-25" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_date                    : Date[1:10], format: &quot;2023-03-13&quot; &quot;2023-03-07&quot; ...</span></span>
+<span id="cb4-26"><a href="#cb4-26" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_score                   : num [1:10] 1 1 3 NA 2 1 NA NA NA NA</span></span>
+<span id="cb4-27"><a href="#cb4-27" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_complete                : chr [1:10] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
+<span id="cb4-28"><a href="#cb4-28" tabindex="-1"></a><span class="co">#&gt;  $ new_event: tibble [9 × 6] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb4-29"><a href="#cb4-29" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id               : num [1:9] 2 3 3 3 3 3 4 4 4</span></span>
+<span id="cb4-30"><a href="#cb4-30" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name       : chr [1:9] &quot;follow1&quot; &quot;follow1&quot; &quot;follow1&quot; &quot;follow2&quot; ...</span></span>
+<span id="cb4-31"><a href="#cb4-31" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instrument: chr [1:9] &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; ...</span></span>
+<span id="cb4-32"><a href="#cb4-32" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instance  : num [1:9] 1 1 2 1 2 3 1 2 3</span></span>
+<span id="cb4-33"><a href="#cb4-33" tabindex="-1"></a><span class="co">#&gt;   ..$ event_type              : chr [1:9] &quot;TIA&quot; &quot;AIS&quot; &quot;ICH&quot; &quot;ICH&quot; ...</span></span>
+<span id="cb4-34"><a href="#cb4-34" tabindex="-1"></a><span class="co">#&gt;   ..$ new_event_complete      : chr [1:9] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>list <span class="ot">&lt;-</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="fu">REDCap_split</span>(<span class="at">records =</span> redcapcast_data,</span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>                           <span class="at">metadata =</span> redcapcast_meta,</span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>                           <span class="at">forms =</span> <span class="st">&quot;all&quot;</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="fu">str</span>(list)</span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt;  $ baseline_data_start:&#39;data.frame&#39;: 9 obs. of  13 variables:</span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id                   : num [1:9] 1 2 2 3 3 3 4 4 5</span></span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name           : chr [1:9] &quot;inclusion&quot; &quot;inclusion&quot; &quot;follow1&quot; &quot;inclusion&quot; ...</span></span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt;   ..$ cpr                         : chr [1:9] &quot;1203401OB4&quot; &quot;0102342303&quot; NA &quot;2301569823&quot; ...</span></span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt;   ..$ inclusion                   : Date[1:9], format: &quot;2023-03-13&quot; &quot;2023-03-01&quot; ...</span></span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt;   ..$ dob                         : Date[1:9], format: &quot;1940-03-12&quot; &quot;1934-02-01&quot; ...</span></span>
-<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt;   ..$ age                         : num [1:9] 83 89.1 NA 66.1 NA ...</span></span>
-<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt;   ..$ age_integer                 : num [1:9] 83 89 NA 66 NA NA 117 NA 126</span></span>
-<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt;   ..$ sex                         : chr [1:9] &quot;female&quot; &quot;male&quot; NA &quot;male&quot; ...</span></span>
-<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt;   ..$ cohabitation                : chr [1:9] &quot;Yes&quot; &quot;Yes&quot; NA &quot;No&quot; ...</span></span>
-<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt;   ..$ hypertension                : chr [1:9] &quot;No&quot; &quot;No&quot; NA &quot;Yes&quot; ...</span></span>
-<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt;   ..$ diabetes                    : chr [1:9] &quot;Yes&quot; &quot;No&quot; NA &quot;Yes&quot; ...</span></span>
-<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="co">#&gt;   ..$ region                      : chr [1:9] &quot;East&quot; &quot;South&quot; NA &quot;North&quot; ...</span></span>
-<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="co">#&gt;   ..$ baseline_data_start_complete: chr [1:9] &quot;Incomplete&quot; &quot;Incomplete&quot; NA &quot;Incomplete&quot; ...</span></span>
-<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co">#&gt;  $ mrs                :&#39;data.frame&#39;: 9 obs. of  6 variables:</span></span>
-<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id        : num [1:9] 1 2 2 3 3 3 4 4 5</span></span>
-<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name: chr [1:9] &quot;inclusion&quot; &quot;inclusion&quot; &quot;follow1&quot; &quot;inclusion&quot; ...</span></span>
-<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_assessed     : chr [1:9] &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot; NA ...</span></span>
-<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_date         : Date[1:9], format: &quot;2023-03-13&quot; &quot;2023-03-07&quot; ...</span></span>
-<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_score        : num [1:9] 1 1 3 NA 2 1 NA NA NA</span></span>
-<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_complete     : chr [1:9] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
-<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="co">#&gt;  $ new_event          :&#39;data.frame&#39;: 9 obs. of  7 variables:</span></span>
-<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id               : num [1:9] 2 3 3 3 3 3 4 4 4</span></span>
-<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name       : chr [1:9] &quot;follow1&quot; &quot;follow1&quot; &quot;follow1&quot; &quot;follow2&quot; ...</span></span>
-<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instrument: chr [1:9] &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; ...</span></span>
-<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instance  : num [1:9] 1 1 2 1 2 3 1 2 3</span></span>
-<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a><span class="co">#&gt;   ..$ event_date              : Date[1:9], format: &quot;2023-03-13&quot; &quot;2022-11-08&quot; ...</span></span>
-<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="co">#&gt;   ..$ event_type              : chr [1:9] &quot;TIA&quot; &quot;AIS&quot; &quot;ICH&quot; &quot;ICH&quot; ...</span></span>
-<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a><span class="co">#&gt;   ..$ new_event_complete      : chr [1:9] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span></code></pre></div>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  <span class="fu">REDCap_split</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>    <span class="at">records =</span> redcapcast_data,</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>    <span class="at">metadata =</span> redcapcast_meta,</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>    <span class="at">forms =</span> <span class="st">&quot;all&quot;</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>  <span class="fu">sanitize_split</span>()</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="fu">str</span>(list)</span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt;  $ baseline_data_start: tibble [6 × 13] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id                   : num [1:6] 1 2 3 4 5 6</span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name           : chr [1:6] &quot;inclusion&quot; &quot;inclusion&quot; &quot;inclusion&quot; &quot;inclusion&quot; ...</span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt;   ..$ cpr                         : chr [1:6] &quot;1203401OB4&quot; &quot;0102342303&quot; &quot;2301569823&quot; &quot;0204051342&quot; ...</span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt;   ..$ inclusion                   : Date[1:6], format: &quot;2023-03-13&quot; &quot;2023-03-01&quot; ...</span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt;   ..$ dob                         : Date[1:6], format: &quot;1940-03-12&quot; &quot;1934-02-01&quot; ...</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt;   ..$ age                         : num [1:6] 83 89.1 66.1 117.9 126.2 ...</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt;   ..$ age_integer                 : num [1:6] 83 89 66 117 126 91</span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt;   ..$ sex                         : chr [1:6] &quot;female&quot; &quot;male&quot; &quot;male&quot; &quot;female&quot; ...</span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="co">#&gt;   ..$ cohabitation                : chr [1:6] &quot;Yes&quot; &quot;Yes&quot; &quot;No&quot; NA ...</span></span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="co">#&gt;   ..$ hypertension                : chr [1:6] &quot;No&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co">#&gt;   ..$ diabetes                    : chr [1:6] &quot;Yes&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co">#&gt;   ..$ region                      : chr [1:6] &quot;East&quot; &quot;South&quot; &quot;North&quot; NA ...</span></span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="co">#&gt;   ..$ baseline_data_start_complete: chr [1:6] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="co">#&gt;  $ mrs                : tibble [5 × 6] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id        : num [1:5] 1 2 2 3 3</span></span>
+<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name: chr [1:5] &quot;inclusion&quot; &quot;inclusion&quot; &quot;follow1&quot; &quot;follow1&quot; ...</span></span>
+<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_assessed     : chr [1:5] &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot; ...</span></span>
+<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_date         : Date[1:5], format: &quot;2023-03-13&quot; &quot;2023-03-07&quot; ...</span></span>
+<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_score        : num [1:5] 1 1 3 2 1</span></span>
+<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_complete     : chr [1:5] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
+<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a><span class="co">#&gt;  $ new_event          : tibble [9 × 6] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id               : num [1:9] 2 3 3 3 3 3 4 4 4</span></span>
+<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name       : chr [1:9] &quot;follow1&quot; &quot;follow1&quot; &quot;follow1&quot; &quot;follow2&quot; ...</span></span>
+<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instrument: chr [1:9] &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; ...</span></span>
+<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instance  : num [1:9] 1 1 2 1 2 3 1 2 3</span></span>
+<span id="cb5-36"><a href="#cb5-36" tabindex="-1"></a><span class="co">#&gt;   ..$ event_type              : chr [1:9] &quot;TIA&quot; &quot;AIS&quot; &quot;ICH&quot; &quot;ICH&quot; ...</span></span>
+<span id="cb5-37"><a href="#cb5-37" tabindex="-1"></a><span class="co">#&gt;   ..$ new_event_complete      : chr [1:9] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span></code></pre></div>
 </div>
 <div id="reading-data-from-redcap" class="section level2">
 <h2>Reading data from REDCap</h2>
@@ -1960,7 +2024,46 @@ approach.</p>
 </div>
 <div id="pivotting-to-wider-format" class="section level2">
 <h2>Pivotting to wider format</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># redcap_wider(ds)</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">redcap_wider</span>(list) <span class="sc">|&gt;</span> <span class="fu">str</span>()</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#&gt; Joining with `by = join_by(record_id)`</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#&gt; Joining with `by = join_by(record_id)`</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    6 obs. of  36 variables:</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt;  $ record_id                   : num  1 2 3 4 5 6</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="co">#&gt;  $ cpr                         : chr  &quot;1203401OB4&quot; &quot;0102342303&quot; &quot;2301569823&quot; &quot;0204051342&quot; ...</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="co">#&gt;  $ inclusion                   : Date, format: &quot;2023-03-13&quot; &quot;2023-03-01&quot; ...</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt;  $ dob                         : Date, format: &quot;1940-03-12&quot; &quot;1934-02-01&quot; ...</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt;  $ age                         : num  83 89.1 66.1 117.9 126.2 ...</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt;  $ age_integer                 : num  83 89 66 117 126 91</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt;  $ sex                         : chr  &quot;female&quot; &quot;male&quot; &quot;male&quot; &quot;female&quot; ...</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt;  $ cohabitation                : chr  &quot;Yes&quot; &quot;Yes&quot; &quot;No&quot; NA ...</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt;  $ hypertension                : chr  &quot;No&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt;  $ diabetes                    : chr  &quot;Yes&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt;  $ region                      : chr  &quot;East&quot; &quot;South&quot; &quot;North&quot; NA ...</span></span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt;  $ baseline_data_start_complete: chr  &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt;  $ mrs_assessed_inclusion      : chr  &quot;Yes&quot; &quot;Yes&quot; NA NA ...</span></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="co">#&gt;  $ mrs_assessed_follow1        : chr  NA &quot;Yes&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="co">#&gt;  $ mrs_assessed_follow2        : chr  NA NA &quot;Yes&quot; NA ...</span></span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="co">#&gt;  $ mrs_date_inclusion          : Date, format: &quot;2023-03-13&quot; &quot;2023-03-07&quot; ...</span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="co">#&gt;  $ mrs_date_follow1            : Date, format: NA &quot;2023-03-09&quot; ...</span></span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="co">#&gt;  $ mrs_date_follow2            : Date, format: NA NA ...</span></span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="co">#&gt;  $ mrs_score_inclusion         : num  1 1 NA NA NA NA</span></span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="co">#&gt;  $ mrs_score_follow1           : num  NA 3 2 NA NA NA</span></span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="co">#&gt;  $ mrs_score_follow2           : num  NA NA 1 NA NA NA</span></span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="co">#&gt;  $ mrs_complete_inclusion      : chr  &quot;Incomplete&quot; &quot;Incomplete&quot; NA NA ...</span></span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="co">#&gt;  $ mrs_complete_follow1        : chr  NA &quot;Incomplete&quot; &quot;Incomplete&quot; NA ...</span></span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="co">#&gt;  $ mrs_complete_follow2        : chr  NA NA &quot;Incomplete&quot; NA ...</span></span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="co">#&gt;  $ event_type_1_follow1        : chr  NA &quot;TIA&quot; &quot;AIS&quot; NA ...</span></span>
+<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a><span class="co">#&gt;  $ event_type_1_follow2        : chr  NA NA &quot;ICH&quot; &quot;AIS&quot; ...</span></span>
+<span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete_1_follow1: chr  NA &quot;Incomplete&quot; &quot;Incomplete&quot; NA ...</span></span>
+<span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete_1_follow2: chr  NA NA &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span>
+<span id="cb7-33"><a href="#cb7-33" tabindex="-1"></a><span class="co">#&gt;  $ event_type_2_follow1        : chr  NA NA &quot;ICH&quot; NA ...</span></span>
+<span id="cb7-34"><a href="#cb7-34" tabindex="-1"></a><span class="co">#&gt;  $ event_type_2_follow2        : chr  NA NA &quot;TIA&quot; &quot;ICH&quot; ...</span></span>
+<span id="cb7-35"><a href="#cb7-35" tabindex="-1"></a><span class="co">#&gt;  $ event_type_3_follow1        : chr  NA NA NA NA ...</span></span>
+<span id="cb7-36"><a href="#cb7-36" tabindex="-1"></a><span class="co">#&gt;  $ event_type_3_follow2        : chr  NA NA &quot;AIS&quot; &quot;Unknown&quot; ...</span></span>
+<span id="cb7-37"><a href="#cb7-37" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete_2_follow1: chr  NA NA &quot;Incomplete&quot; NA ...</span></span>
+<span id="cb7-38"><a href="#cb7-38" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete_2_follow2: chr  NA NA &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
+<span id="cb7-39"><a href="#cb7-39" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete_3_follow1: chr  NA NA NA NA ...</span></span>
+<span id="cb7-40"><a href="#cb7-40" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete_3_follow2: chr  NA NA &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span></code></pre></div>
 </div>
 
 

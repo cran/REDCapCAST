@@ -5,7 +5,7 @@
 #' events using the built-in focused_metadata including some clean-up.
 #' Works with classical and longitudinal projects with or without repeating
 #' instruments.
-#' @param uri REDCap database uri
+#' @param uri REDCap database API uri
 #' @param token API token
 #' @param records records to download
 #' @param fields fields to download
@@ -14,8 +14,6 @@
 #' @param raw_or_label raw or label tags
 #' @param split_forms Whether to split "repeating" or "all" forms, default is
 #' all.
-#' @param generics vector of auto-generated generic variable names to
-#' ignore when discarding empty rows
 #'
 #' @return list of instruments
 #' @importFrom REDCapR redcap_metadata_read redcap_read redcap_event_instruments
@@ -31,48 +29,43 @@ read_redcap_tables <- function(uri,
                                events = NULL,
                                forms = NULL,
                                raw_or_label = "label",
-                               split_forms = "all",
-                               generics = c(
-                                 "record_id",
-                                 "redcap_event_name",
-                                 "redcap_repeat_instrument",
-                                 "redcap_repeat_instance"
-                               )) {
-
-
+                               split_forms = "all") {
   # Getting metadata
   m <-
-    REDCapR::redcap_metadata_read (redcap_uri = uri, token = token)[["data"]]
+    REDCapR::redcap_metadata_read(redcap_uri = uri, token = token)[["data"]]
 
-  if (!is.null(fields)){
-
+  if (!is.null(fields)) {
     fields_test <- fields %in% unique(m$field_name)
 
-    if (any(!fields_test)){
-      print(paste0("The following field names are invalid: ", paste(fields[!fields_test],collapse=", "),"."))
+    if (any(!fields_test)) {
+      print(paste0("The following field names are invalid: ",
+                   paste(fields[!fields_test], collapse = ", "), "."))
       stop("Not all supplied field names are valid")
     }
   }
 
 
-  if (!is.null(forms)){
-
+  if (!is.null(forms)) {
     forms_test <- forms %in% unique(m$form_name)
 
-    if (any(!forms_test)){
-      print(paste0("The following form names are invalid: ", paste(forms[!forms_test],collapse=", "),"."))
+    if (any(!forms_test)) {
+      print(paste0("The following form names are invalid: ",
+                   paste(forms[!forms_test], collapse = ", "), "."))
       stop("Not all supplied form names are valid")
     }
   }
 
-  if (!is.null(events)){
-    arm_event_inst <- REDCapR::redcap_event_instruments(redcap_uri = uri,
-                                                        token = token)
+  if (!is.null(events)) {
+    arm_event_inst <- REDCapR::redcap_event_instruments(
+      redcap_uri = uri,
+      token = token
+    )
 
     event_test <- events %in% unique(arm_event_inst$data$unique_event_name)
 
-    if (any(!event_test)){
-      print(paste0("The following event names are invalid: ", paste(events[!event_test],collapse=", "),"."))
+    if (any(!event_test)) {
+      print(paste0("The following event names are invalid: ",
+                   paste(events[!event_test], collapse = ", "), "."))
       stop("Not all supplied event names are valid")
     }
   }
@@ -96,20 +89,15 @@ read_redcap_tables <- function(uri,
   }
 
   # Processing metadata to reflect focused dataset
-  if (!is.null(c(fields,forms,events))){
-    m <- focused_metadata(m,names(d))
-  }
+  m <- focused_metadata(m, names(d))
+
 
   # Splitting
-  l <- REDCap_split(d,
-                    m,
-                    forms = split_forms,
-                    primary_table_name = "")
+  out <- REDCap_split(d,
+    m,
+    forms = split_forms,
+    primary_table_name = ""
+  )
 
-  # Sanitizing split list by removing completely empty rows apart from colnames
-  # in "generics"
-  sanitize_split(l,generics)
-
+  sanitize_split(out)
 }
-
-
