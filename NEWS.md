@@ -1,3 +1,20 @@
+# REDCapCAST 24.6.1
+
+### Functions
+
+* Fix: `read_redcap_tables()`: field names testing allows to include "[form_name]_complete" fields.
+
+* Fix: `ds2dd_detailed()`: default record ID name is now "record_id", the REDCap default. Default is still to use the first column name. Support was added to interpret column name prefix or suffix as instrument names. See the examples.
+
+* New: `create_instrument_meta()`: creates zip with instrument files to allow adding new instruments to project in production. Takes data dictionary as input and creates a zip for each instrument specified by the `form_name` column.
+
+* New: `doc2dd()`: function to convert document table to data dictionary. This allows to specify instrument or whole data dictionary in text document, which for most is easier to work with and easily modifiable. The generic case is a data frame with variable names as values in a column. This is a format like the REDCap data dictionary, but gives a few options for formatting. Has a few related functions for data handling and formatting. One interesting function is `case_match_regex_list()`, which allows for a dynamic `dplyr::case_when()`-like approach for regex-matching. I think it is neat at least.
+
+
+### Documentation and more
+
+* Dependencies: In order to deploy `shiny_cast()` with `shinylive`, I need to remove `curl` as a dependency. To accomplish this, the `shiny_deploy()` helper functions has been moved to the package [`project.aid`](https://github.com/agdamsbo/project.aid). This was before realising that `REDCapR` has `curl` as dependency, which is the culprit. `REDCapCAST` is not going to be a `shinylive` web-app without removing `REDCapR` dependency or any other REDCap database interaction, which would defy the purpose. I'll stick to hosted Shiny app instead.
+
 # REDCapCAST 24.2.1
 
 ### Functions

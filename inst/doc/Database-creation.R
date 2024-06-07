@@ -7,19 +7,30 @@ knitr::opts_chunk$set(
 ## ----setup--------------------------------------------------------------------
 library(REDCapCAST)
 
-## ----eval=FALSE---------------------------------------------------------------
-#  mtcars |>
-#    dplyr::mutate(record_id = seq_len(dplyr::n())) |>
-#    ds2dd() |>
-#    str()
+## ----eval=TRUE----------------------------------------------------------------
+d1 <- mtcars |>
+  dplyr::mutate(record_id = seq_len(dplyr::n())) |>
+  ds2dd() 
 
-## ----eval=FALSE---------------------------------------------------------------
-#  dd_ls <- mtcars |>
-#    dplyr::mutate(record_id = seq_len(dplyr::n())) |>
-#    dplyr::select(record_id, dplyr::everything()) |>
-#    ds2dd_detailed()
-#  dd_ls |>
-#    str()
+d1 |>
+  gt::gt()
+
+## ----eval=TRUE----------------------------------------------------------------
+d2 <- REDCapCAST::redcapcast_data |> 
+  dplyr::mutate(record_id = seq_len(dplyr::n()),
+                region=factor(region)) |>
+  dplyr::select(record_id, dplyr::everything()) |>
+  (\(.x){
+    .x[!grepl("_complete$",names(.x))]
+  })() |> 
+  (\(.x){
+    .x[!grepl("^redcap",names(.x))]
+  })() |>  
+  ds2dd_detailed() |> 
+  purrr::pluck("meta") 
+
+d2 |> 
+  gt::gt()
 
 ## ----eval=FALSE---------------------------------------------------------------
 #  write.csv(dd_ls$meta, "datadictionary.csv")

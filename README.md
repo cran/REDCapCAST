@@ -2,6 +2,7 @@
 [![GitHub R package version](https://img.shields.io/github/r-package/v/agdamsbo/REDCapCAST)](https://github.com/agdamsbo/REDCapCAST)
 [![CRAN/METACRAN](https://img.shields.io/cran/v/REDCapCAST)](https://CRAN.R-project.org/package=REDCapCAST)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8013984.svg)](https://doi.org/10.5281/zenodo.8013984)
+[![R-hub](https://github.com/agdamsbo/REDCapCAST/actions/workflows/rhub.yaml/badge.svg)](https://github.com/agdamsbo/REDCapCAST/actions/workflows/rhub.yaml)
 [![R-CMD-check](https://github.com/agdamsbo/REDCapCAST/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/agdamsbo/REDCapCAST/actions/workflows/R-CMD-check.yaml)
 [![Page deployed](https://github.com/agdamsbo/REDCapCAST/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/agdamsbo/REDCapCAST/actions/workflows/pages/pages-build-deployment)
 [![Codecov test coverage](https://codecov.io/gh/agdamsbo/REDCapCAST/branch/master/graph/badge.svg)](https://app.codecov.io/gh/agdamsbo/REDCapCAST?branch=master)
@@ -16,7 +17,9 @@ REDCap database casting and handling of castellated data when using repeated ins
 
 This package is a fork of [pegeler/REDCapRITS](https://github.com/pegeler/REDCapRITS). The REDCapRITS represents great and extensive work to handle castellated REDCap data in different programming languages. This fork is purely minded on R usage and includes a few implementations of the main `REDCap_split` function.
 
-This package is very much to be seen as an attempt at a R-to-REDCap-to-R foundry for handling both the transition from dataset/variable list to database and the other way, from REDCap database to a tidy dataset. The goal was also to allow for a "minimal data" approach by allowing to filter records, instruments and variables in the export to only download data needed. I think this approach is desirable for handling sensitive, clinical data. Please refer to [REDCap-Tools](https://redcap-tools.github.io/) for other great tools for working with REDCap in R.
+I started working on this project as the castellated longitudinal data set was a little challenging. Later, I have come to learn of the [`redcapAPI`](https://github.com/vubiostat/redcapAPI) package, which would also cover this functionality. I find the `redcapAPI`package quite advanced and a little difficult to work with. This have led to the continued work on this package, as an easy-to-use approach for data migration, data base creation and data handling. This package is very much to be seen as an attempt at a R-to-REDCap-to-R foundry for handling both the transition from dataset/variable list to database and the other way, from REDCap database to a tidy dataset. The goal was also to allow for a "minimal data" approach by allowing to filter records, instruments and variables in the export to only download data needed. I think this approach is desirable for handling sensitive, clinical data. Please refer to [REDCap-Tools](https://redcap-tools.github.io/) for other great tools for working with REDCap in R.
+
+For any more advanced uses, consider using the `redcapAPI` package.
 
 ## Use and immprovements
 
@@ -32,7 +35,9 @@ Here is just a short description of the main functions:
 
 * `ds2dd_detailed()`: Converts a data set to a data dictionary for upload to a new REDCap database. Variables (fields) and instruments in a REDCap data base are defined by this data dictionary.
 
-* `shiny_cast()`: [Shiny](https://www.rstudio.com/products/shiny/) application to ease the process of converting a spreadsheet/data set to a REDCap database. The app runs locally and data is transferred securely. You can just create and upload the data dictionary, but you can also transfer the given data in the same process. 
+* `doc2dd()`: Converts a document table to data dictionary. This allows to specify instrument or whole data dictionary in text document, which for most is easier to work with and easily modifiable. Very much like a easy version of just working directly in the data dictionary file itself.
+
+* `shiny_cast()`: [Shiny](https://www.rstudio.com/products/shiny/) application to ease the process of converting a spreadsheet/data set to a REDCap database. The app runs locally and data is transferred securely. You can just create and upload the data dictionary, but you can also transfer the given data in the same process. The app is [hosted on shinyapps.io](https://agdamsbo.shinyapps.io/redcapcast/) ~~while I work on a [shinylive](https://posit-dev.github.io/r-shinylive/) implementation~~.
 
 ## Future
 
@@ -49,7 +54,7 @@ install.packages("REDCapCAST")
 Install the latest version directly from GitHub:
 
 ```
-remotes::install_github("agdamsbo/REDCapCAST")
+pak::pak("agdamsbo/REDCapCAST")
 ```
 
 ## Code of Conduct
