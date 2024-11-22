@@ -117,7 +117,7 @@ hms2character <- function(data) {
 #' ncol(data). Default is NULL and "data" is used.
 #' @param form.sep If supplied dataset has form names as suffix or prefix to the
 #' column/variable names, the seperator can be specified. If supplied, the
-#' form.sep is ignored. Default is NULL.
+#' form.name is ignored. Default is NULL.
 #' @param form.prefix Flag to set if form is prefix (TRUE) or suffix (FALSE) to
 #' the column names. Assumes all columns have pre- or suffix if specified.
 #' @param field.type manually specify field type(s). Vector of length 1 or
@@ -135,27 +135,36 @@ hms2character <- function(data) {
 #' file with `haven::read_dta()`).
 #' @param metadata redcap metadata headings. Default is
 #' REDCapCAST:::metadata_names.
-#' @param validate.time Flag to validate guessed time columns
-#' @param time.var.sel.pos Positive selection regex string passed to
-#' `gues_time_only_filter()` as sel.pos.
-#' @param time.var.sel.neg Negative selection regex string passed to
-#' `gues_time_only_filter()` as sel.neg.
+#' @param convert.logicals convert logicals to factor. Default is TRUE.
 #'
 #' @return list of length 2
 #' @export
 #'
 #' @examples
-#' data <- REDCapCAST::redcapcast_data
-#' data |> ds2dd_detailed(validate.time = TRUE)
-#' data |> ds2dd_detailed()
+#' ## Basic parsing with default options
+#' REDCapCAST::redcapcast_data |>
+#'   dplyr::select(-dplyr::starts_with("redcap_")) |>
+#'   ds2dd_detailed()
+#'
+#' ## Adding a record_id field
 #' iris |> ds2dd_detailed(add.auto.id = TRUE)
+#'
+#' ## Passing form name information to function
+#' iris |>
+#'   ds2dd_detailed(
+#'     add.auto.id = TRUE,
+#'     form.name = sample(c("b", "c"), size = 6, replace = TRUE, prob = rep(.5, 2))
+#'   ) |>
+#'   purrr::pluck("meta")
 #' mtcars |> ds2dd_detailed(add.auto.id = TRUE)
+#'
+#' ## Using column name suffix to carry form name
 #' data <- iris |>
 #'   ds2dd_detailed(add.auto.id = TRUE) |>
 #'   purrr::pluck("data")
 #' names(data) <- glue::glue("{sample(x = c('a','b'),size = length(names(data)),
 #' replace=TRUE,prob = rep(x=.5,2))}__{names(data)}")
-#' data |> ds2dd_detailed(form.sep="__")
+#' data |> ds2dd_detailed(form.sep = "__")
 ds2dd_detailed <- function(data,
                            add.auto.id = FALSE,
                            date.format = "dmy",
@@ -167,53 +176,27 @@ ds2dd_detailed <- function(data,
                            field.label.attr = "label",
                            field.validation = NULL,
                            metadata = names(REDCapCAST::redcapcast_meta),
-                           validate.time = FALSE,
-                           time.var.sel.pos = "[Tt]i[d(me)]",
-                           time.var.sel.neg = "[Dd]at[eo]") {
+                           convert.logicals = TRUE) {
+  # Repair empty columns
+  # These where sometimes classed as factors or
+  # if (any(sapply(data,all_na))){
+  #   data <- data |>
+  #     ## Converts logical to factor, which overwrites attributes
+  #     dplyr::mutate(dplyr::across(dplyr::where(all_na), as.character))
+  # }
+
+  if (convert.logicals) {
+    data <- data |>
+      ## Converts logical to factor, which overwrites attributes
+      dplyr::mutate(dplyr::across(dplyr::where(is.logical), as_factor))
+  }
+
   ## Handles the odd case of no id column present
   if (add.auto.id) {
     data <- dplyr::tibble(
       record_id = seq_len(nrow(data)),
       data
     )
-    message("A default id column has been added")
-  }
-
-  if (validate.time) {
-    return(data |> guess_time_only_filter(validate = TRUE))
-  }
-
-  if (lapply(data, haven::is.labelled) |> (\(x)do.call(c, x))() |> any()) {
-    message("Data seems to be imported with haven from a Stata (.dta) file and
-            will be treated as such.")
-    data.source <- "dta"
-  } else {
-    data.source <- ""
-  }
-
-  ## data classes
-
-  ### Only keeps the first class, as time fields (POSIXct/POSIXt) has two
-  ### classes
-  if (data.source == "dta") {
-    data_classes <-
-      data |>
-      haven::as_factor() |>
-      time_only_correction(
-        sel.pos = time.var.sel.pos,
-        sel.neg = time.var.sel.neg
-      ) |>
-      lapply(\(x)class(x)[1]) |>
-      (\(x)do.call(c, x))()
-  } else {
-    data_classes <-
-      data |>
-      time_only_correction(
-        sel.pos = time.var.sel.pos,
-        sel.neg = time.var.sel.neg
-      ) |>
-      lapply(\(x)class(x)[1]) |>
-      (\(x)do.call(c, x))()
   }
 
   ## ---------------------------------------
@@ -229,50 +212,59 @@ ds2dd_detailed <- function(data,
   ## form_name and field_name
 
   if (!is.null(form.sep)) {
-    if (form.sep!=""){
-    suppressMessages(nms <- strsplit(names(data), split = form.sep) |>
-      dplyr::bind_cols())
-    ## Assumes form.sep only occurs once and form.prefix defines if form is prefix or suffix
-    dd$form_name <- clean_redcap_name(dplyr::slice(nms,ifelse(form.prefix, 1, 2)))
-    ## The other split part is used as field names
-    dd$field_name <- dplyr::slice(nms,ifelse(!form.prefix, 1, 2)) |> as.character()
+    if (form.sep != "") {
+      parts <- strsplit(names(data), split = form.sep)
+
+      ## form.sep should be unique, but handles re-occuring pattern (by only considering first or last) and form.prefix defines if form is prefix or suffix
+      ## The other split part is used as field names
+      if (form.prefix) {
+        dd$form_name <- clean_redcap_name(Reduce(c, lapply(parts, \(.x) .x[[1]])))
+        dd$field_name <- Reduce(c, lapply(parts, \(.x) paste(.x[seq_len(length(.x))[-1]], collapse = form.sep)))
+      } else {
+        dd$form_name <- clean_redcap_name(Reduce(c, lapply(parts, \(.x) .x[[length(.x)]])))
+        dd$field_name <- Reduce(c, lapply(parts, \(.x) paste(.x[seq_len(length(.x) - 1)], collapse = form.sep)))
+      }
+      ## To preserve original
+      colnames(data) <- dd$field_name
+      dd$field_name <- tolower(dd$field_name)
     } else {
       dd$form_name <- "data"
       dd$field_name <- gsub(" ", "_", tolower(colnames(data)))
     }
-  } else if (is.null(form.sep)) {
+  } else {
     ## if no form name prefix, the colnames are used as field_names
     dd$field_name <- gsub(" ", "_", tolower(colnames(data)))
-  } else if (is.null(form.name)) {
-    dd$form_name <- "data"
-  } else {
-    if (length(form.name) == 1 || length(form.name) == nrow(dd)) {
-      dd$form_name <- form.name
+
+    if (is.null(form.name)) {
+      dd$form_name <- "data"
     } else {
-      stop("Length of supplied 'form.name' has to be one (1) or ncol(data).")
+      if (length(form.name) == 1 || length(form.name) == nrow(dd)) {
+        dd$form_name <- form.name
+      } else {
+        stop("Length of supplied 'form.name' has to be one (1) or ncol(data).")
+      }
     }
   }
 
   ## field_label
 
   if (is.null(field.label)) {
-    if (data.source == "dta") {
-      dd$field_label <- data |>
-        lapply(function(x) {
-          if (haven::is.labelled(x)) {
-            attributes(x)[[field.label.attr]]
-          } else {
-            NA
-          }
-        }) |>
-        (\(x)do.call(c, x))()
-    }
+    dd$field_label <- data |>
+      sapply(function(x) {
+        get_attr(x, attr = field.label.attr) |>
+          compact_vec()
+      })
 
     dd <-
-      dd |> dplyr::mutate(field_label = dplyr::if_else(is.na(field_label),
-        field_name, field_label
-      ))
+      dd |>
+      dplyr::mutate(
+        field_label = dplyr::if_else(is.na(field_label),
+          colnames(data),
+          field_label
+        )
+      )
   } else {
+    ## It really should be unique for each: same length as number of variables
     if (length(field.label) == 1 || length(field.label) == nrow(dd)) {
       dd$field_label <- field.label
     } else {
@@ -280,6 +272,7 @@ ds2dd_detailed <- function(data,
     }
   }
 
+  data_classes <- do.call(c, lapply(data, \(.x)class(.x)[1]))
 
   ## field_type
 
@@ -299,7 +292,6 @@ ds2dd_detailed <- function(data,
   }
 
   ## validation
-
   if (is.null(field.validation)) {
     dd <-
       dd |> dplyr::mutate(
@@ -323,41 +315,19 @@ ds2dd_detailed <- function(data,
     }
   }
 
-
-
   ## choices
 
-  if (data.source == "dta") {
-    factor_levels <- data |>
-      lapply(function(x) {
-        if (haven::is.labelled(x)) {
-          att <- attributes(x)$labels
-          paste(paste(att, names(att), sep = ", "), collapse = " | ")
-        } else {
-          NA
-        }
-      }) |>
-      (\(x)do.call(c, x))()
-  } else {
-    factor_levels <- data |>
-      lapply(function(x) {
-        if (is.factor(x)) {
-          ## Re-factors to avoid confusion with missing levels
-          ## Assumes all relevant levels are represented in the data
-          re_fac <- factor(x)
-          paste(
-            paste(seq_along(levels(re_fac)),
-              levels(re_fac),
-              sep = ", "
-            ),
-            collapse = " | "
-          )
-        } else {
-          NA
-        }
-      }) |>
-      (\(x)do.call(c, x))()
-  }
+  factor_levels <- data |>
+    sapply(function(x) {
+      if (is.factor(x)) {
+        ## Custom function to ensure factor order and keep original values
+        ## Avoiding refactoring to keep as much information as possible
+        sort(named_levels(x)) |>
+          vec2choice()
+      } else {
+        NA
+      }
+    })
 
   dd <-
     dd |> dplyr::mutate(
@@ -368,17 +338,66 @@ ds2dd_detailed <- function(data,
       )
     )
 
-  list(
+  out <- list(
     data = data |>
-      time_only_correction(
-        sel.pos = time.var.sel.pos,
-        sel.neg = time.var.sel.neg
-      ) |>
       hms2character() |>
       stats::setNames(dd$field_name),
     meta = dd
   )
+
+  class(out) <- c("REDCapCAST", class(out))
+  out
 }
+
+#' Check if vector is all NA
+#'
+#' @param data vector of data.frame
+#'
+#' @return logical
+#' @export
+#'
+#' @examples
+#' rep(NA,4) |> all_na()
+all_na <- function(data){
+  all(is.na(data))
+}
+
+#' Guess time variables based on naming pattern
+#'
+#' @description
+#' This is for repairing data with time variables with appended "1970-01-01"
+#'
+#'
+#' @param data data.frame or tibble
+#' @param validate.time Flag to validate guessed time columns
+#' @param time.var.sel.pos Positive selection regex string passed to
+#' `gues_time_only_filter()` as sel.pos.
+#' @param time.var.sel.neg Negative selection regex string passed to
+#' `gues_time_only_filter()` as sel.neg.
+#'
+#' @return data.frame or tibble
+#' @export
+#'
+#' @examples
+#' redcapcast_data |> guess_time_only(validate.time = TRUE)
+guess_time_only <- function(data,
+                            validate.time = FALSE,
+                            time.var.sel.pos = "[Tt]i[d(me)]",
+                            time.var.sel.neg = "[Dd]at[eo]") {
+  if (validate.time) {
+    return(data |> guess_time_only_filter(validate = TRUE))
+  }
+
+  ### Only keeps the first class, as time fields (POSIXct/POSIXt) has two
+  ### classes
+  data |> time_only_correction(
+    sel.pos = time.var.sel.pos,
+    sel.neg = time.var.sel.neg
+  )
+}
+
+
+
 
 ### Completion
 #' Completion marking based on completed upload
@@ -399,4 +418,188 @@ mark_complete <- function(upload, ls) {
     ))
   ) |>
     stats::setNames(c(names(data)[1], paste0(forms, "_complete")))
+}
+
+
+#' Helper to auto-parse un-formatted data with haven and readr
+#'
+#' @param data data.frame or tibble
+#' @param guess_type logical to guess type with readr
+#' @param col_types specify col_types using readr semantics. Ignored if guess_type is TRUE
+#' @param locale option to specify locale. Defaults to readr::default_locale().
+#' @param ignore.vars specify column names of columns to ignore when parsing
+#' @param ... ignored
+#'
+#' @return data.frame or tibble
+#' @export
+#'
+#' @examples
+#' mtcars |>
+#'   parse_data() |>
+#'   str()
+parse_data <- function(data,
+                       guess_type = TRUE,
+                       col_types = NULL,
+                       locale = readr::default_locale(),
+                       ignore.vars = "cpr",
+                       ...) {
+  if (any(ignore.vars %in% names(data))) {
+    ignored <- data[ignore.vars]
+  } else {
+    ignored <- NULL
+  }
+
+  ## Parses haven data by applying labels as factors in case of any
+  if (do.call(c, lapply(data, (\(x)inherits(x, "haven_labelled")))) |> any()) {
+    data <- data |>
+      as_factor()
+  }
+
+  ## Applying readr cols
+  if (is.null(col_types) && guess_type) {
+    if (do.call(c, lapply(data, is.character)) |> any()) {
+      data <- data |> readr::type_convert(
+        locale = locale,
+        col_types = readr::cols(.default = readr::col_guess())
+      )
+    }
+  } else {
+    data <- data |> readr::type_convert(
+      locale = locale,
+      col_types = readr::cols(col_types)
+    )
+  }
+
+  if (!is.null(ignored)) {
+    data[ignore.vars] <- ignored
+  }
+
+  data
+}
+
+#' Convert vector to factor based on threshold of number of unique levels
+#'
+#' @description
+#' This is a wrapper of forcats::as_factor, which sorts numeric vectors before
+#' factoring, but levels character vectors in order of appearance.
+#'
+#'
+#' @param data vector or data.frame column
+#' @param unique.n threshold to convert class to factor
+#'
+#' @return vector
+#' @export
+#' @importFrom forcats as_factor
+#'
+#' @examples
+#' sample(seq_len(4), 20, TRUE) |>
+#'   var2fct(6) |>
+#'   summary()
+#' sample(letters, 20) |>
+#'   var2fct(6) |>
+#'   summary()
+#' sample(letters[1:4], 20, TRUE) |> var2fct(6)
+var2fct <- function(data, unique.n) {
+  if (length(unique(data)) <= unique.n) {
+    as_factor(data)
+  } else {
+    data
+  }
+}
+
+#' Applying var2fct across data set
+#'
+#' @description
+#' Individual thresholds for character and numeric columns
+#'
+#' @param data dataset. data.frame or tibble
+#' @param numeric.threshold threshold for var2fct for numeric columns. Default
+#' is 6.
+#' @param character.throshold threshold for var2fct for character columns.
+#' Default is 6.
+#'
+#' @return data.frame or tibble
+#' @export
+#'
+#' @examples
+#' mtcars |> str()
+#' \dontrun{
+#' mtcars |>
+#'   numchar2fct(numeric.threshold = 6) |>
+#'   str()
+#' }
+numchar2fct <- function(data, numeric.threshold = 6, character.throshold = 6) {
+  data |>
+    dplyr::mutate(
+      dplyr::across(
+        dplyr::where(is.numeric),
+        \(.x){
+          var2fct(data = .x, unique.n = numeric.threshold)
+        }
+      ),
+      dplyr::across(
+        dplyr::where(is.character),
+        \(.x){
+          var2fct(data = .x, unique.n = character.throshold)
+        }
+      )
+    )
+}
+
+
+#' Named vector to REDCap choices (`wrapping compact_vec()`)
+#'
+#' @param data named vector
+#'
+#' @return character string
+#' @export
+#'
+#' @examples
+#' sample(seq_len(4), 20, TRUE) |>
+#'   as_factor() |>
+#'   named_levels() |>
+#'   sort() |>
+#'   vec2choice()
+vec2choice <- function(data) {
+  compact_vec(data,nm.sep = ", ",val.sep = " | ")
+}
+
+#' Compacting a vector of any length with or without names
+#'
+#' @param data vector, optionally named
+#' @param nm.sep string separating name from value if any
+#' @param val.sep string separating values
+#'
+#' @return character string
+#' @export
+#'
+#' @examples
+#' sample(seq_len(4), 20, TRUE) |>
+#'   as_factor() |>
+#'   named_levels() |>
+#'   sort() |>
+#'   compact_vec()
+#' 1:6 |> compact_vec()
+#' "test" |> compact_vec()
+#' sample(letters[1:9], 20, TRUE) |> compact_vec()
+compact_vec <- function(data,nm.sep=": ",val.sep="; ") {
+  # browser()
+  if (all(is.na(data))) {
+    return(data)
+  }
+
+  if (length(names(data)) > 0) {
+    paste(
+      paste(data,
+        names(data),
+        sep = nm.sep
+      ),
+      collapse = val.sep
+    )
+  } else {
+    paste(
+      data,
+      collapse = val.sep
+    )
+  }
 }

@@ -16,9 +16,7 @@ ds2dd_detailed(
   field.label.attr = "label",
   field.validation = NULL,
   metadata = names(REDCapCAST::redcapcast_meta),
-  validate.time = FALSE,
-  time.var.sel.pos = "[Tt]i[d(me)]",
-  time.var.sel.neg = "[Dd]at[eo]"
+  convert.logicals = TRUE
 )
 }
 \arguments{
@@ -34,7 +32,7 @@ ncol(data). Default is NULL and "data" is used.}
 
 \item{form.sep}{If supplied dataset has form names as suffix or prefix to the
 column/variable names, the seperator can be specified. If supplied, the
-form.sep is ignored. Default is NULL.}
+form.name is ignored. Default is NULL.}
 
 \item{form.prefix}{Flag to set if form is prefix (TRUE) or suffix (FALSE) to
 the column names. Assumes all columns have pre- or suffix if specified.}
@@ -59,13 +57,7 @@ file with `haven::read_dta()`).}
 \item{metadata}{redcap metadata headings. Default is
 REDCapCAST:::metadata_names.}
 
-\item{validate.time}{Flag to validate guessed time columns}
-
-\item{time.var.sel.pos}{Positive selection regex string passed to
-`gues_time_only_filter()` as sel.pos.}
-
-\item{time.var.sel.neg}{Negative selection regex string passed to
-`gues_time_only_filter()` as sel.neg.}
+\item{convert.logicals}{convert logicals to factor. Default is TRUE.}
 }
 \value{
 list of length 2
@@ -83,15 +75,28 @@ Ensure, that the data set is formatted with as much information as possible.
 `field.type` can be supplied
 }
 \examples{
-data <- REDCapCAST::redcapcast_data
-data |> ds2dd_detailed(validate.time = TRUE)
-data |> ds2dd_detailed()
+## Basic parsing with default options
+REDCapCAST::redcapcast_data |>
+  dplyr::select(-dplyr::starts_with("redcap_")) |>
+  ds2dd_detailed()
+
+## Adding a record_id field
 iris |> ds2dd_detailed(add.auto.id = TRUE)
+
+## Passing form name information to function
+iris |>
+  ds2dd_detailed(
+    add.auto.id = TRUE,
+    form.name = sample(c("b", "c"), size = 6, replace = TRUE, prob = rep(.5, 2))
+  ) |>
+  purrr::pluck("meta")
 mtcars |> ds2dd_detailed(add.auto.id = TRUE)
+
+## Using column name suffix to carry form name
 data <- iris |>
   ds2dd_detailed(add.auto.id = TRUE) |>
   purrr::pluck("data")
 names(data) <- glue::glue("{sample(x = c('a','b'),size = length(names(data)),
 replace=TRUE,prob = rep(x=.5,2))}__{names(data)}")
-data |> ds2dd_detailed(form.sep="__")
+data |> ds2dd_detailed(form.sep = "__")
 }

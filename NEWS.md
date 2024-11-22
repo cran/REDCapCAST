@@ -1,3 +1,37 @@
+# REDCapCAST 24.11.2
+
+24.11.1 was rejected on CRAN based on wrong title capitalisation. This was an opportunity to extend the package overhaul. And this actually turned out to be a major step towards a very usable shiny app which have received most of the focus.
+
+I have implemented option to specify categorical variables to factorize, but doing this with a modified version of {forcats} and {haven}'s `as_factor()`, that will preserve any attributes applied to the data to be able to upload and cast REDCap meta data from richly formatted data (use .rds). No matter the input type, all input is parsed using the default options from  the {readr} package. Also to avoid mis-labelling, logicals are converted to factors as REDCap truefalse class follows different naming conversion compared to R. Also correct support for variable labels as field labels (use .rds formatted data and label with labelled::var_label())
+
+Vignettes and documentation have been restructured.
+
+This package has been detached from the REDCapRITS, which it was originally forked from. The data split function will be kept, while testing will be rewritten. This projects has evolved away from the original fork.
+
+# REDCapCAST 24.11.1
+
+Revised tests.
+
+Documentation has been slightly updated to highlight the shiny app for casting REDCap metadata. I am working on hosting my own Shiny Server.
+
+### Functions:
+
+* Bug: 'form.name' specified to 'ds2dd_detailed()' was ignored. Corrected to only be ignored if 'form.sep' is specified. Added handling of re-occurring `form.sep` pattern.
+
+* New: `export_redcap_instrument()` is a new version of `create_instrument_meta()`, that will only export a single instrument. Multiple instrument export can be done with `lapply()` or `purrr::map()`. This allows for inclusion of this functionality in the Shiny implementation and is easier to handle. `create_instrument_meta()` is deprecated.
+
+* Improved: `shiny_cast()` app has been updated to actually work if you install the package and not clones the whole repository. 
+
+### Shiny:
+
+* New: Major overhaul of the app interface with the introduction of `bslib` for building the page. Also Detailed documentation added for the app workflow.
+
+* New: Export a REDCap instrument ready to add to your database based on an uploaded spreadsheet. This is thanks to the `export_redcap_instrument()` function. This functionality is intended for projects in production and adding instruments should be handled manually and not by API upload.
+
+* Bug: Export datadictionary with "" instead of "NA" for NAs. Upload to REDCap failed. Not anymore.
+
+The shiny implementation is included with this package. Implementing in shinylive may be looked into again later.
+
 # REDCapCAST 24.10.3
 
 Updated links and spelling.

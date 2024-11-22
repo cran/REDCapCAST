@@ -18,23 +18,13 @@ list <-
   REDCap_split(
     records = redcapcast_data,
     metadata = redcapcast_meta,
-    forms = "repeating"
-  ) |> 
-  sanitize_split()
-str(list)
-
-## -----------------------------------------------------------------------------
-list <-
-  REDCap_split(
-    records = redcapcast_data,
-    metadata = redcapcast_meta,
     forms = "all"
   ) |> 
   sanitize_split()
 str(list)
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  # read_redcap_tables(uri = "YOUR URI", token = "YOUR TOKEN")
+# # read_redcap_tables(uri = "YOUR URI", token = "YOUR TOKEN")
 
 ## -----------------------------------------------------------------------------
 redcap_wider(list) |> str()
