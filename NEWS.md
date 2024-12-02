@@ -1,3 +1,20 @@
+# REDCapCAST 24.11.4
+
+This release attempts to solve problems hosting the shiny_cast app, while also implementing functions to preserve as much meta data as possible from the REDCap database when exporting data.
+
+The hosting on shinyapps.io has given a lot of trouble recently. Modified package structure a little around the `shiny_cast()`, to accommodate an alternative hosting approach with all package functions included in a script instead of requiring the package.
+
+* NEW: A new option to `raw_or_label` in `read_readcap_tables()` has been added: "both". Get raw values with REDCap labels applied as labels. Use `as_factor()` to format factors with original labels and use the `gtsummary` package to easily get beautiful tables with original labels from REDCap. Use `fct_drop()` to drop empty levels.
+
+* NEW: fct_drop() has been added with an extension to `forcats::fct_drop()`, that works across data.frames. Use as `fct_drop()`.
+
+* CHANGE: the default data export method of `easy_redcap()` has been changed to use the new labelled data export with `read_readcap_tables()`.
+
+# REDCapCAST 24.11.3
+
+* BUG: shiny_cast() fails to load as I missed loading REDCapCAST library in ui.r. Fixed. Tests would be great.
+
+
 # REDCapCAST 24.11.2
 
 24.11.1 was rejected on CRAN based on wrong title capitalisation. This was an opportunity to extend the package overhaul. And this actually turned out to be a major step towards a very usable shiny app which have received most of the focus.

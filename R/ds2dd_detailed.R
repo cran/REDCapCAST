@@ -98,6 +98,96 @@ hms2character <- function(data) {
     dplyr::bind_cols()
 }
 
+
+#' (DEPRECATED) Data set to data dictionary function
+#'
+#' @description
+#' Creates a very basic data dictionary skeleton. Please see `ds2dd_detailed()`
+#' for a more advanced function.
+#'
+#' @details
+#' Migrated from stRoke ds2dd(). Fits better with the functionality of
+#' 'REDCapCAST'.
+#' @param ds data set
+#' @param record.id name or column number of id variable, moved to first row of
+#' data dictionary, character of integer. Default is "record_id".
+#' @param form.name vector of form names, character string, length 1 or length
+#' equal to number of variables. Default is "basis".
+#' @param field.type vector of field types, character string, length 1 or length
+#' equal to number of variables. Default is "text.
+#' @param field.label vector of form names, character string, length 1 or length
+#' equal to number of variables. Default is NULL and is then identical to field
+#' names.
+#' @param include.column.names Flag to give detailed output including new
+#' column names for original data set for upload.
+#' @param metadata Metadata column names. Default is the included
+#' names(REDCapCAST::redcapcast_meta).
+#'
+#' @return data.frame or list of data.frame and vector
+#' @export
+#'
+#' @examples
+#' redcapcast_data$record_id <- seq_len(nrow(redcapcast_data))
+#' ds2dd(redcapcast_data, include.column.names=TRUE)
+
+ds2dd <-
+  function(ds,
+           record.id = "record_id",
+           form.name = "basis",
+           field.type = "text",
+           field.label = NULL,
+           include.column.names = FALSE,
+           metadata = names(REDCapCAST::redcapcast_meta)
+           ) {
+    dd <- data.frame(matrix(ncol = length(metadata), nrow = ncol(ds)))
+    colnames(dd) <- metadata
+
+    if (is.character(record.id) && !record.id %in% colnames(ds)) {
+      stop("Provided record.id is not a variable name in provided data set.")
+    }
+
+    # renaming to lower case and substitute spaces with underscore
+    field.name <- gsub(" ", "_", tolower(colnames(ds)))
+
+    # handles both character and integer
+    colsel <-
+      colnames(ds) == colnames(ds[record.id])
+
+    if (summary(colsel)[3] != 1) {
+      stop("Provided record.id has to be or refer to a uniquely named column.")
+    }
+
+    dd[, "field_name"] <-
+      c(field.name[colsel], field.name[!colsel])
+
+    if (length(form.name) > 1 && length(form.name) != ncol(ds)) {
+      stop(
+        "Provided form.name should be of length 1 (value is reused) or equal
+        length as number of variables in data set."
+      )
+    }
+    dd[, "form_name"] <- form.name
+
+    if (length(field.type) > 1 && length(field.type) != ncol(ds)) {
+      stop(
+        "Provided field.type should be of length 1 (value is reused) or equal
+        length as number of variables in data set."
+      )
+    }
+
+    dd[, "field_type"] <- field.type
+
+    if (is.null(field.label)) {
+      dd[, "field_label"] <- dd[, "field_name"]
+    } else
+      dd[, "field_label"] <- field.label
+
+    if (include.column.names){
+      list("DataDictionary"=dd,"Column names"=field.name)
+    } else dd
+  }
+
+
 #' Extract data from stata file for data dictionary
 #'
 #' @details
@@ -134,7 +224,7 @@ hms2character <- function(data) {
 #' or attribute `factor.labels.attr` for haven_labelled data set (imported .dta
 #' file with `haven::read_dta()`).
 #' @param metadata redcap metadata headings. Default is
-#' REDCapCAST:::metadata_names.
+#' names(REDCapCAST::redcapcast_meta).
 #' @param convert.logicals convert logicals to factor. Default is TRUE.
 #'
 #' @return list of length 2
@@ -142,7 +232,8 @@ hms2character <- function(data) {
 #'
 #' @examples
 #' ## Basic parsing with default options
-#' REDCapCAST::redcapcast_data |>
+#' requireNamespace("REDCapCAST")
+#' redcapcast_data |>
 #'   dplyr::select(-dplyr::starts_with("redcap_")) |>
 #'   ds2dd_detailed()
 #'
@@ -177,13 +268,6 @@ ds2dd_detailed <- function(data,
                            field.validation = NULL,
                            metadata = names(REDCapCAST::redcapcast_meta),
                            convert.logicals = TRUE) {
-  # Repair empty columns
-  # These where sometimes classed as factors or
-  # if (any(sapply(data,all_na))){
-  #   data <- data |>
-  #     ## Converts logical to factor, which overwrites attributes
-  #     dplyr::mutate(dplyr::across(dplyr::where(all_na), as.character))
-  # }
 
   if (convert.logicals) {
     data <- data |>
@@ -357,8 +441,8 @@ ds2dd_detailed <- function(data,
 #' @export
 #'
 #' @examples
-#' rep(NA,4) |> all_na()
-all_na <- function(data){
+#' rep(NA, 4) |> all_na()
+all_na <- function(data) {
   all(is.na(data))
 }
 
@@ -561,7 +645,7 @@ numchar2fct <- function(data, numeric.threshold = 6, character.throshold = 6) {
 #'   sort() |>
 #'   vec2choice()
 vec2choice <- function(data) {
-  compact_vec(data,nm.sep = ", ",val.sep = " | ")
+  compact_vec(data, nm.sep = ", ", val.sep = " | ")
 }
 
 #' Compacting a vector of any length with or without names
@@ -582,7 +666,7 @@ vec2choice <- function(data) {
 #' 1:6 |> compact_vec()
 #' "test" |> compact_vec()
 #' sample(letters[1:9], 20, TRUE) |> compact_vec()
-compact_vec <- function(data,nm.sep=": ",val.sep="; ") {
+compact_vec <- function(data, nm.sep = ": ", val.sep = "; ") {
   # browser()
   if (all(is.na(data))) {
     return(data)

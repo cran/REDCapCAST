@@ -341,27 +341,66 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(REDCapCAST)</span></code></pre></div>
-<p>This vignette covers the included functions and basic
-functionality.</p>
-<p>A dataset and a meta data file are provided with the package for
-demonstration of the functions.</p>
+<p>This vignette covers the basics to get you started with the two basic
+features of REDCapCAST:</p>
+<ul>
+<li><p>Casting REDCap metadata to create a new REDCap database or extend
+an existing with a new instrument</p></li>
+<li><p>Reading REDCap data in a convenient and focused way, by only
+getting the data you need, while preserving as much metadata as
+possible.</p></li>
+</ul>
+<div id="casting-meta-data" class="section level2">
+<h2>Casting meta data</h2>
+<p>The easiest way is to use the <code>shiny_cast()</code>. You can
+access a <a href="https://agdamsbo.shinyapps.io/redcapcast/">hosted
+version here</a> or launch it locally like this:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">shiny_cast</span>()</span></code></pre></div>
+</div>
+<div id="reading-data-from-redcap" class="section level2">
+<h2>Reading data from REDCap</h2>
+<p>To get you started, the easiest way possible, you can use the
+<code>easy_redcap()</code> function (example below).</p>
+<p>You will need an API-key for your REDCap server, the uri/URL/address
+for the API connection (usually the adress used for accessing your
+institutions REDCap servar, with an appended “/api/”).</p>
+<p>This function includes a few convenience features to ease your
+further work.</p>
+<p>If your project uses repeating instruments possible as a longitudinal
+project, you can choose to widen the data. If not, the result will be a
+list of each instrument you have chosen to extract data from. Make sure
+to specify only the fields or instruments you need, and avoid to save
+any of the data locally, but always source from REDCap to avoid possibly
+insecure local storage of sensitive data.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">easy_redcap</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  <span class="at">uri =</span> <span class="st">&quot;YOUR URI&quot;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="at">project.name =</span> <span class="st">&quot;MY_PROJECT&quot;</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  <span class="at">widen.data =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>  <span class="at">fields =</span> <span class="fu">c</span>(<span class="st">&quot;record_id&quot;</span>, <span class="st">&quot;OTHER FIELDS&quot;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>)</span></code></pre></div>
+</div>
 <div id="splitting-the-dataset" class="section level2">
 <h2>Splitting the dataset</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>redcapcast_data <span class="sc">|&gt;</span> gt<span class="sc">::</span><span class="fu">gt</span>()</span></code></pre></div>
-<div id="wzqlacjoeh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wzqlacjoeh table {
+<p>The <code>easy_redcap()</code> function does a few things under the
+hood. Below are a few examples to show how the nicely formatted output
+is achieved.</p>
+<p>A sample dataset and Data Dictionary/metadata is provided for this
+demonstration:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>redcapcast_data <span class="sc">|&gt;</span> gt<span class="sc">::</span><span class="fu">gt</span>()</span></code></pre></div>
+<div id="gqrouqmawg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#gqrouqmawg table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#wzqlacjoeh thead, #wzqlacjoeh tbody, #wzqlacjoeh tfoot, #wzqlacjoeh tr, #wzqlacjoeh td, #wzqlacjoeh th {
+#gqrouqmawg thead, #gqrouqmawg tbody, #gqrouqmawg tfoot, #gqrouqmawg tr, #gqrouqmawg td, #gqrouqmawg th {
 border-style: none;
 }
-#wzqlacjoeh p {
+#gqrouqmawg p {
 margin: 0;
 padding: 0;
 }
-#wzqlacjoeh .gt_table {
+#gqrouqmawg .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -386,11 +425,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#wzqlacjoeh .gt_caption {
+#gqrouqmawg .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#wzqlacjoeh .gt_title {
+#gqrouqmawg .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -401,7 +440,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#wzqlacjoeh .gt_subtitle {
+#gqrouqmawg .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -412,7 +451,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#wzqlacjoeh .gt_heading {
+#gqrouqmawg .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -423,12 +462,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#wzqlacjoeh .gt_bottom_border {
+#gqrouqmawg .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#wzqlacjoeh .gt_col_headings {
+#gqrouqmawg .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -442,7 +481,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#wzqlacjoeh .gt_col_heading {
+#gqrouqmawg .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -461,7 +500,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#wzqlacjoeh .gt_column_spanner_outer {
+#gqrouqmawg .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -472,13 +511,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#wzqlacjoeh .gt_column_spanner_outer:first-child {
+#gqrouqmawg .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#wzqlacjoeh .gt_column_spanner_outer:last-child {
+#gqrouqmawg .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#wzqlacjoeh .gt_column_spanner {
+#gqrouqmawg .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -489,10 +528,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#wzqlacjoeh .gt_spanner_row {
+#gqrouqmawg .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#wzqlacjoeh .gt_group_heading {
+#gqrouqmawg .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -517,7 +556,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#wzqlacjoeh .gt_empty_group_heading {
+#gqrouqmawg .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -531,13 +570,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#wzqlacjoeh .gt_from_md > :first-child {
+#gqrouqmawg .gt_from_md > :first-child {
 margin-top: 0;
 }
-#wzqlacjoeh .gt_from_md > :last-child {
+#gqrouqmawg .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#wzqlacjoeh .gt_row {
+#gqrouqmawg .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -555,7 +594,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#wzqlacjoeh .gt_stub {
+#gqrouqmawg .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -567,7 +606,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#wzqlacjoeh .gt_stub_row_group {
+#gqrouqmawg .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -580,13 +619,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#wzqlacjoeh .gt_row_group_first td {
+#gqrouqmawg .gt_row_group_first td {
 border-top-width: 2px;
 }
-#wzqlacjoeh .gt_row_group_first th {
+#gqrouqmawg .gt_row_group_first th {
 border-top-width: 2px;
 }
-#wzqlacjoeh .gt_summary_row {
+#gqrouqmawg .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -595,14 +634,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#wzqlacjoeh .gt_first_summary_row {
+#gqrouqmawg .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#wzqlacjoeh .gt_first_summary_row.thick {
+#gqrouqmawg .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#wzqlacjoeh .gt_last_summary_row {
+#gqrouqmawg .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -611,7 +650,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#wzqlacjoeh .gt_grand_summary_row {
+#gqrouqmawg .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -620,7 +659,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#wzqlacjoeh .gt_first_grand_summary_row {
+#gqrouqmawg .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -629,7 +668,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#wzqlacjoeh .gt_last_grand_summary_row_top {
+#gqrouqmawg .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -638,10 +677,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#wzqlacjoeh .gt_striped {
+#gqrouqmawg .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#wzqlacjoeh .gt_table_body {
+#gqrouqmawg .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -649,7 +688,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#wzqlacjoeh .gt_footnotes {
+#gqrouqmawg .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -662,7 +701,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#wzqlacjoeh .gt_footnote {
+#gqrouqmawg .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -670,7 +709,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#wzqlacjoeh .gt_sourcenotes {
+#gqrouqmawg .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -683,64 +722,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#wzqlacjoeh .gt_sourcenote {
+#gqrouqmawg .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#wzqlacjoeh .gt_left {
+#gqrouqmawg .gt_left {
 text-align: left;
 }
-#wzqlacjoeh .gt_center {
+#gqrouqmawg .gt_center {
 text-align: center;
 }
-#wzqlacjoeh .gt_right {
+#gqrouqmawg .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#wzqlacjoeh .gt_font_normal {
+#gqrouqmawg .gt_font_normal {
 font-weight: normal;
 }
-#wzqlacjoeh .gt_font_bold {
+#gqrouqmawg .gt_font_bold {
 font-weight: bold;
 }
-#wzqlacjoeh .gt_font_italic {
+#gqrouqmawg .gt_font_italic {
 font-style: italic;
 }
-#wzqlacjoeh .gt_super {
+#gqrouqmawg .gt_super {
 font-size: 65%;
 }
-#wzqlacjoeh .gt_footnote_marks {
+#gqrouqmawg .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#wzqlacjoeh .gt_asterisk {
+#gqrouqmawg .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#wzqlacjoeh .gt_indent_1 {
+#gqrouqmawg .gt_indent_1 {
 text-indent: 5px;
 }
-#wzqlacjoeh .gt_indent_2 {
+#gqrouqmawg .gt_indent_2 {
 text-indent: 10px;
 }
-#wzqlacjoeh .gt_indent_3 {
+#gqrouqmawg .gt_indent_3 {
 text-indent: 15px;
 }
-#wzqlacjoeh .gt_indent_4 {
+#gqrouqmawg .gt_indent_4 {
 text-indent: 20px;
 }
-#wzqlacjoeh .gt_indent_5 {
+#gqrouqmawg .gt_indent_5 {
 text-indent: 25px;
 }
-#wzqlacjoeh .katex-display {
+#gqrouqmawg .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#wzqlacjoeh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#gqrouqmawg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>
@@ -1457,21 +1496,21 @@ height: 0px !important;
   
 </table>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>redcapcast_meta <span class="sc">|&gt;</span> gt<span class="sc">::</span><span class="fu">gt</span>()</span></code></pre></div>
-<div id="tpesjtqkel" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tpesjtqkel table {
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>redcapcast_meta <span class="sc">|&gt;</span> gt<span class="sc">::</span><span class="fu">gt</span>()</span></code></pre></div>
+<div id="owqrwbtnkx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#owqrwbtnkx table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#tpesjtqkel thead, #tpesjtqkel tbody, #tpesjtqkel tfoot, #tpesjtqkel tr, #tpesjtqkel td, #tpesjtqkel th {
+#owqrwbtnkx thead, #owqrwbtnkx tbody, #owqrwbtnkx tfoot, #owqrwbtnkx tr, #owqrwbtnkx td, #owqrwbtnkx th {
 border-style: none;
 }
-#tpesjtqkel p {
+#owqrwbtnkx p {
 margin: 0;
 padding: 0;
 }
-#tpesjtqkel .gt_table {
+#owqrwbtnkx .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -1496,11 +1535,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#tpesjtqkel .gt_caption {
+#owqrwbtnkx .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#tpesjtqkel .gt_title {
+#owqrwbtnkx .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -1511,7 +1550,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#tpesjtqkel .gt_subtitle {
+#owqrwbtnkx .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -1522,7 +1561,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#tpesjtqkel .gt_heading {
+#owqrwbtnkx .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -1533,12 +1572,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#tpesjtqkel .gt_bottom_border {
+#owqrwbtnkx .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#tpesjtqkel .gt_col_headings {
+#owqrwbtnkx .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -1552,7 +1591,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#tpesjtqkel .gt_col_heading {
+#owqrwbtnkx .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -1571,7 +1610,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#tpesjtqkel .gt_column_spanner_outer {
+#owqrwbtnkx .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -1582,13 +1621,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#tpesjtqkel .gt_column_spanner_outer:first-child {
+#owqrwbtnkx .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#tpesjtqkel .gt_column_spanner_outer:last-child {
+#owqrwbtnkx .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#tpesjtqkel .gt_column_spanner {
+#owqrwbtnkx .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -1599,10 +1638,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#tpesjtqkel .gt_spanner_row {
+#owqrwbtnkx .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#tpesjtqkel .gt_group_heading {
+#owqrwbtnkx .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -1627,7 +1666,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#tpesjtqkel .gt_empty_group_heading {
+#owqrwbtnkx .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -1641,13 +1680,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#tpesjtqkel .gt_from_md > :first-child {
+#owqrwbtnkx .gt_from_md > :first-child {
 margin-top: 0;
 }
-#tpesjtqkel .gt_from_md > :last-child {
+#owqrwbtnkx .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#tpesjtqkel .gt_row {
+#owqrwbtnkx .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -1665,7 +1704,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#tpesjtqkel .gt_stub {
+#owqrwbtnkx .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -1677,7 +1716,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#tpesjtqkel .gt_stub_row_group {
+#owqrwbtnkx .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -1690,13 +1729,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#tpesjtqkel .gt_row_group_first td {
+#owqrwbtnkx .gt_row_group_first td {
 border-top-width: 2px;
 }
-#tpesjtqkel .gt_row_group_first th {
+#owqrwbtnkx .gt_row_group_first th {
 border-top-width: 2px;
 }
-#tpesjtqkel .gt_summary_row {
+#owqrwbtnkx .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -1705,14 +1744,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#tpesjtqkel .gt_first_summary_row {
+#owqrwbtnkx .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#tpesjtqkel .gt_first_summary_row.thick {
+#owqrwbtnkx .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#tpesjtqkel .gt_last_summary_row {
+#owqrwbtnkx .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -1721,7 +1760,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#tpesjtqkel .gt_grand_summary_row {
+#owqrwbtnkx .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -1730,7 +1769,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#tpesjtqkel .gt_first_grand_summary_row {
+#owqrwbtnkx .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -1739,7 +1778,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#tpesjtqkel .gt_last_grand_summary_row_top {
+#owqrwbtnkx .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -1748,10 +1787,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#tpesjtqkel .gt_striped {
+#owqrwbtnkx .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#tpesjtqkel .gt_table_body {
+#owqrwbtnkx .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -1759,7 +1798,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#tpesjtqkel .gt_footnotes {
+#owqrwbtnkx .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -1772,7 +1811,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#tpesjtqkel .gt_footnote {
+#owqrwbtnkx .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -1780,7 +1819,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#tpesjtqkel .gt_sourcenotes {
+#owqrwbtnkx .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -1793,64 +1832,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#tpesjtqkel .gt_sourcenote {
+#owqrwbtnkx .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#tpesjtqkel .gt_left {
+#owqrwbtnkx .gt_left {
 text-align: left;
 }
-#tpesjtqkel .gt_center {
+#owqrwbtnkx .gt_center {
 text-align: center;
 }
-#tpesjtqkel .gt_right {
+#owqrwbtnkx .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#tpesjtqkel .gt_font_normal {
+#owqrwbtnkx .gt_font_normal {
 font-weight: normal;
 }
-#tpesjtqkel .gt_font_bold {
+#owqrwbtnkx .gt_font_bold {
 font-weight: bold;
 }
-#tpesjtqkel .gt_font_italic {
+#owqrwbtnkx .gt_font_italic {
 font-style: italic;
 }
-#tpesjtqkel .gt_super {
+#owqrwbtnkx .gt_super {
 font-size: 65%;
 }
-#tpesjtqkel .gt_footnote_marks {
+#owqrwbtnkx .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#tpesjtqkel .gt_asterisk {
+#owqrwbtnkx .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#tpesjtqkel .gt_indent_1 {
+#owqrwbtnkx .gt_indent_1 {
 text-indent: 5px;
 }
-#tpesjtqkel .gt_indent_2 {
+#owqrwbtnkx .gt_indent_2 {
 text-indent: 10px;
 }
-#tpesjtqkel .gt_indent_3 {
+#owqrwbtnkx .gt_indent_3 {
 text-indent: 15px;
 }
-#tpesjtqkel .gt_indent_4 {
+#owqrwbtnkx .gt_indent_4 {
 text-indent: 20px;
 }
-#tpesjtqkel .gt_indent_5 {
+#owqrwbtnkx .gt_indent_5 {
 text-indent: 25px;
 }
-#tpesjtqkel .katex-display {
+#owqrwbtnkx .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#tpesjtqkel div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#owqrwbtnkx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>
@@ -2263,131 +2302,657 @@ Note: as opposed to the build in datediff() this handles counting years as integ
   
 </table>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>list <span class="ot">&lt;-</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="fu">REDCap_split</span>(</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>    <span class="at">records =</span> redcapcast_data,</span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>    <span class="at">metadata =</span> redcapcast_meta,</span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>    <span class="at">forms =</span> <span class="st">&quot;all&quot;</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>  <span class="fu">sanitize_split</span>()</span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="fu">str</span>(list)</span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; List of 4</span></span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt;  $ baseline_data_start: tibble [6 × 14] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id                   : num [1:6] 1 2 3 4 5 6</span></span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name           : chr [1:6] &quot;inclusion&quot; &quot;inclusion&quot; &quot;inclusion&quot; &quot;inclusion&quot; ...</span></span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt;   ..$ cpr                         : chr [1:6] &quot;1203401OB4&quot; &quot;0102342303&quot; &quot;2301569823&quot; &quot;0204051342&quot; ...</span></span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co">#&gt;   ..$ inclusion                   : Date[1:6], format: &quot;2023-03-13&quot; &quot;2023-03-01&quot; ...</span></span>
-<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#&gt;   ..$ inclusion_time              : &#39;hms&#39; num [1:6] 12:38:49 10:38:57 12:01:07 20:39:19 ...</span></span>
-<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;units&quot;)= chr &quot;secs&quot;</span></span>
-<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co">#&gt;   ..$ dob                         : Date[1:6], format: &quot;1940-03-12&quot; &quot;1934-02-01&quot; ...</span></span>
-<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#&gt;   ..$ age                         : num [1:6] 83 89.1 66.1 117.9 126.2 ...</span></span>
-<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="co">#&gt;   ..$ age_integer                 : num [1:6] 83 89 66 117 126 91</span></span>
-<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="co">#&gt;   ..$ sex                         : chr [1:6] &quot;female&quot; &quot;male&quot; &quot;male&quot; &quot;female&quot; ...</span></span>
-<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="co">#&gt;   ..$ cohabitation                : chr [1:6] &quot;Yes&quot; &quot;Yes&quot; &quot;No&quot; NA ...</span></span>
-<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a><span class="co">#&gt;   ..$ hypertension                : chr [1:6] &quot;No&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
-<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="co">#&gt;   ..$ diabetes                    : chr [1:6] &quot;Yes&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
-<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a><span class="co">#&gt;   ..$ region                      : chr [1:6] &quot;East&quot; &quot;South&quot; &quot;North&quot; NA ...</span></span>
-<span id="cb4-25"><a href="#cb4-25" tabindex="-1"></a><span class="co">#&gt;   ..$ baseline_data_start_complete: chr [1:6] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
-<span id="cb4-26"><a href="#cb4-26" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;problems&quot;)=&lt;externalptr&gt; </span></span>
-<span id="cb4-27"><a href="#cb4-27" tabindex="-1"></a><span class="co">#&gt;  $ mrs                : tibble [5 × 6] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb4-28"><a href="#cb4-28" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id        : num [1:5] 1 2 2 3 3</span></span>
-<span id="cb4-29"><a href="#cb4-29" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name: chr [1:5] &quot;inclusion&quot; &quot;inclusion&quot; &quot;follow1&quot; &quot;follow1&quot; ...</span></span>
-<span id="cb4-30"><a href="#cb4-30" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_assessed     : chr [1:5] &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot; ...</span></span>
-<span id="cb4-31"><a href="#cb4-31" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_date         : Date[1:5], format: &quot;2023-03-13&quot; &quot;2023-03-07&quot; ...</span></span>
-<span id="cb4-32"><a href="#cb4-32" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_score        : num [1:5] 1 1 3 2 1</span></span>
-<span id="cb4-33"><a href="#cb4-33" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_complete     : chr [1:5] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
-<span id="cb4-34"><a href="#cb4-34" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;problems&quot;)=&lt;externalptr&gt; </span></span>
-<span id="cb4-35"><a href="#cb4-35" tabindex="-1"></a><span class="co">#&gt;  $ consensus          : tibble [0 × 5] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb4-36"><a href="#cb4-36" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id         : num(0) </span></span>
-<span id="cb4-37"><a href="#cb4-37" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name : chr(0) </span></span>
-<span id="cb4-38"><a href="#cb4-38" tabindex="-1"></a><span class="co">#&gt;   ..$ con_mrs           : logi(0) </span></span>
-<span id="cb4-39"><a href="#cb4-39" tabindex="-1"></a><span class="co">#&gt;   ..$ con_calc          : logi(0) </span></span>
-<span id="cb4-40"><a href="#cb4-40" tabindex="-1"></a><span class="co">#&gt;   ..$ consensus_complete: chr(0) </span></span>
-<span id="cb4-41"><a href="#cb4-41" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;problems&quot;)=&lt;externalptr&gt; </span></span>
-<span id="cb4-42"><a href="#cb4-42" tabindex="-1"></a><span class="co">#&gt;  $ new_event          : tibble [13 × 8] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb4-43"><a href="#cb4-43" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id               : num [1:13] 2 3 3 3 3 3 4 4 4 4 ...</span></span>
-<span id="cb4-44"><a href="#cb4-44" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name       : chr [1:13] &quot;follow1&quot; &quot;follow1&quot; &quot;follow1&quot; &quot;follow2&quot; ...</span></span>
-<span id="cb4-45"><a href="#cb4-45" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instrument: chr [1:13] &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; ...</span></span>
-<span id="cb4-46"><a href="#cb4-46" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instance  : num [1:13] 1 1 2 1 2 3 1 2 1 2 ...</span></span>
-<span id="cb4-47"><a href="#cb4-47" tabindex="-1"></a><span class="co">#&gt;   ..$ event_datetime          : POSIXct[1:13], format: &quot;2024-01-18 12:49:42&quot; &quot;2024-01-18 12:49:58&quot; ...</span></span>
-<span id="cb4-48"><a href="#cb4-48" tabindex="-1"></a><span class="co">#&gt;   ..$ event_age               : num [1:13] NA NA NA NA NA NA 96 105 118 118 ...</span></span>
-<span id="cb4-49"><a href="#cb4-49" tabindex="-1"></a><span class="co">#&gt;   ..$ event_type              : chr [1:13] &quot;TIA&quot; &quot;AIS&quot; &quot;ICH&quot; &quot;ICH&quot; ...</span></span>
-<span id="cb4-50"><a href="#cb4-50" tabindex="-1"></a><span class="co">#&gt;   ..$ new_event_complete      : chr [1:13] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
-<span id="cb4-51"><a href="#cb4-51" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</span></span></code></pre></div>
+<p>To save the metadata as labels in the dataset, we can save field
+labels and the choices from radio buttons and dropdown features:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>labelled_data <span class="ot">&lt;-</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">apply_field_label</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>    <span class="at">data =</span> redcapcast_data,</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>    <span class="at">meta =</span> redcapcast_meta</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  <span class="fu">apply_factor_labels</span>(<span class="at">meta =</span> redcapcast_meta)</span></code></pre></div>
+<p>The <code>REDCap_split</code> function splits the data set into a
+list of data.frames.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>list <span class="ot">&lt;-</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="fu">REDCap_split</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>    <span class="at">records =</span> labelled_data,</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>    <span class="at">metadata =</span> redcapcast_meta,</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>    <span class="at">forms =</span> <span class="st">&quot;all&quot;</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="co"># Next steps cleans up and removes generic columns</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>  <span class="fu">sanitize_split</span>()</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="fu">str</span>(list)</span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt; List of 3</span></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt;  $ baseline_data_start: tibble [6 × 14] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id                   : num [1:6] 1 2 3 4 5 6</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;label&quot;)= chr &quot;ID&quot;</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name           : chr [1:6] &quot;inclusion&quot; &quot;inclusion&quot; &quot;inclusion&quot; &quot;inclusion&quot; ...</span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt;   ..$ cpr                         : chr [1:6] &quot;1203401OB4&quot; &quot;0102342303&quot; &quot;2301569823&quot; &quot;0204051342&quot; ...</span></span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;label&quot;)= chr &quot;CPR (Danish civil registration number)&quot;</span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt;   ..$ inclusion                   : Date[1:6], format: &quot;2023-03-13&quot; &quot;2023-03-01&quot; ...</span></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="co">#&gt;   ..$ inclusion_time              : &#39;hms&#39; num [1:6] 12:38:49 10:38:57 12:01:07 20:39:19 ...</span></span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;units&quot;)= chr &quot;secs&quot;</span></span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="co">#&gt;   ..$ dob                         : Date[1:6], format: &quot;1940-03-12&quot; &quot;1934-02-01&quot; ...</span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="co">#&gt;   ..$ age                         : num [1:6] 83 89.1 66.1 117.9 126.2 ...</span></span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;label&quot;)= chr &quot;Age\r\nNote: Apparently, the build in datediff() function does not handle counting whole years. This results in&quot;| __truncated__</span></span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="co">#&gt;   ..$ age_integer                 : num [1:6] 83 89 66 117 126 91</span></span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;label&quot;)= chr &quot;Age integer\r\nNote: as opposed to the build in datediff() this handles counting years as integers very well. C&quot;| __truncated__</span></span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="co">#&gt;   ..$ sex                         : chr [1:6] &quot;female&quot; &quot;male&quot; &quot;male&quot; &quot;female&quot; ...</span></span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;label&quot;)= chr &quot;Legal sex&quot;</span></span>
+<span id="cb7-27"><a href="#cb7-27" tabindex="-1"></a><span class="co">#&gt;   ..$ cohabitation                : &#39;labelled&#39; chr [1:6] &quot;Yes&quot; &quot;Yes&quot; &quot;No&quot; NA ...</span></span>
+<span id="cb7-28"><a href="#cb7-28" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;label&quot;)= chr &quot;Cohabitation&quot;</span></span>
+<span id="cb7-29"><a href="#cb7-29" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;labels&quot;)= Named chr [1:2] &quot;1&quot; &quot;2&quot;</span></span>
+<span id="cb7-30"><a href="#cb7-30" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;Yes&quot; &quot;No&quot;</span></span>
+<span id="cb7-31"><a href="#cb7-31" tabindex="-1"></a><span class="co">#&gt;   ..$ hypertension                : &#39;labelled&#39; chr [1:6] &quot;No&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb7-32"><a href="#cb7-32" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;label&quot;)= chr &quot;Hypertension&quot;</span></span>
+<span id="cb7-33"><a href="#cb7-33" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;labels&quot;)= Named chr [1:2] &quot;1&quot; &quot;2&quot;</span></span>
+<span id="cb7-34"><a href="#cb7-34" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;Yes&quot; &quot;No&quot;</span></span>
+<span id="cb7-35"><a href="#cb7-35" tabindex="-1"></a><span class="co">#&gt;   ..$ diabetes                    : &#39;labelled&#39; chr [1:6] &quot;Yes&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb7-36"><a href="#cb7-36" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;label&quot;)= chr &quot;Diabetes&quot;</span></span>
+<span id="cb7-37"><a href="#cb7-37" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;labels&quot;)= Named chr [1:2] &quot;1&quot; &quot;2&quot;</span></span>
+<span id="cb7-38"><a href="#cb7-38" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;Yes&quot; &quot;No&quot;</span></span>
+<span id="cb7-39"><a href="#cb7-39" tabindex="-1"></a><span class="co">#&gt;   ..$ region                      : &#39;labelled&#39; chr [1:6] &quot;East&quot; &quot;South&quot; &quot;North&quot; NA ...</span></span>
+<span id="cb7-40"><a href="#cb7-40" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;label&quot;)= chr &quot;Region&quot;</span></span>
+<span id="cb7-41"><a href="#cb7-41" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;labels&quot;)= Named chr [1:4] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot;</span></span>
+<span id="cb7-42"><a href="#cb7-42" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;names&quot;)= chr [1:4] &quot;North&quot; &quot;East&quot; &quot;South&quot; &quot;West&quot;</span></span>
+<span id="cb7-43"><a href="#cb7-43" tabindex="-1"></a><span class="co">#&gt;   ..$ baseline_data_start_complete: chr [1:6] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
+<span id="cb7-44"><a href="#cb7-44" tabindex="-1"></a><span class="co">#&gt;  $ mrs                : tibble [5 × 6] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb7-45"><a href="#cb7-45" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id        : num [1:5] 1 2 2 3 3</span></span>
+<span id="cb7-46"><a href="#cb7-46" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;label&quot;)= chr &quot;ID&quot;</span></span>
+<span id="cb7-47"><a href="#cb7-47" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name: chr [1:5] &quot;inclusion&quot; &quot;inclusion&quot; &quot;follow1&quot; &quot;follow1&quot; ...</span></span>
+<span id="cb7-48"><a href="#cb7-48" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_assessed     : &#39;labelled&#39; chr [1:5] &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot; &quot;Yes&quot; ...</span></span>
+<span id="cb7-49"><a href="#cb7-49" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;label&quot;)= chr &quot;Assesed&quot;</span></span>
+<span id="cb7-50"><a href="#cb7-50" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;labels&quot;)= Named chr [1:2] &quot;1&quot; &quot;2&quot;</span></span>
+<span id="cb7-51"><a href="#cb7-51" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;Yes&quot; &quot;No&quot;</span></span>
+<span id="cb7-52"><a href="#cb7-52" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_date         : Date[1:5], format: &quot;2023-03-13&quot; &quot;2023-03-07&quot; ...</span></span>
+<span id="cb7-53"><a href="#cb7-53" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_score        : &#39;labelled&#39; num [1:5] 1 1 3 2 1</span></span>
+<span id="cb7-54"><a href="#cb7-54" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;label&quot;)= chr &quot;mRS score&quot;</span></span>
+<span id="cb7-55"><a href="#cb7-55" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;labels&quot;)= Named chr [1:6] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span>
+<span id="cb7-56"><a href="#cb7-56" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;names&quot;)= chr [1:6] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span>
+<span id="cb7-57"><a href="#cb7-57" tabindex="-1"></a><span class="co">#&gt;   ..$ mrs_complete     : chr [1:5] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
+<span id="cb7-58"><a href="#cb7-58" tabindex="-1"></a><span class="co">#&gt;  $ new_event          : tibble [13 × 8] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb7-59"><a href="#cb7-59" tabindex="-1"></a><span class="co">#&gt;   ..$ record_id               : num [1:13] 2 3 3 3 3 3 4 4 4 4 ...</span></span>
+<span id="cb7-60"><a href="#cb7-60" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;label&quot;)= chr &quot;ID&quot;</span></span>
+<span id="cb7-61"><a href="#cb7-61" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_event_name       : chr [1:13] &quot;follow1&quot; &quot;follow1&quot; &quot;follow1&quot; &quot;follow2&quot; ...</span></span>
+<span id="cb7-62"><a href="#cb7-62" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instrument: chr [1:13] &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; &quot;new_event&quot; ...</span></span>
+<span id="cb7-63"><a href="#cb7-63" tabindex="-1"></a><span class="co">#&gt;   ..$ redcap_repeat_instance  : num [1:13] 1 1 2 1 2 3 1 2 1 2 ...</span></span>
+<span id="cb7-64"><a href="#cb7-64" tabindex="-1"></a><span class="co">#&gt;   ..$ event_datetime          : POSIXct[1:13], format: &quot;2024-01-18 12:49:42&quot; &quot;2024-01-18 12:49:58&quot; ...</span></span>
+<span id="cb7-65"><a href="#cb7-65" tabindex="-1"></a><span class="co">#&gt;   ..$ event_age               : num [1:13] NA NA NA NA NA NA 96 105 118 118 ...</span></span>
+<span id="cb7-66"><a href="#cb7-66" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;label&quot;)= chr &quot;Age at event&quot;</span></span>
+<span id="cb7-67"><a href="#cb7-67" tabindex="-1"></a><span class="co">#&gt;   ..$ event_type              : &#39;labelled&#39; chr [1:13] &quot;TIA&quot; &quot;AIS&quot; &quot;ICH&quot; &quot;ICH&quot; ...</span></span>
+<span id="cb7-68"><a href="#cb7-68" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;label&quot;)= chr &quot;Neurovascular event&quot;</span></span>
+<span id="cb7-69"><a href="#cb7-69" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;labels&quot;)= Named chr [1:5] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
+<span id="cb7-70"><a href="#cb7-70" tabindex="-1"></a><span class="co">#&gt;   .. .. ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;TIA&quot; &quot;AIS&quot; &quot;ICH&quot; &quot;SAH&quot; ...</span></span>
+<span id="cb7-71"><a href="#cb7-71" tabindex="-1"></a><span class="co">#&gt;   ..$ new_event_complete      : chr [1:13] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span></code></pre></div>
+<p>The <code>easy_redcap()</code> will then (optionally) continue to
+widen the data, by transforming the list of data.frames to a single
+data.frame with one row for each subject/record_id (wide data
+format):</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>wide_data <span class="ot">&lt;-</span> <span class="fu">redcap_wider</span>(list,</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="at">event.glue =</span> <span class="st">&quot;{.value}____{redcap_event_name}&quot;</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="at">inst.glue =</span> <span class="st">&quot;{.value}____{redcap_repeat_instance}&quot;</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>)</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt; Joining with `by = join_by(record_id)`</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt; Joining with `by = join_by(record_id)`</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>wide_data <span class="sc">|&gt;</span> <span class="fu">str</span>()</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt; tibble [6 × 49] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt;  $ record_id                         : num [1:6] 1 2 3 4 5 6</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;ID&quot;</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#&gt;  $ cpr                               : chr [1:6] &quot;1203401OB4&quot; &quot;0102342303&quot; &quot;2301569823&quot; &quot;0204051342&quot; ...</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;CPR (Danish civil registration number)&quot;</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt;  $ inclusion                         : Date[1:6], format: &quot;2023-03-13&quot; &quot;2023-03-01&quot; ...</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt;  $ inclusion_time                    : &#39;hms&#39; num [1:6] 12:38:49 10:38:57 12:01:07 20:39:19 ...</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;units&quot;)= chr &quot;secs&quot;</span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co">#&gt;  $ dob                               : Date[1:6], format: &quot;1940-03-12&quot; &quot;1934-02-01&quot; ...</span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="co">#&gt;  $ age                               : num [1:6] 83 89.1 66.1 117.9 126.2 ...</span></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Age\r\nNote: Apparently, the build in datediff() function does not handle counting whole years. This results in&quot;| __truncated__</span></span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="co">#&gt;  $ age_integer                       : num [1:6] 83 89 66 117 126 91</span></span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Age integer\r\nNote: as opposed to the build in datediff() this handles counting years as integers very well. C&quot;| __truncated__</span></span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="co">#&gt;  $ sex                               : chr [1:6] &quot;female&quot; &quot;male&quot; &quot;male&quot; &quot;female&quot; ...</span></span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Legal sex&quot;</span></span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="co">#&gt;  $ cohabitation                      : &#39;labelled&#39; chr [1:6] &quot;Yes&quot; &quot;Yes&quot; &quot;No&quot; NA ...</span></span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Cohabitation&quot;</span></span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:2] &quot;1&quot; &quot;2&quot;</span></span>
+<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;Yes&quot; &quot;No&quot;</span></span>
+<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="co">#&gt;  $ hypertension                      : &#39;labelled&#39; chr [1:6] &quot;No&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Hypertension&quot;</span></span>
+<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:2] &quot;1&quot; &quot;2&quot;</span></span>
+<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;Yes&quot; &quot;No&quot;</span></span>
+<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="co">#&gt;  $ diabetes                          : &#39;labelled&#39; chr [1:6] &quot;Yes&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Diabetes&quot;</span></span>
+<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:2] &quot;1&quot; &quot;2&quot;</span></span>
+<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;Yes&quot; &quot;No&quot;</span></span>
+<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="co">#&gt;  $ region                            : &#39;labelled&#39; chr [1:6] &quot;East&quot; &quot;South&quot; &quot;North&quot; NA ...</span></span>
+<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Region&quot;</span></span>
+<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:4] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot;</span></span>
+<span id="cb8-38"><a href="#cb8-38" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:4] &quot;North&quot; &quot;East&quot; &quot;South&quot; &quot;West&quot;</span></span>
+<span id="cb8-39"><a href="#cb8-39" tabindex="-1"></a><span class="co">#&gt;  $ baseline_data_start_complete      : chr [1:6] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
+<span id="cb8-40"><a href="#cb8-40" tabindex="-1"></a><span class="co">#&gt;  $ mrs_assessed____inclusion         : &#39;labelled&#39; chr [1:6] &quot;Yes&quot; &quot;Yes&quot; NA NA ...</span></span>
+<span id="cb8-41"><a href="#cb8-41" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Assesed&quot;</span></span>
+<span id="cb8-42"><a href="#cb8-42" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:2] &quot;1&quot; &quot;2&quot;</span></span>
+<span id="cb8-43"><a href="#cb8-43" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;Yes&quot; &quot;No&quot;</span></span>
+<span id="cb8-44"><a href="#cb8-44" tabindex="-1"></a><span class="co">#&gt;  $ mrs_assessed____follow1           : &#39;labelled&#39; chr [1:6] NA &quot;Yes&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb8-45"><a href="#cb8-45" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Assesed&quot;</span></span>
+<span id="cb8-46"><a href="#cb8-46" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:2] &quot;1&quot; &quot;2&quot;</span></span>
+<span id="cb8-47"><a href="#cb8-47" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;Yes&quot; &quot;No&quot;</span></span>
+<span id="cb8-48"><a href="#cb8-48" tabindex="-1"></a><span class="co">#&gt;  $ mrs_assessed____follow2           : &#39;labelled&#39; chr [1:6] NA NA &quot;Yes&quot; NA ...</span></span>
+<span id="cb8-49"><a href="#cb8-49" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Assesed&quot;</span></span>
+<span id="cb8-50"><a href="#cb8-50" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:2] &quot;1&quot; &quot;2&quot;</span></span>
+<span id="cb8-51"><a href="#cb8-51" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:2] &quot;Yes&quot; &quot;No&quot;</span></span>
+<span id="cb8-52"><a href="#cb8-52" tabindex="-1"></a><span class="co">#&gt;  $ mrs_date____inclusion             : Date[1:6], format: &quot;2023-03-13&quot; &quot;2023-03-07&quot; ...</span></span>
+<span id="cb8-53"><a href="#cb8-53" tabindex="-1"></a><span class="co">#&gt;  $ mrs_date____follow1               : Date[1:6], format: NA &quot;2023-03-09&quot; ...</span></span>
+<span id="cb8-54"><a href="#cb8-54" tabindex="-1"></a><span class="co">#&gt;  $ mrs_date____follow2               : Date[1:6], format: NA NA ...</span></span>
+<span id="cb8-55"><a href="#cb8-55" tabindex="-1"></a><span class="co">#&gt;  $ mrs_score____inclusion            : &#39;labelled&#39; num [1:6] 1 1 NA NA NA NA</span></span>
+<span id="cb8-56"><a href="#cb8-56" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;mRS score&quot;</span></span>
+<span id="cb8-57"><a href="#cb8-57" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:6] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span>
+<span id="cb8-58"><a href="#cb8-58" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:6] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span>
+<span id="cb8-59"><a href="#cb8-59" tabindex="-1"></a><span class="co">#&gt;  $ mrs_score____follow1              : &#39;labelled&#39; num [1:6] NA 3 2 NA NA NA</span></span>
+<span id="cb8-60"><a href="#cb8-60" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;mRS score&quot;</span></span>
+<span id="cb8-61"><a href="#cb8-61" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:6] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span>
+<span id="cb8-62"><a href="#cb8-62" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:6] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span>
+<span id="cb8-63"><a href="#cb8-63" tabindex="-1"></a><span class="co">#&gt;  $ mrs_score____follow2              : &#39;labelled&#39; num [1:6] NA NA 1 NA NA NA</span></span>
+<span id="cb8-64"><a href="#cb8-64" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;mRS score&quot;</span></span>
+<span id="cb8-65"><a href="#cb8-65" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:6] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span>
+<span id="cb8-66"><a href="#cb8-66" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:6] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</span></span>
+<span id="cb8-67"><a href="#cb8-67" tabindex="-1"></a><span class="co">#&gt;  $ mrs_complete____inclusion         : chr [1:6] &quot;Incomplete&quot; &quot;Incomplete&quot; NA NA ...</span></span>
+<span id="cb8-68"><a href="#cb8-68" tabindex="-1"></a><span class="co">#&gt;  $ mrs_complete____follow1           : chr [1:6] NA &quot;Incomplete&quot; &quot;Incomplete&quot; NA ...</span></span>
+<span id="cb8-69"><a href="#cb8-69" tabindex="-1"></a><span class="co">#&gt;  $ mrs_complete____follow2           : chr [1:6] NA NA &quot;Incomplete&quot; NA ...</span></span>
+<span id="cb8-70"><a href="#cb8-70" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime____1____follow1    : POSIXct[1:6], format: NA &quot;2024-01-18 12:49:42&quot; ...</span></span>
+<span id="cb8-71"><a href="#cb8-71" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime____1____follow2    : POSIXct[1:6], format: NA NA ...</span></span>
+<span id="cb8-72"><a href="#cb8-72" tabindex="-1"></a><span class="co">#&gt;  $ event_age____1____follow1         : num [1:6] NA NA NA 96 127 NA</span></span>
+<span id="cb8-73"><a href="#cb8-73" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Age at event&quot;</span></span>
+<span id="cb8-74"><a href="#cb8-74" tabindex="-1"></a><span class="co">#&gt;  $ event_age____1____follow2         : num [1:6] NA NA NA 118 NA NA</span></span>
+<span id="cb8-75"><a href="#cb8-75" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Age at event&quot;</span></span>
+<span id="cb8-76"><a href="#cb8-76" tabindex="-1"></a><span class="co">#&gt;  $ event_type____1____follow1        : &#39;labelled&#39; chr [1:6] NA &quot;TIA&quot; &quot;AIS&quot; &quot;TIA&quot; ...</span></span>
+<span id="cb8-77"><a href="#cb8-77" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Neurovascular event&quot;</span></span>
+<span id="cb8-78"><a href="#cb8-78" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:5] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
+<span id="cb8-79"><a href="#cb8-79" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;TIA&quot; &quot;AIS&quot; &quot;ICH&quot; &quot;SAH&quot; ...</span></span>
+<span id="cb8-80"><a href="#cb8-80" tabindex="-1"></a><span class="co">#&gt;  $ event_type____1____follow2        : &#39;labelled&#39; chr [1:6] NA NA &quot;ICH&quot; &quot;AIS&quot; ...</span></span>
+<span id="cb8-81"><a href="#cb8-81" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Neurovascular event&quot;</span></span>
+<span id="cb8-82"><a href="#cb8-82" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:5] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
+<span id="cb8-83"><a href="#cb8-83" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;TIA&quot; &quot;AIS&quot; &quot;ICH&quot; &quot;SAH&quot; ...</span></span>
+<span id="cb8-84"><a href="#cb8-84" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete____1____follow1: chr [1:6] NA &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span>
+<span id="cb8-85"><a href="#cb8-85" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete____1____follow2: chr [1:6] NA NA &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span>
+<span id="cb8-86"><a href="#cb8-86" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime____2____follow1    : POSIXct[1:6], format: NA NA ...</span></span>
+<span id="cb8-87"><a href="#cb8-87" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime____2____follow2    : POSIXct[1:6], format: NA NA ...</span></span>
+<span id="cb8-88"><a href="#cb8-88" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime____3____follow1    : POSIXct[1:6], format: NA NA ...</span></span>
+<span id="cb8-89"><a href="#cb8-89" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime____3____follow2    : POSIXct[1:6], format: NA NA ...</span></span>
+<span id="cb8-90"><a href="#cb8-90" tabindex="-1"></a><span class="co">#&gt;  $ event_age____2____follow1         : num [1:6] NA NA NA 105 127 NA</span></span>
+<span id="cb8-91"><a href="#cb8-91" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Age at event&quot;</span></span>
+<span id="cb8-92"><a href="#cb8-92" tabindex="-1"></a><span class="co">#&gt;  $ event_age____2____follow2         : num [1:6] NA NA NA 118 NA NA</span></span>
+<span id="cb8-93"><a href="#cb8-93" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Age at event&quot;</span></span>
+<span id="cb8-94"><a href="#cb8-94" tabindex="-1"></a><span class="co">#&gt;  $ event_age____3____follow1         : num [1:6] NA NA NA NA NA NA</span></span>
+<span id="cb8-95"><a href="#cb8-95" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Age at event&quot;</span></span>
+<span id="cb8-96"><a href="#cb8-96" tabindex="-1"></a><span class="co">#&gt;  $ event_age____3____follow2         : num [1:6] NA NA NA 118 NA NA</span></span>
+<span id="cb8-97"><a href="#cb8-97" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Age at event&quot;</span></span>
+<span id="cb8-98"><a href="#cb8-98" tabindex="-1"></a><span class="co">#&gt;  $ event_type____2____follow1        : &#39;labelled&#39; chr [1:6] NA NA &quot;ICH&quot; &quot;TIA&quot; ...</span></span>
+<span id="cb8-99"><a href="#cb8-99" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Neurovascular event&quot;</span></span>
+<span id="cb8-100"><a href="#cb8-100" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:5] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
+<span id="cb8-101"><a href="#cb8-101" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;TIA&quot; &quot;AIS&quot; &quot;ICH&quot; &quot;SAH&quot; ...</span></span>
+<span id="cb8-102"><a href="#cb8-102" tabindex="-1"></a><span class="co">#&gt;  $ event_type____2____follow2        : &#39;labelled&#39; chr [1:6] NA NA &quot;TIA&quot; &quot;ICH&quot; ...</span></span>
+<span id="cb8-103"><a href="#cb8-103" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Neurovascular event&quot;</span></span>
+<span id="cb8-104"><a href="#cb8-104" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:5] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
+<span id="cb8-105"><a href="#cb8-105" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;TIA&quot; &quot;AIS&quot; &quot;ICH&quot; &quot;SAH&quot; ...</span></span>
+<span id="cb8-106"><a href="#cb8-106" tabindex="-1"></a><span class="co">#&gt;  $ event_type____3____follow1        : &#39;labelled&#39; chr [1:6] NA NA NA NA ...</span></span>
+<span id="cb8-107"><a href="#cb8-107" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Neurovascular event&quot;</span></span>
+<span id="cb8-108"><a href="#cb8-108" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:5] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
+<span id="cb8-109"><a href="#cb8-109" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;TIA&quot; &quot;AIS&quot; &quot;ICH&quot; &quot;SAH&quot; ...</span></span>
+<span id="cb8-110"><a href="#cb8-110" tabindex="-1"></a><span class="co">#&gt;  $ event_type____3____follow2        : &#39;labelled&#39; chr [1:6] NA NA &quot;AIS&quot; &quot;Unknown&quot; ...</span></span>
+<span id="cb8-111"><a href="#cb8-111" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;label&quot;)= chr &quot;Neurovascular event&quot;</span></span>
+<span id="cb8-112"><a href="#cb8-112" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;labels&quot;)= Named chr [1:5] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...</span></span>
+<span id="cb8-113"><a href="#cb8-113" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;TIA&quot; &quot;AIS&quot; &quot;ICH&quot; &quot;SAH&quot; ...</span></span>
+<span id="cb8-114"><a href="#cb8-114" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete____2____follow1: chr [1:6] NA NA &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span>
+<span id="cb8-115"><a href="#cb8-115" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete____2____follow2: chr [1:6] NA NA &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
+<span id="cb8-116"><a href="#cb8-116" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete____3____follow1: chr [1:6] NA NA NA NA ...</span></span>
+<span id="cb8-117"><a href="#cb8-117" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete____3____follow2: chr [1:6] NA NA &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span></code></pre></div>
+<p>Transfer suffixes to labels:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>wide_data_suffixes <span class="ot">&lt;-</span> wide_data <span class="sc">|&gt;</span> <span class="fu">suffix2label</span>()</span></code></pre></div>
 </div>
-<div id="reading-data-from-redcap" class="section level2">
-<h2>Reading data from REDCap</h2>
-<p>This function wraps all the above demonstrated function to get the
-dataset, the metadata, apply the <code>REDCap_split</code>function and
-then a bit of cleaning. It just cuts outs all the steps for an easier
-approach.</p>
-<p>The function works very similar to the
-<code>REDCapR::redcap_read()</code> in allowing to specify fields,
-events and forms for export instead of exporting the whole database and
-filtering afterwards. I believe this is a better and safer, focused
-approach.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># read_redcap_tables(uri = &quot;YOUR URI&quot;, token = &quot;YOUR TOKEN&quot;)</span></span></code></pre></div>
+<div id="creating-a-nice-table" class="section level2">
+<h2>Creating a nice table</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>wide_data_suffixes <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(sex, hypertension, diabetes,mrs_score____follow2) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  gtsummary<span class="sc">::</span><span class="fu">tbl_summary</span>()</span></code></pre></div>
+<div id="doxuzsmvoo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#doxuzsmvoo table {
+font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+#doxuzsmvoo thead, #doxuzsmvoo tbody, #doxuzsmvoo tfoot, #doxuzsmvoo tr, #doxuzsmvoo td, #doxuzsmvoo th {
+border-style: none;
+}
+#doxuzsmvoo p {
+margin: 0;
+padding: 0;
+}
+#doxuzsmvoo .gt_table {
+display: table;
+border-collapse: collapse;
+line-height: normal;
+margin-left: auto;
+margin-right: auto;
+color: #333333;
+font-size: 16px;
+font-weight: normal;
+font-style: normal;
+background-color: #FFFFFF;
+width: auto;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #A8A8A8;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #A8A8A8;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+}
+#doxuzsmvoo .gt_caption {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+#doxuzsmvoo .gt_title {
+color: #333333;
+font-size: 125%;
+font-weight: initial;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-color: #FFFFFF;
+border-bottom-width: 0;
+}
+#doxuzsmvoo .gt_subtitle {
+color: #333333;
+font-size: 85%;
+font-weight: initial;
+padding-top: 3px;
+padding-bottom: 5px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-color: #FFFFFF;
+border-top-width: 0;
+}
+#doxuzsmvoo .gt_heading {
+background-color: #FFFFFF;
+text-align: center;
+border-bottom-color: #FFFFFF;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#doxuzsmvoo .gt_bottom_border {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#doxuzsmvoo .gt_col_headings {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+}
+#doxuzsmvoo .gt_col_heading {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 6px;
+padding-left: 5px;
+padding-right: 5px;
+overflow-x: hidden;
+}
+#doxuzsmvoo .gt_column_spanner_outer {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: normal;
+text-transform: inherit;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 4px;
+padding-right: 4px;
+}
+#doxuzsmvoo .gt_column_spanner_outer:first-child {
+padding-left: 0;
+}
+#doxuzsmvoo .gt_column_spanner_outer:last-child {
+padding-right: 0;
+}
+#doxuzsmvoo .gt_column_spanner {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: bottom;
+padding-top: 5px;
+padding-bottom: 5px;
+overflow-x: hidden;
+display: inline-block;
+width: 100%;
+}
+#doxuzsmvoo .gt_spanner_row {
+border-bottom-style: hidden;
+}
+#doxuzsmvoo .gt_group_heading {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+text-align: left;
+}
+#doxuzsmvoo .gt_empty_group_heading {
+padding: 0.5px;
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+vertical-align: middle;
+}
+#doxuzsmvoo .gt_from_md > :first-child {
+margin-top: 0;
+}
+#doxuzsmvoo .gt_from_md > :last-child {
+margin-bottom: 0;
+}
+#doxuzsmvoo .gt_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+margin: 10px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 1px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 1px;
+border-right-color: #D3D3D3;
+vertical-align: middle;
+overflow-x: hidden;
+}
+#doxuzsmvoo .gt_stub {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+}
+#doxuzsmvoo .gt_stub_row_group {
+color: #333333;
+background-color: #FFFFFF;
+font-size: 100%;
+font-weight: initial;
+text-transform: inherit;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: top;
+}
+#doxuzsmvoo .gt_row_group_first td {
+border-top-width: 2px;
+}
+#doxuzsmvoo .gt_row_group_first th {
+border-top-width: 2px;
+}
+#doxuzsmvoo .gt_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#doxuzsmvoo .gt_first_summary_row {
+border-top-style: solid;
+border-top-color: #D3D3D3;
+}
+#doxuzsmvoo .gt_first_summary_row.thick {
+border-top-width: 2px;
+}
+#doxuzsmvoo .gt_last_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#doxuzsmvoo .gt_grand_summary_row {
+color: #333333;
+background-color: #FFFFFF;
+text-transform: inherit;
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#doxuzsmvoo .gt_first_grand_summary_row {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-top-style: double;
+border-top-width: 6px;
+border-top-color: #D3D3D3;
+}
+#doxuzsmvoo .gt_last_grand_summary_row_top {
+padding-top: 8px;
+padding-bottom: 8px;
+padding-left: 5px;
+padding-right: 5px;
+border-bottom-style: double;
+border-bottom-width: 6px;
+border-bottom-color: #D3D3D3;
+}
+#doxuzsmvoo .gt_striped {
+background-color: rgba(128, 128, 128, 0.05);
+}
+#doxuzsmvoo .gt_table_body {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #D3D3D3;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+}
+#doxuzsmvoo .gt_footnotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#doxuzsmvoo .gt_footnote {
+margin: 0px;
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#doxuzsmvoo .gt_sourcenotes {
+color: #333333;
+background-color: #FFFFFF;
+border-bottom-style: none;
+border-bottom-width: 2px;
+border-bottom-color: #D3D3D3;
+border-left-style: none;
+border-left-width: 2px;
+border-left-color: #D3D3D3;
+border-right-style: none;
+border-right-width: 2px;
+border-right-color: #D3D3D3;
+}
+#doxuzsmvoo .gt_sourcenote {
+font-size: 90%;
+padding-top: 4px;
+padding-bottom: 4px;
+padding-left: 5px;
+padding-right: 5px;
+}
+#doxuzsmvoo .gt_left {
+text-align: left;
+}
+#doxuzsmvoo .gt_center {
+text-align: center;
+}
+#doxuzsmvoo .gt_right {
+text-align: right;
+font-variant-numeric: tabular-nums;
+}
+#doxuzsmvoo .gt_font_normal {
+font-weight: normal;
+}
+#doxuzsmvoo .gt_font_bold {
+font-weight: bold;
+}
+#doxuzsmvoo .gt_font_italic {
+font-style: italic;
+}
+#doxuzsmvoo .gt_super {
+font-size: 65%;
+}
+#doxuzsmvoo .gt_footnote_marks {
+font-size: 75%;
+vertical-align: 0.4em;
+position: initial;
+}
+#doxuzsmvoo .gt_asterisk {
+font-size: 100%;
+vertical-align: 0;
+}
+#doxuzsmvoo .gt_indent_1 {
+text-indent: 5px;
+}
+#doxuzsmvoo .gt_indent_2 {
+text-indent: 10px;
+}
+#doxuzsmvoo .gt_indent_3 {
+text-indent: 15px;
+}
+#doxuzsmvoo .gt_indent_4 {
+text-indent: 20px;
+}
+#doxuzsmvoo .gt_indent_5 {
+text-indent: 25px;
+}
+#doxuzsmvoo .katex-display {
+display: inline-flex !important;
+margin-bottom: 0.75em !important;
+}
+#doxuzsmvoo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="label"><span class="gt_from_md"><strong>Characteristic</strong></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="stat_0"><span class="gt_from_md"><strong>N = 6</strong></span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="label" class="gt_row gt_left">Legal sex</td>
+<td headers="stat_0" class="gt_row gt_center"><br /></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    female</td>
+<td headers="stat_0" class="gt_row gt_center">3 (50%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    male</td>
+<td headers="stat_0" class="gt_row gt_center">3 (50%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">Hypertension</td>
+<td headers="stat_0" class="gt_row gt_center"><br /></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    No</td>
+<td headers="stat_0" class="gt_row gt_center">2 (40%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Yes</td>
+<td headers="stat_0" class="gt_row gt_center">3 (60%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Unknown</td>
+<td headers="stat_0" class="gt_row gt_center">1</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">Diabetes</td>
+<td headers="stat_0" class="gt_row gt_center"><br /></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    No</td>
+<td headers="stat_0" class="gt_row gt_center">2 (40%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Yes</td>
+<td headers="stat_0" class="gt_row gt_center">3 (60%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Unknown</td>
+<td headers="stat_0" class="gt_row gt_center">1</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">mRS score (follow2)</td>
+<td headers="stat_0" class="gt_row gt_center"><br /></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    1</td>
+<td headers="stat_0" class="gt_row gt_center">1 (100%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Unknown</td>
+<td headers="stat_0" class="gt_row gt_center">5</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="2"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> <span class="gt_from_md">n (%)</span></td>
+    </tr>
+  </tfoot>
+</table>
 </div>
-<div id="pivotting-to-wider-format" class="section level2">
-<h2>Pivotting to wider format</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">redcap_wider</span>(list) <span class="sc">|&gt;</span> <span class="fu">str</span>()</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co">#&gt; Joining with `by = join_by(record_id)`</span></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co">#&gt; Joining with `by = join_by(record_id)`</span></span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#&gt; Joining with `by = join_by(record_id)`</span></span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    6 obs. of  52 variables:</span></span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co">#&gt;  $ record_id                   : num  1 2 3 4 5 6</span></span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co">#&gt;  $ cpr                         : chr  &quot;1203401OB4&quot; &quot;0102342303&quot; &quot;2301569823&quot; &quot;0204051342&quot; ...</span></span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co">#&gt;  $ inclusion                   : Date, format: &quot;2023-03-13&quot; &quot;2023-03-01&quot; ...</span></span>
-<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co">#&gt;  $ inclusion_time              : &#39;hms&#39; num  12:38:49 10:38:57 12:01:07 20:39:19 ...</span></span>
-<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;units&quot;)= chr &quot;secs&quot;</span></span>
-<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co">#&gt;  $ dob                         : Date, format: &quot;1940-03-12&quot; &quot;1934-02-01&quot; ...</span></span>
-<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co">#&gt;  $ age                         : num  83 89.1 66.1 117.9 126.2 ...</span></span>
-<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co">#&gt;  $ age_integer                 : num  83 89 66 117 126 91</span></span>
-<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co">#&gt;  $ sex                         : chr  &quot;female&quot; &quot;male&quot; &quot;male&quot; &quot;female&quot; ...</span></span>
-<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co">#&gt;  $ cohabitation                : chr  &quot;Yes&quot; &quot;Yes&quot; &quot;No&quot; NA ...</span></span>
-<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="co">#&gt;  $ hypertension                : chr  &quot;No&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
-<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="co">#&gt;  $ diabetes                    : chr  &quot;Yes&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
-<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="co">#&gt;  $ region                      : chr  &quot;East&quot; &quot;South&quot; &quot;North&quot; NA ...</span></span>
-<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="co">#&gt;  $ baseline_data_start_complete: chr  &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
-<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a><span class="co">#&gt;  $ mrs_assessed_inclusion      : chr  &quot;Yes&quot; &quot;Yes&quot; NA NA ...</span></span>
-<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="co">#&gt;  $ mrs_assessed_follow1        : chr  NA &quot;Yes&quot; &quot;Yes&quot; NA ...</span></span>
-<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="co">#&gt;  $ mrs_assessed_follow2        : chr  NA NA &quot;Yes&quot; NA ...</span></span>
-<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="co">#&gt;  $ mrs_date_inclusion          : Date, format: &quot;2023-03-13&quot; &quot;2023-03-07&quot; ...</span></span>
-<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a><span class="co">#&gt;  $ mrs_date_follow1            : Date, format: NA &quot;2023-03-09&quot; ...</span></span>
-<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a><span class="co">#&gt;  $ mrs_date_follow2            : Date, format: NA NA ...</span></span>
-<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a><span class="co">#&gt;  $ mrs_score_inclusion         : num  1 1 NA NA NA NA</span></span>
-<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a><span class="co">#&gt;  $ mrs_score_follow1           : num  NA 3 2 NA NA NA</span></span>
-<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a><span class="co">#&gt;  $ mrs_score_follow2           : num  NA NA 1 NA NA NA</span></span>
-<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a><span class="co">#&gt;  $ mrs_complete_inclusion      : chr  &quot;Incomplete&quot; &quot;Incomplete&quot; NA NA ...</span></span>
-<span id="cb6-30"><a href="#cb6-30" tabindex="-1"></a><span class="co">#&gt;  $ mrs_complete_follow1        : chr  NA &quot;Incomplete&quot; &quot;Incomplete&quot; NA ...</span></span>
-<span id="cb6-31"><a href="#cb6-31" tabindex="-1"></a><span class="co">#&gt;  $ mrs_complete_follow2        : chr  NA NA &quot;Incomplete&quot; NA ...</span></span>
-<span id="cb6-32"><a href="#cb6-32" tabindex="-1"></a><span class="co">#&gt;  $ con_mrs                     : logi  NA NA NA NA NA NA</span></span>
-<span id="cb6-33"><a href="#cb6-33" tabindex="-1"></a><span class="co">#&gt;  $ con_calc                    : logi  NA NA NA NA NA NA</span></span>
-<span id="cb6-34"><a href="#cb6-34" tabindex="-1"></a><span class="co">#&gt;  $ consensus_complete          : chr  NA NA NA NA ...</span></span>
-<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime_1_follow1    : POSIXct, format: NA &quot;2024-01-18 12:49:42&quot; ...</span></span>
-<span id="cb6-36"><a href="#cb6-36" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime_1_follow2    : POSIXct, format: NA NA ...</span></span>
-<span id="cb6-37"><a href="#cb6-37" tabindex="-1"></a><span class="co">#&gt;  $ event_age_1_follow1         : num  NA NA NA 96 127 NA</span></span>
-<span id="cb6-38"><a href="#cb6-38" tabindex="-1"></a><span class="co">#&gt;  $ event_age_1_follow2         : num  NA NA NA 118 NA NA</span></span>
-<span id="cb6-39"><a href="#cb6-39" tabindex="-1"></a><span class="co">#&gt;  $ event_type_1_follow1        : chr  NA &quot;TIA&quot; &quot;AIS&quot; &quot;TIA&quot; ...</span></span>
-<span id="cb6-40"><a href="#cb6-40" tabindex="-1"></a><span class="co">#&gt;  $ event_type_1_follow2        : chr  NA NA &quot;ICH&quot; &quot;AIS&quot; ...</span></span>
-<span id="cb6-41"><a href="#cb6-41" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete_1_follow1: chr  NA &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span>
-<span id="cb6-42"><a href="#cb6-42" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete_1_follow2: chr  NA NA &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span>
-<span id="cb6-43"><a href="#cb6-43" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime_2_follow1    : POSIXct, format: NA NA ...</span></span>
-<span id="cb6-44"><a href="#cb6-44" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime_2_follow2    : POSIXct, format: NA NA ...</span></span>
-<span id="cb6-45"><a href="#cb6-45" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime_3_follow1    : POSIXct, format: NA NA ...</span></span>
-<span id="cb6-46"><a href="#cb6-46" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime_3_follow2    : POSIXct, format: NA NA ...</span></span>
-<span id="cb6-47"><a href="#cb6-47" tabindex="-1"></a><span class="co">#&gt;  $ event_age_2_follow1         : num  NA NA NA 105 127 NA</span></span>
-<span id="cb6-48"><a href="#cb6-48" tabindex="-1"></a><span class="co">#&gt;  $ event_age_2_follow2         : num  NA NA NA 118 NA NA</span></span>
-<span id="cb6-49"><a href="#cb6-49" tabindex="-1"></a><span class="co">#&gt;  $ event_age_3_follow1         : num  NA NA NA NA NA NA</span></span>
-<span id="cb6-50"><a href="#cb6-50" tabindex="-1"></a><span class="co">#&gt;  $ event_age_3_follow2         : num  NA NA NA 118 NA NA</span></span>
-<span id="cb6-51"><a href="#cb6-51" tabindex="-1"></a><span class="co">#&gt;  $ event_type_2_follow1        : chr  NA NA &quot;ICH&quot; &quot;TIA&quot; ...</span></span>
-<span id="cb6-52"><a href="#cb6-52" tabindex="-1"></a><span class="co">#&gt;  $ event_type_2_follow2        : chr  NA NA &quot;TIA&quot; &quot;ICH&quot; ...</span></span>
-<span id="cb6-53"><a href="#cb6-53" tabindex="-1"></a><span class="co">#&gt;  $ event_type_3_follow1        : chr  NA NA NA NA ...</span></span>
-<span id="cb6-54"><a href="#cb6-54" tabindex="-1"></a><span class="co">#&gt;  $ event_type_3_follow2        : chr  NA NA &quot;AIS&quot; &quot;Unknown&quot; ...</span></span>
-<span id="cb6-55"><a href="#cb6-55" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete_2_follow1: chr  NA NA &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span>
-<span id="cb6-56"><a href="#cb6-56" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete_2_follow2: chr  NA NA &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
-<span id="cb6-57"><a href="#cb6-57" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete_3_follow1: chr  NA NA NA NA ...</span></span>
-<span id="cb6-58"><a href="#cb6-58" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete_3_follow2: chr  NA NA &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span></code></pre></div>
 </div>
 
 

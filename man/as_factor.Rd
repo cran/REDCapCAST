@@ -8,6 +8,7 @@
 \alias{as_factor.character}
 \alias{as_factor.haven_labelled}
 \alias{as_factor.labelled}
+\alias{as_factor.data.frame}
 \title{Convert labelled vectors to factors while preserving attributes}
 \usage{
 as_factor(x, ...)
@@ -33,6 +34,8 @@ as_factor(x, ...)
   ordered = FALSE,
   ...
 )
+
+\method{as_factor}{data.frame}(x, ..., only_labelled = TRUE)
 }
 \arguments{
 \item{x}{Object to coerce to a factor.}
@@ -49,9 +52,11 @@ as_factor(x, ...)
 
 \item{ordered}{If `TRUE` create an ordered (ordinal) factor, if
 `FALSE` (the default) create a regular (nominal) factor.}
+
+\item{only_labelled}{Only apply to labelled columns?}
 }
 \description{
-This extends [forcats::as_factor()] as well as [haven::as_factor()], by appending
+This extends \link[forcats]{as_factor} as well as \link[haven]{as_factor}, by appending
 original attributes except for "class" after converting to factor to avoid
 ta loss in case of rich formatted and labelled data.
 }
@@ -65,7 +70,8 @@ c(1, 4, 3, "A", 7, 8, 1) |> as_factor()
 structure(c(1, 2, 3, 2, 10, 9),
   labels = c(Unknown = 9, Refused = 10)
 ) |>
-  as_factor() |> dput()
+  as_factor() |>
+  dput()
 
 structure(c(1, 2, 3, 2, 10, 9),
   labels = c(Unknown = 9, Refused = 10),

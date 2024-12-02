@@ -7,13 +7,13 @@ knitr::opts_chunk$set(
 ## ----setup--------------------------------------------------------------------
 library(REDCapCAST)
 
-## ----eval=TRUE----------------------------------------------------------------
-d1 <- mtcars |>
-  dplyr::mutate(record_id = seq_len(dplyr::n())) |>
-  ds2dd() 
-
-d1 |>
-  gt::gt()
+## ----eval=FALSE---------------------------------------------------------------
+# d1 <- mtcars |>
+#   dplyr::mutate(record_id = seq_len(dplyr::n())) |>
+#   ds2dd()
+# 
+# d1 |>
+#   gt::gt()
 
 ## ----eval=FALSE---------------------------------------------------------------
 # d2 <- REDCapCAST::redcapcast_data |>

@@ -1,0 +1,87 @@
+---
+title: "Shiny-app"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Shiny-app}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+To make the easiest possible transition from spreadsheet/dataset to REDCap, I have created a small app, which adds a graphical interface to the casting of a data dictionary and data upload. Install the package and launch the app as follows:
+
+```{r eval=FALSE}
+REDCapCAST::shiny_cast()
+```
+
+The app primarily wraps one function: `ds2dd_detailed()`.
+
+```{r}
+library(REDCapCAST)
+ds <- REDCap_split(
+    records = redcapcast_data,
+    metadata = redcapcast_meta,
+    forms = "all"
+  ) |> 
+  sanitize_split() |>
+  redcap_wider() 
+str(ds)
+```
+
+```{r}
+ds|> 
+  ds2dd_detailed(metadata = names(REDCapCAST::redcapcast_meta))|>  
+  purrr::pluck("data") |> 
+  str()
+```
+
+```{r}
+ds|> 
+  ds2dd_detailed(metadata = names(REDCapCAST::redcapcast_meta))|>  
+  purrr::pluck("meta") |> 
+  head(10)
+```
+
+Different data formats are accepted, which all mostly implements the `readr::col_guess()` functionality to parse column classes.
+
+To ensure uniformity in data import this parsing has been implemented on its own to use with `ds2dd_detailed()` or any other data set for that matter:
+
+```{r}
+ds_parsed <- redcapcast_data |> 
+  dplyr::mutate(dplyr::across(dplyr::everything(),as.character)) |> 
+  parse_data()
+str(ds_parsed)
+```
+
+It will ignore specified columns, which is neat for numeric-looking strings like cpr-with a leading 0:
+
+```{r}
+redcapcast_data |> 
+  dplyr::mutate(dplyr::across(dplyr::everything(),as.character)) |> 
+  parse_data(ignore.vars = c("record_id","cpr")) |> 
+  str()
+```
+
+
+Column classes can be passed to `parse_data()`.
+
+Making a few crude assumption for factorising data, `numchar2fct()` factorises numerical and character vectors based on a set threshold for unique values:
+
+```{r}
+mtcars |> str()
+mtcars |>
+  numchar2fct(numeric.threshold = 6) |>
+  str()
+```
+
+```{r}
+ds_parsed|>
+  numchar2fct(numeric.threshold = 2) |>
+  str()
+```

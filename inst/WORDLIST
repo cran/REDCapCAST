@@ -5,7 +5,6 @@ Codecov
 DEPRICATED
 DOI
 DataDictionary
-GStat
 Gammelgaard
 Github
 GithubActions
@@ -15,8 +14,6 @@ METACRAN
 Nav
 ORCID
 POSIXct
-Pivotting
-README
 REDCap
 REDCapR
 REDCapRITS
@@ -41,6 +38,8 @@ dmy
 docx
 doi
 dplyr
+dropdown
+droplevels
 ds
 dta
 et
@@ -49,6 +48,7 @@ factorising
 fct
 forcats
 github
+gtsummary
 gues
 hms
 https
@@ -59,7 +59,6 @@ labelled
 labelling
 mRS
 matadata
-md
 mdy
 mis
 mrs
@@ -77,6 +76,7 @@ rds
 readr
 realising
 redcapAPI
+redcapcast
 renv
 runApp
 sel
