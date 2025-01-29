@@ -54,7 +54,8 @@ wide_data |> str()
 wide_data_suffixes <- wide_data |> suffix2label()
 
 ## -----------------------------------------------------------------------------
-wide_data_suffixes |>
+wide_data_suffixes |> 
+  as_factor()|>
   dplyr::select(sex, hypertension, diabetes,mrs_score____follow2) |>
-  gtsummary::tbl_summary()
+  gtsummary::tbl_summary(type = gtsummary::all_dichotomous() ~ "categorical")
 

@@ -17,3 +17,6 @@ Stepwise removal on non-alphanumeric characters, trailing white space,
 substitutes spaces for underscores and converts to lower case.
 Trying to make up for different naming conventions.
 }
+\examples{
+"Research!, ne:ws? and c;l-.ls" |> clean_redcap_name()
+}

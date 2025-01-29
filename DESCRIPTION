@@ -1,6 +1,6 @@
 Package: REDCapCAST
 Title: REDCap Metadata Casting and Castellated Data Handling
-Version: 24.12.1
+Version: 25.1.1
 Authors@R: c(
     person("Andreas Gammelgaard", "Damsbo", email = "agdamsbo@clin.au.dk", 
     role = c("aut", "cre"),comment = c(ORCID = "0000-0002-7559-1154")), 
@@ -21,9 +21,9 @@ Description: Casting metadata for REDCap database creation and handling of
     4) procedures for data integration and interoperability with external 
     sources (Harris et al (2009) <doi:10.1016/j.jbi.2008.08.010>; 
     Harris et al (2019) <doi:10.1016/j.jbi.2019.103208>).
-Depends: R (>= 3.4.0)
+Depends: R (>= 4.1.0)
 Suggests: httr, jsonlite, testthat, Hmisc, knitr, rmarkdown, styler,
-        devtools, roxygen2, spelling, rhub, rsconnect
+        devtools, roxygen2, spelling, rhub, rsconnect, pkgconfig
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
@@ -32,21 +32,21 @@ URL: https://github.com/agdamsbo/REDCapCAST,
         https://agdamsbo.github.io/REDCapCAST/
 BugReports: https://github.com/agdamsbo/REDCapCAST/issues
 Imports: dplyr, REDCapR, tidyr, tidyselect, keyring, purrr, readr,
-        stats, shiny, haven, zip, assertthat, openxlsx2, readODS,
-        forcats, vctrs, gt, bslib, here, glue, gtsummary
+        stats, zip, assertthat, forcats, vctrs, gt, bslib, here, glue,
+        gtsummary, shiny, haven, openxlsx2, readODS
+Language: en-US
+VignetteBuilder: knitr
 Collate: 'REDCapCAST-package.R' 'utils.r' 'process_user_input.r'
         'REDCap_split.r' 'as_factor.R' 'doc2dd.R' 'ds2dd_detailed.R'
         'easy_redcap.R' 'export_redcap_instrument.R' 'fct_drop.R'
         'html_styling.R' 'mtcars_redcap.R' 'read_redcap_instrument.R'
         'read_redcap_tables.R' 'redcap_wider.R' 'redcapcast_data.R'
         'redcapcast_meta.R' 'shiny_cast.R'
-Language: en-US
-VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2024-12-02 11:39:21 UTC; au301842
+Packaged: 2025-01-29 13:20:03 UTC; au301842
 Author: Andreas Gammelgaard Damsbo [aut, cre]
     (<https://orcid.org/0000-0002-7559-1154>),
   Paul Egeler [aut] (<https://orcid.org/0000-0001-6948-9498>)
 Maintainer: Andreas Gammelgaard Damsbo <agdamsbo@clin.au.dk>
 Repository: CRAN
-Date/Publication: 2024-12-02 11:50:11 UTC
+Date/Publication: 2025-01-29 20:10:02 UTC
