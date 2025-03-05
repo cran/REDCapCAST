@@ -1,6 +1,6 @@
 Package: REDCapCAST
 Title: REDCap Metadata Casting and Castellated Data Handling
-Version: 25.1.1
+Version: 25.3.1
 Authors@R: c(
     person("Andreas Gammelgaard", "Damsbo", email = "agdamsbo@clin.au.dk", 
     role = c("aut", "cre"),comment = c(ORCID = "0000-0002-7559-1154")), 
@@ -37,16 +37,17 @@ Imports: dplyr, REDCapR, tidyr, tidyselect, keyring, purrr, readr,
 Language: en-US
 VignetteBuilder: knitr
 Collate: 'REDCapCAST-package.R' 'utils.r' 'process_user_input.r'
-        'REDCap_split.r' 'as_factor.R' 'doc2dd.R' 'ds2dd_detailed.R'
-        'easy_redcap.R' 'export_redcap_instrument.R' 'fct_drop.R'
-        'html_styling.R' 'mtcars_redcap.R' 'read_redcap_instrument.R'
-        'read_redcap_tables.R' 'redcap_wider.R' 'redcapcast_data.R'
-        'redcapcast_meta.R' 'shiny_cast.R'
+        'REDCap_split.r' 'as_factor.R' 'as_logical.R' 'doc2dd.R'
+        'ds2dd_detailed.R' 'easy_redcap.R' 'export_redcap_instrument.R'
+        'fct_drop.R' 'html_styling.R' 'mtcars_redcap.R'
+        'read_redcap_instrument.R' 'read_redcap_tables.R'
+        'redcap_wider.R' 'redcapcast_data.R' 'redcapcast_meta.R'
+        'shiny_cast.R'
 NeedsCompilation: no
-Packaged: 2025-01-29 13:20:03 UTC; au301842
+Packaged: 2025-03-05 13:51:18 UTC; au301842
 Author: Andreas Gammelgaard Damsbo [aut, cre]
     (<https://orcid.org/0000-0002-7559-1154>),
   Paul Egeler [aut] (<https://orcid.org/0000-0001-6948-9498>)
 Maintainer: Andreas Gammelgaard Damsbo <agdamsbo@clin.au.dk>
 Repository: CRAN
-Date/Publication: 2025-01-29 20:10:02 UTC
+Date/Publication: 2025-03-05 14:10:02 UTC
