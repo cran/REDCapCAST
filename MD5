@@ -1,6 +1,6 @@
-ece5f70cb76139735428b70645c2210b *DESCRIPTION
+a9bde4a400262ca0a9d38db7a43756e7 *DESCRIPTION
 b8f196603149cecba142ad7c16d3dc41 *NAMESPACE
-80ead25cf0228940053ca92cb171ee03 *NEWS.md
+ef888bafa6798fea80b840db1ae6ee0d *NEWS.md
 41642ce3196d678b429c00c2218aeddb *R/REDCapCAST-package.R
 5d473797b9d93d84e7bae5b52b394bd3 *R/REDCap_split.r
 55f6fd3930da64e9b34b64716e00aee5 *R/as_factor.R
@@ -15,7 +15,7 @@ b00a966e3d4261618ca27559e6aa88d8 *R/mtcars_redcap.R
 b304078e200329aa56865019f718ca59 *R/process_user_input.r
 8fcc4fc2d8a6b99931a635b3a6147136 *R/read_redcap_instrument.R
 ecf73291c75e2d085282ba87c4495c30 *R/read_redcap_tables.R
-1d5059eb033aae5ef63bcf9d506acd96 *R/redcap_wider.R
+dea7567039eb606b8eaae8fbbf220e97 *R/redcap_wider.R
 614f52512bf18da38a2b4c894f26fc06 *R/redcapcast_data.R
 4274eecd86f5e6d13770d8992f17badd *R/redcapcast_meta.R
 5f272c7d93c4844b4138edacbcc5d52b *R/shiny_cast.R
@@ -35,7 +35,7 @@ be74996248101cb9d0fe3805c77a7f00 *inst/doc/Database-creation.Rmd
 ae36fc72c69277c5773907e834d3211c *inst/doc/Database-creation.html
 d3976420e64be77f71acf20bbbdcb7f8 *inst/doc/REDCapCAST.R
 93e3443ccb53966efe4fbfb8fe7f787e *inst/doc/REDCapCAST.Rmd
-6a6cd1fbfe09d8dd3dbbc15e691515df *inst/doc/REDCapCAST.html
+ab920a7c65f3b152c3419b8605c8de91 *inst/doc/REDCapCAST.html
 05aeada17703ab0036c677e47db2828b *inst/doc/Shiny-app.R
 abd0275b68c6e5d713455414a4bb42c6 *inst/doc/Shiny-app.Rmd
 365120dba784e6e64f895aca73b00e02 *inst/doc/Shiny-app.html
@@ -102,7 +102,7 @@ e4cd1106ca93211af1495e09f437fb99 *man/process_user_input.response.Rd
 7eb6bd0fddb0d7607266d9bc50149b58 *man/read_input.Rd
 a74dd9ea438f95a8ac4a2038973d3ee9 *man/read_redcap_instrument.Rd
 64a8f9bb70f37b8a574b93245a27c387 *man/read_redcap_tables.Rd
-010942a2a4a9074e6ff24c5227e54c16 *man/redcap_wider.Rd
+e53d2ab49d8388f4204662659138ce71 *man/redcap_wider.Rd
 b44d1b518f61b9c6cd4b5cb86e9df0ca *man/redcapcast_data.Rd
 5a8c7a490916827b9d167705a3948fab *man/redcapcast_meta.Rd
 1f83337c8931316270d03a8c927d65ad *man/replace_curly_quote.Rd
