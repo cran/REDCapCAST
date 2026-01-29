@@ -1,3 +1,21 @@
+# REDCapCAST 26.1.1
+
+25.11.1 was never pushed to CRAN, so this fills in for that.
+
+* FIX: spelling
+
+* FIX: Suggested dependencies were trimmed including {styler}.
+
+* FIX: export_redcap_instrument was updated to include default file name for the instrument zip. Ensures custom names has correct file extension.
+
+# REDCapCAST 25.11.1
+
+* FIX: logicals exported as numeric for data upload
+
+* FIX: improved name cleaning
+
+* FIX: use the more robust readr::write_csv() to export data.
+
 # REDCapCAST 25.3.2
 
 * BUG: The `redcap_wider()` function would attempt to pivot empty selection of columns from list, and failing, causing all functions relying on this to fail. Fixed by filtering out data.frames in list with no additional columns than the "generics". 

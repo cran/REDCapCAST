@@ -416,55 +416,55 @@ and launch the app as follows:</p>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">pluck</span>(<span class="st">&quot;data&quot;</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  <span class="fu">str</span>()</span>
 <span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt; tibble [6 × 49] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt;  $ record_id                         : num [1:6] 1 2 3 4 5 6</span></span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt;  $ cpr                               : chr [1:6] &quot;1203401OB4&quot; &quot;0102342303&quot; &quot;2301569823&quot; &quot;0204051342&quot; ...</span></span>
-<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt;  $ inclusion                         : Date[1:6], format: &quot;2023-03-13&quot; &quot;2023-03-01&quot; ...</span></span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt;  $ inclusion_time                    : chr [1:6] &quot;12:38:49&quot; &quot;10:38:57&quot; &quot;12:01:07&quot; &quot;20:39:19&quot; ...</span></span>
-<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt;  $ dob                               : Date[1:6], format: &quot;1940-03-12&quot; &quot;1934-02-01&quot; ...</span></span>
-<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt;  $ age                               : num [1:6] 83 89.1 66.1 117.9 126.2 ...</span></span>
-<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co">#&gt;  $ age_integer                       : num [1:6] 83 89 66 117 126 91</span></span>
-<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co">#&gt;  $ sex                               : chr [1:6] &quot;female&quot; &quot;male&quot; &quot;male&quot; &quot;female&quot; ...</span></span>
-<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="co">#&gt;  $ cohabitation                      : chr [1:6] &quot;Yes&quot; &quot;Yes&quot; &quot;No&quot; NA ...</span></span>
-<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="co">#&gt;  $ hypertension                      : chr [1:6] &quot;No&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
-<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="co">#&gt;  $ diabetes                          : chr [1:6] &quot;Yes&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
-<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="co">#&gt;  $ region                            : chr [1:6] &quot;East&quot; &quot;South&quot; &quot;North&quot; NA ...</span></span>
-<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="co">#&gt;  $ baseline_data_start_complete      : chr [1:6] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
-<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co">#&gt;  $ mrs_assessed____inclusion         : chr [1:6] &quot;Yes&quot; &quot;Yes&quot; NA NA ...</span></span>
-<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="co">#&gt;  $ mrs_assessed____follow1           : chr [1:6] NA &quot;Yes&quot; &quot;Yes&quot; NA ...</span></span>
-<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="co">#&gt;  $ mrs_assessed____follow2           : chr [1:6] NA NA &quot;Yes&quot; NA ...</span></span>
-<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a><span class="co">#&gt;  $ mrs_date____inclusion             : Date[1:6], format: &quot;2023-03-13&quot; &quot;2023-03-07&quot; ...</span></span>
-<span id="cb3-23"><a href="#cb3-23" tabindex="-1"></a><span class="co">#&gt;  $ mrs_date____follow1               : Date[1:6], format: NA &quot;2023-03-09&quot; ...</span></span>
-<span id="cb3-24"><a href="#cb3-24" tabindex="-1"></a><span class="co">#&gt;  $ mrs_date____follow2               : Date[1:6], format: NA NA ...</span></span>
-<span id="cb3-25"><a href="#cb3-25" tabindex="-1"></a><span class="co">#&gt;  $ mrs_score____inclusion            : num [1:6] 1 1 NA NA NA NA</span></span>
-<span id="cb3-26"><a href="#cb3-26" tabindex="-1"></a><span class="co">#&gt;  $ mrs_score____follow1              : num [1:6] NA 3 2 NA NA NA</span></span>
-<span id="cb3-27"><a href="#cb3-27" tabindex="-1"></a><span class="co">#&gt;  $ mrs_score____follow2              : num [1:6] NA NA 1 NA NA NA</span></span>
-<span id="cb3-28"><a href="#cb3-28" tabindex="-1"></a><span class="co">#&gt;  $ mrs_complete____inclusion         : chr [1:6] &quot;Incomplete&quot; &quot;Incomplete&quot; NA NA ...</span></span>
-<span id="cb3-29"><a href="#cb3-29" tabindex="-1"></a><span class="co">#&gt;  $ mrs_complete____follow1           : chr [1:6] NA &quot;Incomplete&quot; &quot;Incomplete&quot; NA ...</span></span>
-<span id="cb3-30"><a href="#cb3-30" tabindex="-1"></a><span class="co">#&gt;  $ mrs_complete____follow2           : chr [1:6] NA NA &quot;Incomplete&quot; NA ...</span></span>
-<span id="cb3-31"><a href="#cb3-31" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime____1____follow1    : POSIXct[1:6], format: NA &quot;2024-01-18 12:49:42&quot; ...</span></span>
-<span id="cb3-32"><a href="#cb3-32" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime____1____follow2    : POSIXct[1:6], format: NA NA ...</span></span>
-<span id="cb3-33"><a href="#cb3-33" tabindex="-1"></a><span class="co">#&gt;  $ event_age____1____follow1         : num [1:6] NA NA NA 96 127 NA</span></span>
-<span id="cb3-34"><a href="#cb3-34" tabindex="-1"></a><span class="co">#&gt;  $ event_age____1____follow2         : num [1:6] NA NA NA 118 NA NA</span></span>
-<span id="cb3-35"><a href="#cb3-35" tabindex="-1"></a><span class="co">#&gt;  $ event_type____1____follow1        : chr [1:6] NA &quot;TIA&quot; &quot;AIS&quot; &quot;TIA&quot; ...</span></span>
-<span id="cb3-36"><a href="#cb3-36" tabindex="-1"></a><span class="co">#&gt;  $ event_type____1____follow2        : chr [1:6] NA NA &quot;ICH&quot; &quot;AIS&quot; ...</span></span>
-<span id="cb3-37"><a href="#cb3-37" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete____1____follow1: chr [1:6] NA &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span>
-<span id="cb3-38"><a href="#cb3-38" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete____1____follow2: chr [1:6] NA NA &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span>
-<span id="cb3-39"><a href="#cb3-39" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime____2____follow1    : POSIXct[1:6], format: NA NA ...</span></span>
-<span id="cb3-40"><a href="#cb3-40" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime____2____follow2    : POSIXct[1:6], format: NA NA ...</span></span>
-<span id="cb3-41"><a href="#cb3-41" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime____3____follow1    : POSIXct[1:6], format: NA NA ...</span></span>
-<span id="cb3-42"><a href="#cb3-42" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime____3____follow2    : POSIXct[1:6], format: NA NA ...</span></span>
-<span id="cb3-43"><a href="#cb3-43" tabindex="-1"></a><span class="co">#&gt;  $ event_age____2____follow1         : num [1:6] NA NA NA 105 127 NA</span></span>
-<span id="cb3-44"><a href="#cb3-44" tabindex="-1"></a><span class="co">#&gt;  $ event_age____2____follow2         : num [1:6] NA NA NA 118 NA NA</span></span>
-<span id="cb3-45"><a href="#cb3-45" tabindex="-1"></a><span class="co">#&gt;  $ event_age____3____follow1         : num [1:6] NA NA NA NA NA NA</span></span>
-<span id="cb3-46"><a href="#cb3-46" tabindex="-1"></a><span class="co">#&gt;  $ event_age____3____follow2         : num [1:6] NA NA NA 118 NA NA</span></span>
-<span id="cb3-47"><a href="#cb3-47" tabindex="-1"></a><span class="co">#&gt;  $ event_type____2____follow1        : chr [1:6] NA NA &quot;ICH&quot; &quot;TIA&quot; ...</span></span>
-<span id="cb3-48"><a href="#cb3-48" tabindex="-1"></a><span class="co">#&gt;  $ event_type____2____follow2        : chr [1:6] NA NA &quot;TIA&quot; &quot;ICH&quot; ...</span></span>
-<span id="cb3-49"><a href="#cb3-49" tabindex="-1"></a><span class="co">#&gt;  $ event_type____3____follow1        : chr [1:6] NA NA NA NA ...</span></span>
-<span id="cb3-50"><a href="#cb3-50" tabindex="-1"></a><span class="co">#&gt;  $ event_type____3____follow2        : chr [1:6] NA NA &quot;AIS&quot; &quot;Unknown&quot; ...</span></span>
-<span id="cb3-51"><a href="#cb3-51" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete____2____follow1: chr [1:6] NA NA &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span>
-<span id="cb3-52"><a href="#cb3-52" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete____2____follow2: chr [1:6] NA NA &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
-<span id="cb3-53"><a href="#cb3-53" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete____3____follow1: chr [1:6] NA NA NA NA ...</span></span>
-<span id="cb3-54"><a href="#cb3-54" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete____3____follow2: chr [1:6] NA NA &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span></code></pre></div>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt;  $ record_id                     : num [1:6] 1 2 3 4 5 6</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt;  $ cpr                           : chr [1:6] &quot;1203401OB4&quot; &quot;0102342303&quot; &quot;2301569823&quot; &quot;0204051342&quot; ...</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt;  $ inclusion                     : Date[1:6], format: &quot;2023-03-13&quot; &quot;2023-03-01&quot; ...</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="co">#&gt;  $ inclusion_time                : chr [1:6] &quot;12:38:49&quot; &quot;10:38:57&quot; &quot;12:01:07&quot; &quot;20:39:19&quot; ...</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt;  $ dob                           : Date[1:6], format: &quot;1940-03-12&quot; &quot;1934-02-01&quot; ...</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt;  $ age                           : num [1:6] 83 89.1 66.1 117.9 126.2 ...</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="co">#&gt;  $ age_integer                   : num [1:6] 83 89 66 117 126 91</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="co">#&gt;  $ sex                           : chr [1:6] &quot;female&quot; &quot;male&quot; &quot;male&quot; &quot;female&quot; ...</span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="co">#&gt;  $ cohabitation                  : chr [1:6] &quot;Yes&quot; &quot;Yes&quot; &quot;No&quot; NA ...</span></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="co">#&gt;  $ hypertension                  : chr [1:6] &quot;No&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="co">#&gt;  $ diabetes                      : chr [1:6] &quot;Yes&quot; &quot;No&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="co">#&gt;  $ region                        : chr [1:6] &quot;East&quot; &quot;South&quot; &quot;North&quot; NA ...</span></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="co">#&gt;  $ baseline_data_start_complete  : chr [1:6] &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="co">#&gt;  $ mrs_assessed__inclusion       : chr [1:6] &quot;Yes&quot; &quot;Yes&quot; NA NA ...</span></span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="co">#&gt;  $ mrs_assessed__follow1         : chr [1:6] NA &quot;Yes&quot; &quot;Yes&quot; NA ...</span></span>
+<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="co">#&gt;  $ mrs_assessed__follow2         : chr [1:6] NA NA &quot;Yes&quot; NA ...</span></span>
+<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a><span class="co">#&gt;  $ mrs_date__inclusion           : Date[1:6], format: &quot;2023-03-13&quot; &quot;2023-03-07&quot; ...</span></span>
+<span id="cb3-23"><a href="#cb3-23" tabindex="-1"></a><span class="co">#&gt;  $ mrs_date__follow1             : Date[1:6], format: NA &quot;2023-03-09&quot; ...</span></span>
+<span id="cb3-24"><a href="#cb3-24" tabindex="-1"></a><span class="co">#&gt;  $ mrs_date__follow2             : Date[1:6], format: NA NA ...</span></span>
+<span id="cb3-25"><a href="#cb3-25" tabindex="-1"></a><span class="co">#&gt;  $ mrs_score__inclusion          : num [1:6] 1 1 NA NA NA NA</span></span>
+<span id="cb3-26"><a href="#cb3-26" tabindex="-1"></a><span class="co">#&gt;  $ mrs_score__follow1            : num [1:6] NA 3 2 NA NA NA</span></span>
+<span id="cb3-27"><a href="#cb3-27" tabindex="-1"></a><span class="co">#&gt;  $ mrs_score__follow2            : num [1:6] NA NA 1 NA NA NA</span></span>
+<span id="cb3-28"><a href="#cb3-28" tabindex="-1"></a><span class="co">#&gt;  $ mrs_complete__inclusion       : chr [1:6] &quot;Incomplete&quot; &quot;Incomplete&quot; NA NA ...</span></span>
+<span id="cb3-29"><a href="#cb3-29" tabindex="-1"></a><span class="co">#&gt;  $ mrs_complete__follow1         : chr [1:6] NA &quot;Incomplete&quot; &quot;Incomplete&quot; NA ...</span></span>
+<span id="cb3-30"><a href="#cb3-30" tabindex="-1"></a><span class="co">#&gt;  $ mrs_complete__follow2         : chr [1:6] NA NA &quot;Incomplete&quot; NA ...</span></span>
+<span id="cb3-31"><a href="#cb3-31" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime__1__follow1    : POSIXct[1:6], format: NA &quot;2024-01-18 12:49:42&quot; ...</span></span>
+<span id="cb3-32"><a href="#cb3-32" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime__1__follow2    : POSIXct[1:6], format: NA NA ...</span></span>
+<span id="cb3-33"><a href="#cb3-33" tabindex="-1"></a><span class="co">#&gt;  $ event_age__1__follow1         : num [1:6] NA NA NA 96 127 NA</span></span>
+<span id="cb3-34"><a href="#cb3-34" tabindex="-1"></a><span class="co">#&gt;  $ event_age__1__follow2         : num [1:6] NA NA NA 118 NA NA</span></span>
+<span id="cb3-35"><a href="#cb3-35" tabindex="-1"></a><span class="co">#&gt;  $ event_type__1__follow1        : chr [1:6] NA &quot;TIA&quot; &quot;AIS&quot; &quot;TIA&quot; ...</span></span>
+<span id="cb3-36"><a href="#cb3-36" tabindex="-1"></a><span class="co">#&gt;  $ event_type__1__follow2        : chr [1:6] NA NA &quot;ICH&quot; &quot;AIS&quot; ...</span></span>
+<span id="cb3-37"><a href="#cb3-37" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete__1__follow1: chr [1:6] NA &quot;Incomplete&quot; &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span>
+<span id="cb3-38"><a href="#cb3-38" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete__1__follow2: chr [1:6] NA NA &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span>
+<span id="cb3-39"><a href="#cb3-39" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime__2__follow1    : POSIXct[1:6], format: NA NA ...</span></span>
+<span id="cb3-40"><a href="#cb3-40" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime__2__follow2    : POSIXct[1:6], format: NA NA ...</span></span>
+<span id="cb3-41"><a href="#cb3-41" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime__3__follow1    : POSIXct[1:6], format: NA NA ...</span></span>
+<span id="cb3-42"><a href="#cb3-42" tabindex="-1"></a><span class="co">#&gt;  $ event_datetime__3__follow2    : POSIXct[1:6], format: NA NA ...</span></span>
+<span id="cb3-43"><a href="#cb3-43" tabindex="-1"></a><span class="co">#&gt;  $ event_age__2__follow1         : num [1:6] NA NA NA 105 127 NA</span></span>
+<span id="cb3-44"><a href="#cb3-44" tabindex="-1"></a><span class="co">#&gt;  $ event_age__2__follow2         : num [1:6] NA NA NA 118 NA NA</span></span>
+<span id="cb3-45"><a href="#cb3-45" tabindex="-1"></a><span class="co">#&gt;  $ event_age__3__follow1         : num [1:6] NA NA NA NA NA NA</span></span>
+<span id="cb3-46"><a href="#cb3-46" tabindex="-1"></a><span class="co">#&gt;  $ event_age__3__follow2         : num [1:6] NA NA NA 118 NA NA</span></span>
+<span id="cb3-47"><a href="#cb3-47" tabindex="-1"></a><span class="co">#&gt;  $ event_type__2__follow1        : chr [1:6] NA NA &quot;ICH&quot; &quot;TIA&quot; ...</span></span>
+<span id="cb3-48"><a href="#cb3-48" tabindex="-1"></a><span class="co">#&gt;  $ event_type__2__follow2        : chr [1:6] NA NA &quot;TIA&quot; &quot;ICH&quot; ...</span></span>
+<span id="cb3-49"><a href="#cb3-49" tabindex="-1"></a><span class="co">#&gt;  $ event_type__3__follow1        : chr [1:6] NA NA NA NA ...</span></span>
+<span id="cb3-50"><a href="#cb3-50" tabindex="-1"></a><span class="co">#&gt;  $ event_type__3__follow2        : chr [1:6] NA NA &quot;AIS&quot; &quot;Unknown&quot; ...</span></span>
+<span id="cb3-51"><a href="#cb3-51" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete__2__follow1: chr [1:6] NA NA &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span>
+<span id="cb3-52"><a href="#cb3-52" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete__2__follow2: chr [1:6] NA NA &quot;Incomplete&quot; &quot;Incomplete&quot; ...</span></span>
+<span id="cb3-53"><a href="#cb3-53" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete__3__follow1: chr [1:6] NA NA NA NA ...</span></span>
+<span id="cb3-54"><a href="#cb3-54" tabindex="-1"></a><span class="co">#&gt;  $ new_event_complete__3__follow2: chr [1:6] NA NA &quot;Incomplete&quot; &quot;Complete&quot; ...</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>ds<span class="sc">|&gt;</span> </span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  <span class="fu">ds2dd_detailed</span>(<span class="at">metadata =</span> <span class="fu">names</span>(REDCapCAST<span class="sc">::</span>redcapcast_meta))<span class="sc">|&gt;</span>  </span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">pluck</span>(<span class="st">&quot;meta&quot;</span>) <span class="sc">|&gt;</span> </span>
