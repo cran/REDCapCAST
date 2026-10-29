@@ -16,7 +16,7 @@ ds2dd_detailed(
   field.label.attr = "label",
   field.validation = NULL,
   metadata = names(REDCapCAST::redcapcast_meta),
-  convert.logicals = FALSE
+  convert.logicals = TRUE
 )
 }
 \arguments{
@@ -47,7 +47,7 @@ ncol(data). Default is NULL and colnames(data) is used or attribute
 `haven::read_dta()`).}
 
 \item{field.label.attr}{attribute name for named labels for haven_labelled
-data set (imported .dta file with `haven::read_dta()`. Default is "label"}
+data set (imported .dta file with `haven::read_dta()`. Default is "label".}
 
 \item{field.validation}{manually specify field validation(s). Vector of
 length 1 or ncol(data). Default is NULL and `levels()` are used for factors

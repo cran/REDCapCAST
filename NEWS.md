@@ -1,3 +1,16 @@
+# REDCapCAST 26.10.1
+
+Main focus on Shiny App improvements from practical experience using the app in different workflows.
+
+* NEW: New flag added to the shiny app to allow for using the first row of a dataset as field labels or explaining notes in the REDCap instrument(s). When the data set starts of as a simple flat spreadsheet, this is a practical approach to adding explaining notes on each variable/column.
+* NEW: Added option to choose sheet in workbook (xls, xlsx or ods). It always shows, but is ignored when different file format is uploaded.
+* NEW: the shiny app is now using accordions in the sidebar instead of buttons and conditional panels. What an old school approach(!)
+* FIX: fixed parsing logicals correctly in the shiny app.
+
+# REDCapCAST 26.3.1
+
+* NEW: topological_sort() function allows for guessing the event names and the correct order when creating an events overview based on long data format of longitudinal REDCap data with event name column being a character. This is to be used for implementing support for creating data bases for longitudinal projects. This function was developed with Claude AI, and will attempt a reproducible way of ordering levels from incomplete ordering data. The REDCapCAST interface will also support option to reorder the event names before creating database metadata, which will be shared from the FreesearchR project. This will be implemented eventually when the need and time is there, but is currently being tested.
+
 # REDCapCAST 26.1.1
 
 25.11.1 was never pushed to CRAN, so this fills in for that.

@@ -218,7 +218,7 @@ ds2dd <-
 #' `field.label.attr` for haven_labelled data set (imported .dta file with
 #' `haven::read_dta()`).
 #' @param field.label.attr attribute name for named labels for haven_labelled
-#' data set (imported .dta file with `haven::read_dta()`. Default is "label"
+#' data set (imported .dta file with `haven::read_dta()`. Default is "label".
 #' @param field.validation manually specify field validation(s). Vector of
 #' length 1 or ncol(data). Default is NULL and `levels()` are used for factors
 #' or attribute `factor.labels.attr` for haven_labelled data set (imported .dta
@@ -270,7 +270,8 @@ ds2dd_detailed <- function(data,
                            field.label.attr = "label",
                            field.validation = NULL,
                            metadata = names(REDCapCAST::redcapcast_meta),
-                           convert.logicals = FALSE) {
+                           convert.logicals = TRUE) {
+
   short_names <- colnames(data) |>
     lapply(\(.x) cut_string_length(.x, l = 90)) |>
     purrr::reduce(c)
